@@ -12,7 +12,7 @@ public class GraphFrame extends javax.swing.JFrame {
      * Creates new form GraphFrame
      */
     public GraphFrame() {
-        //initComponents();
+        //initComponents(); // without using frame construct netbeans
     }
  public void paint(Graphics g)
             {
