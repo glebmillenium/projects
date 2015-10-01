@@ -11,3 +11,4 @@ through Aproximate and Interpolir methods.
 @author github user: "glebmillenium"
 	mail:	     "gleb_millenium@mail.ru"
 		     "GodBlessYa95@gmail.com"
+
