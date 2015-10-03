@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Лабораторная работа №5</title>
+		<link href="./css/style.css" rel="stylesheet">
+		<script type="text/javascript" charset="utf-8" src="./js/SMO.js"></script>
+		
+	</head>
+	
+	 <body>
+		  <h1 align="center">Моделирование реальных условий в СМО</h1>
+		  
+		  <form onsubmit="return false;">
+			  <p><label class="input__field" for="chanels">Кол-во ЭВМ: </label>
+			  <input class="input__label-content" id="chanels" type="text"/></p>
+			  
+			  <p><label class="input__field" for="lambda">Интенсивность поступающих задач: </label>
+			  <input id="lambda" type="text" class="input__label-content" /></p>
+			  
+			  <p><label class="input__field" for="t_obs">Время решения одной задачи: </label>
+			  <input id="t_obs" type="text" class="input__label-content" /></p>
+			  
+			  <p><label class="input__field" for="n">Кол-во заявок: </label>
+			  <input id="n" type="text" class="input__label-content" /></p>
+			  
+			  <p><label for="truncate" class="input__field" for="n">Округлить полученные данные до десятичных знаков (по умолчанию 3): </label>
+			  <input id="truncate" type="text" class="input__label-content" /></p>
+			  
+			  <button onclick="showSMO()">Получить данные</button>
+		  </form>
+		  <hr/>
+		  
+		  <pre class="block-element" ><p class="text-element">Поле вывода:<br></p><p class="text-element-php" id="divResult">&nbsp;</p></pre>
+	 </body>
+</html>

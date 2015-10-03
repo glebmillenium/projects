@@ -1,0 +1,91 @@
+<?php 
+class SMO{
+	private $chanels, $lambda, $t_obs, $n;
+	
+	function __construct($arg1, $arg2, $arg3, $arg4){
+		$this->chanels= $arg1;
+		$this->lambda= $arg2;
+		$this->t_obs= $arg3;
+		$this->n= $arg4;
+	}
+	function probability(){
+		$chanels=$this->chanels;
+		$lambda=$this->lambda;
+		$t_obs=$this->t_obs;
+		$n=$this->n;
+		
+		$time_start = 0;
+		
+		$end_time = 0;
+		
+		$fail = 0;
+		
+		$a = array();
+		$position = array();
+		for($i=1;$i<=$chanels;$i++)
+			$position[$i]=0;
+		
+
+		
+		for($i=0;$i<$chanels;$i++)
+			for($j=0;$j<2;$j++)
+				$a[$i][$j]=0;
+			
+		
+		
+		for ($i = 0; $i < $n; $i++){
+		
+		$x = lcg_value();
+
+		$dt = (double)-log($x)/$lambda;
+		$time_start += $dt;
+		
+		$num = -1;
+		$countChanelsWorking=$chanels;
+		for ($j = 0; $j < $chanels; $j++) {
+			if ($a[$j][1] < $time_start){
+				$num = $j;
+		//	cout << a[j][1] << " ";
+				$countChanelsWorking--;
+			}
+		}
+		
+		for($gh=1;$gh<=$chanels;$gh++)
+			if($countChanelsWorking==$gh) $position[$gh]++;
+		//cout << endl;
+
+			
+		if ($num != -1) {
+			$a[$num][0] = $time_start;
+			
+			$x = lcg_value();
+			$dt = (double)-log($x)*$t_obs;
+			
+			
+			$end_time = $time_start+$dt;
+			$a[$num][1] = $end_time;
+			
+	//		cout << "start: " << t << " " << "finish: " << end_time << endl;
+		} else {
+			$fail++;
+	//		cout << "start: " << t << " fail" << endl;
+		}
+		
+	
+	}
+	$massiv=array(	'success'=>($n-$fail)/$n,
+					'fail'=>$fail/$n,
+					'abs'=>($n-$fail)/$time_start);
+	$summ=0;
+	for($i=1;$i<=$chanels;$i++){
+		$massiv['chanel'][$i]=$position[$i]/$n;
+		$summ+=$position[$i]*$i;
+	}
+	
+	$massiv["average_chanels"]=$summ/$n;
+	
+	return $massiv;
+		
+	}
+}
+?>

@@ -1,0 +1,1 @@
+<p>Hello, {$name} Welcome in XAMPP!</p>

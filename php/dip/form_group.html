@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Информационная система формирования и распределения физкультурных групп</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="./css/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/jquery-ui.js"></script>
+<script type="text/javascript" src="./js/fg_driver.js"></script>
+</head>
+<body>
+<!--Шапка-->
+<div id="header">
+	<div class="title-main">
+		<h2>Модуль формирования физкультурных групп</h2>
+	</div>
+	<a class="login-click" href="#">
+		Павличенко А.В.
+	</a>
+
+
+</div>
+<!--Основное содержимое-->
+<div id="wrapper">
+	<!--Левая колонка-->
+	<div id="left-list">
+		<h2>Плановые потоки <span id="cur_semestr"></span></h2>
+		<!--потоки-->
+		<div class="list-selector">
+			<select id="umuselect">
+			</select>
+			<input type="checkbox" value="first" id="umucheck">только 1 курс</input>
+		</div>
+		
+		<!--подгруппы данной группы-->
+		<div class = "list-items">
+			<div class="umugroup">
+				<span></span> <span id="amount"></span>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<h2>Физкультурные группы (оптимально: <span id="orient"></span> чел.)</h2>
+		<div id="note">
+			<ul>
+				<li>Для добавления подгруппы в состав <abbr title="Физкультурная группа">ФГ</abbr> перетащите её мышью из списка слева;</li>
+				<li>Для редактирования состава <abbr title="Физкультурная группа">ФГ</abbr> кликните по иконке  <img width='20px' height='20px' src="./images/pen.png" /> — входящие в состав подгруппы выделятся синим цветом;</li>
+				<li>Щелкните по выделенной подгруппе, чтобы удалить её из состава <abbr title="Физкультурная группа">ФГ</abbr>;</li>
+				<li>Для выхода из режима редактирования ещё раз щёлкните по иконке <img width='20px' height='20px' src="./images/pen_edited.png" />;</li>
+				<li>Для удаления физкультурной группы щёлкните по иконке <img width='20px' height='20px' src="./images/trash.png" /><br/> ВНИМАНИЕ! Восстановить удалённую группу будет нельзя.</li>
+				<li>Для изменения названия <abbr title="Физкультурная группа">ФГ</abbr> кликните по нему и введите новое в появившемся поле</li>
+				<li>Для окончательного сохранения созданной <abbr title="Физкультурная группа">ФГ</abbr> нажмите на иконку <img width='20px' height='20px' src="./images/ok.png"/></li>
+			</ul>
+		</div>
+		<div id="fizgroups">
+
+		</div>
+	</div>
+</div>
+<!--Подвал-->
+<div id="footer">
+<p><span class='question'>[Вызов справки]</span></p>
+
+
+
+
+</div>
+</body>
+</html>

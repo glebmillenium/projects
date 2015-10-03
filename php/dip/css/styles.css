@@ -1,0 +1,668 @@
+/*CSS для Информационой системы формирования и распределения физкультурных групп*/
+
+/*=========================Общие настройки===========================*/
+
+body {
+	margin:0;
+	padding:0;
+	font-family: 'Tahoma','Trebuchet MS', sans-serif;
+	font-size:15px;
+}
+
+.question {
+	color:#66ccff;
+	cursor: pointer;
+}
+
+#note {
+	position:fixed;
+	top:195px;
+	left:870px;
+	display:block;
+	width:270px;
+	height:490px;
+	border: 1px solid black;
+	border-radius: 7px;
+	background:yellow;
+	opacity: 0.5;
+	padding: 5px 5px;
+}
+
+#note ul{
+	margin-left: -10px;
+}
+
+abbr {
+	text-decoration:underline;
+}
+
+span.amount {
+	position: absolute;
+	float:right;
+	right:5px;
+}
+
+
+/*==========================Настройки HEADER========================*/
+
+#header {
+	background-color: #1e85ee;
+	position:absolute;
+	width:100%;
+	height:100px;
+	margin: 0 auto;
+	display:block;
+}
+
+#header .login-click {
+	width:130px;
+	text-align:right;
+	float:right;
+	position:relative;
+	right:5%;
+	margin-top: -50px;
+	font-family: 'Trebuchet MS',sans-serif;
+	font-size: 16px;
+	color:#fff;
+}
+
+#header .title-main {
+	width:800px;
+	position: relative;
+	left:17%;
+	overflow: visible;
+}
+
+#header h2 {
+	font-size: 21px;
+	color:white;
+	text-align: center;
+	margin-top: 42px;
+	position: relative;
+	top:-8px;
+}
+
+#header h1 {
+	margin-top:30px;
+	text-align: center;
+	color:#fff;
+}
+
+
+/*====================Настройки WRAPPER============================*/
+
+#wrapper {
+	background-color:#fff;
+	width:1024px;
+	position:absolute;
+	top:130px;
+	overflow: visible;
+	margin-bottom: 20px;
+	padding-bottom: 80px;
+}
+
+#columns {
+	overflow:hidden;
+	width:950px;
+	position:absolute;
+	left:12%;
+	padding: 60px 0px 50px 0px;
+}
+
+#columns .col1{
+	float: left;
+	width: 300px;
+	margin-right: 15px;
+	display:inline-block;
+	text-decoration: none;
+	border-style: solid;
+	border-width:3px;
+	border-radius: 5px;
+	-ms-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius: 5px;
+	border-color:#6a716f;
+}
+
+#columns .col2{
+	float: left;
+	width: 300px;
+	margin-right: 15px;
+	display:block;
+	text-decoration: none;
+	border-style: solid;
+	border-width:3px;
+	border-radius: 5px;
+	-ms-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius: 5px;
+	border-color: #6a716f;
+}
+
+#columns .col3{
+	float: right;
+	width: 300px;
+	display:block;
+	text-decoration: none;
+	border-style: solid;
+	border-width:3px;
+	-ms-border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius: 5px;
+	border-color: #6a716f;
+}
+
+.box {
+	background-color: #fff;
+	text-align: center;
+}
+
+.box h2 {
+	padding: 5px 0px;
+	letter-spacing: -1px;
+	font-size: 18px;
+	color: #2D2D2D;
+}
+
+.box p {
+	padding:10px 5px;
+	font-size: 14px;
+	color:#2D2D2D;
+}
+
+.box img {
+	margin:10px 0px;
+	width:200px;
+}
+
+
+	/*Для модуля формирования ФГ*/
+
+#left-list {
+	width:300px;
+	position: absolute;
+	overflow: visible;
+	float:left;
+	padding: 15px 10px 15px 10px;
+	margin-right:10px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+#left-list h2 {
+	margin-top:17px;
+	font-size: 14px;
+}
+
+#content {
+	width:640px;
+	overflow: visible;
+	position:relative;
+	float:right;
+	padding: 15px 5px 15px 50px;
+	margin-left: 20px;
+}
+
+#content h2 {
+	margin-left:42px;
+	margin-top: 16px;
+	font-size: 14px;
+}
+
+
+#list-selector {
+	position:relative;
+	margin: 10px 5px 15px 5px;
+
+}
+
+#list-items {
+	position:relative;
+	padding: 15px 0;
+	overflow-y:scroll;
+
+}
+
+#umuselect {
+	width:315px;
+	margin-top: 8px;
+	margin-bottom: 20px;
+}
+
+
+.fizgroup {
+	margin: 5px 10px 0 45px;
+	padding: 0 5px 0 5px;
+	display:inline-block;
+	width:400px;
+	height:160px;
+	position:relative;
+	overflow: visible;
+	border-color: black;
+	border-style: dashed;
+	border-width: 3px;
+	border-radius: 8px;
+	-ms-border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius: 8px;
+	background-color: #fff;
+}
+
+progress {
+	margin-left:15px;
+	margin-bottom: 0;
+	position:absolute;
+	bottom:15px;
+	width:300px;
+	color:#1e85ee;
+	font-size: .6em;
+	line-height:  1.5em;
+	text-indent:  .5em;
+	height: 1.8em;
+	border: 1px solid #e5e6dd;
+	background:#fff;
+}
+
+.fizgroup p.progvalue {
+	position:absolute;
+	float:right;
+	font-weight: bold;
+	font-size: 14px;
+	bottom: 2px;
+	right:20px;
+}
+
+.fizgroup h2 {
+	text-align: left;
+	text-indent: 0;
+	margin-left: 0;
+	position: absolute;
+	left:0;
+}
+
+.editicon {
+	position: absolute;
+	top:10px;
+	right:45px;
+	float:right;
+	width:20px;
+	height:20px;
+	padding:2px 2px;
+	border:2px solid black;
+	border-radius: 7px;
+	display:block;
+	cursor:pointer;
+}
+
+.deleteicon {
+	position: absolute;
+	top:10px;
+	right:10px;
+	float:right;
+	width:20px;
+	height:20px;
+	padding:2px 2px;
+	border:2px solid black;
+	border-radius: 7px;
+	display:block;
+	cursor:pointer;
+}
+
+.saveicon {
+	position: absolute;
+	top:10px;
+	right:79px;
+	float:right;
+	width:20px;
+	height:20px;
+	padding:2px 2px;
+	border:2px solid black;
+	border-radius: 7px;
+	display:block;
+	cursor:pointer;
+}
+
+.desc {
+	position: relative;
+	float:left;
+	top:45px;
+	left:25px;
+	margin-right: 20px;
+}
+
+progress::-moz-progress-bar {
+	background:#1e85ee;
+}
+
+progress::-webkit-progress-bar {
+	background:#fff;
+}
+
+progress::-webkit-progress-value {
+	background:#1e85ee;
+}
+
+.umugroup {
+	width:290px;
+	position:relative;
+	height:25px;
+	border-width: 2px;
+	border-radius: 8px;
+	-ms-border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius: 8px;
+	border-style: solid;
+	padding: 5px 10px;
+	margin-top: 30px;
+	font-size: 14px;
+	background-color:#66ccff;
+	font-weight: bold;
+}
+
+.subgroup {
+	width:220px;
+	position:relative;
+	height:18px;
+	border-width: 2px;
+	border-radius: 8px;
+	-ms-border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius: 8px;
+	border-style: solid;
+	padding: 5px 10px;
+	font-size: 14px;
+	margin-top: -2px;
+	cursor:pointer;
+	background-color: #fff;
+	z-index: 1;
+}
+
+
+.girls {
+	background:#fccfcf;
+}
+
+	/*Для модуля распределения групп по преподавателям*/
+
+#prepselect {
+	width:500px;
+	height:40px;
+	margin: 5px 10px 0 45px;
+	padding:20px 5px 5px 5px;
+}
+
+#prep {
+	width:410px;
+	height:25px;
+}
+
+.prepblock {
+	margin: 5px 10px 0 45px;
+	padding: 0 5px 0 5px;
+	display:inline-block;
+	width:400px;
+	height:300px;
+	position:relative;
+	overflow: visible;
+	border-color: black;
+	border-style: dashed;
+	border-width: 3px;
+	border-radius: 8px;
+	-ms-border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius: 8px;
+	background-color: #fff;
+}
+
+.prepblock h2 {
+	margin-left: 20px;
+	text-align: left;
+	line-height: 130%;
+}
+
+.prepblock p {
+	margin-left:20px;
+	line-height: 50%;
+}
+
+.prepblock progress {
+	position:absolute;
+	top:100px;
+	width:300px;
+	height:20px;
+}
+
+.editicon_prep {
+	position: absolute;
+	top:10px;
+	right:10px;
+	float:right;
+	width:20px;
+	height:20px;
+	padding:2px 2px;
+	border:2px solid black;
+	border-radius: 7px;
+	display:block;
+	cursor:pointer;
+}
+
+.saveicon_prep {
+	position: absolute;
+	top:10px;
+	right:45px;
+	float:right;
+	width:20px;
+	height:20px;
+	padding:2px 2px;
+	border:2px solid black;
+	border-radius: 7px;
+	display:block;
+	cursor:pointer;
+}
+
+#percent {
+	position: absolute;
+	float:right;
+	top:92px;
+	right:10px;
+}
+
+#saved {
+	margin-top:50px;
+	margin-left:45px;
+	height:100%;
+	border-left: 2px solid green;
+}
+
+#ready {
+	margin-left:20px;
+}
+
+.ready-item {
+	width:370px;
+	margin:5px 0;
+}
+
+.return {
+	position: relative;
+	right:5px;
+	float:right;
+	padding:2px 2px;
+	margin-top:-3px;
+	border:2px solid black;
+	border-radius: 7px;
+	display:block;
+	cursor:pointer;
+}
+
+#slider {
+	margin-top: 30px;
+	width:242px;
+	height:100%;
+	display:block;
+	border-right:2px solid black;
+}
+
+.nonselect {
+	padding: 3px 12px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+#grid {
+	position:absolute;
+	width:100%;
+	display:block;
+	font-size: 12px;
+	
+}
+
+#typesel {
+	height:40px;
+	width:150px;
+	padding:3px 1px;
+}
+
+#shapka {
+	margin-top: 30px;
+}
+
+#shapka td {
+	width:115px;
+	text-align: center;
+}
+
+#gridtable {
+	margin-left:-115px;
+	border-width: 0;
+	margin-bottom: 150px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#gridtable td {
+	border-top: 2px solid black;
+	border-bottom: 0;
+	width:115px;
+	height:60px;
+}
+
+#gridtable td.sat {
+	border-right: 2px solid black;
+}
+
+#gridtable td.lefts {
+	border-left: 0;
+	border-bottom: 0;
+	border-top: 0;
+	font-weight: normal;
+}
+#gridtable tr#p6 td{
+	border-bottom: 2px solid black;
+}
+
+#gridtable tr#p6 td.lefts {
+	border-bottom: 0;
+}
+
+/*===================================================*/
+#gridtable tr#p1 td.mon {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p1 td.tue {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p1 td.wed {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p2 td.mon {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p1 td.fri {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p2 td.tue {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p2 td.fri {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p2 td.wed {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p2 td.thu {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p3 td.tue {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p3 td.thu {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p4 td.thu {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p3 td.fri {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p3 td.mon {
+	background-color: #ff6666;
+}
+
+#gridtable tr#p1 td.thu {
+	background-color: #66ff66;
+}
+
+#gridtable tr#p4 td.tue {
+	background-color: #66ff66;
+}
+
+.slctd {
+	background-color: #66ccff;
+}
+/*------------------------=---------------------------*/
+
+#dow {
+	border:0;
+}
+
+#dow td{
+	height:20px;
+	border: 0;
+}
+
+#hh {
+	position: relative;
+	left:-40px;
+	top:3px;
+}
+/*=======================Настройки FOOTER==============================*/
+
+#footer {
+	position:fixed;
+	bottom:0;
+	width:100%;
+	height:40px;
+	margin:0 auto;
+	padding: 15px 0px 0px 0px;
+	background-color:#e5e6dd;
+	z-index: 100;
+}
+
+#footer p{
+	text-align: center;
+	color:#909090;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Информационная система формирования и распределения физкультурных групп</title>
+<link href="./css/styles.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="./css/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/jquery-ui.js"></script>
+<script type="text/javascript" src="./js/ag_driver.js"></script>
+</head>
+<body>
+<!--Шапка-->
+<div id="header">
+	<div class="title-main">
+		<h2>Модуль распределения физкультурных групп</h2>
+	</div>
+	<a class="login-click" href="#">
+		Вход
+	</a>
+
+
+</div>
+<!--Основное содержимое-->
+<div id="wrapper">
+	<!--Левая колонка-->
+	<div id="left-list">
+		<h2>Физкультурные группы</h2>
+		<div class = "list-items">
+		</div>
+	</div>
+
+	<div id="content">
+		<h2>Преподаватели</h2>
+		<div id="note">
+			<ul>
+				<li>Выберите преподавателя из выпадающего списка;</li>
+				<li>Для привязки к выбранному преподавателю физкультурной группы перетащите мышью соответствующую группу из списка слева в блок с именем преподавателя;</li>
+				<li>Для редактирования распределения щёлкните по иконке <img width='20px' height='20px' src='./images/pen.png'/> — добавленные физкультурные группы выделятся синим цветом. Для удаления группы из распределения просто кликните по ней.</li>
+				<li>Для окончательного сохранения распределения кликните по иконке <img width="20px" height="20px" src="./images/ok.png"/></li>
+			</ul>
+		</div>
+		<div id="prepselect">
+			<select id="prep"></select>
+		</div>
+		<div class="prepblock">
+		</div>
+		<div id="saved">
+			<h2>Уже получили распределение:</h2>
+			<div id="ready">
+			</div>
+		</div>
+	</div>
+</div>
+<!--Подвал-->
+<div id="footer">
+<p><span class='question'>[Вызов справки]</span></p>
+</div>
+</body>
+</html>

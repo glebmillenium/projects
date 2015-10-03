@@ -1,0 +1,44 @@
+body{
+	background: #f0f0f0;
+}
+.input__field {
+	position: relative;
+	display: block;
+	float: left;
+	padding: 0.8em;
+	width: 50%;
+	border: none;
+	border-radius: 0;
+	font-weight: 200;
+	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.block-element{
+    position: relative;
+    float: left;
+	width: 95%;
+	background: #8FBC8F;
+}
+
+.text-element-php{
+	
+	font-size: 170%;
+	padding-left: 10%;
+}
+
+.text-element{
+	text-decoration:underline;
+	font-size: 200%;
+	text-indent: 20%;
+	padding-left: 10%;
+}
+
+.input__label-content {
+
+
+	padding: 0.3em;
+	
+	width: 20%;
+	height: 6%;
+}
