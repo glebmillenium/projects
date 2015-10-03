@@ -1,0 +1,10 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\bin\Debug\Restaurant.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\bin\Debug\Restaurant.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\bin\Debug\Restaurant.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.Form1.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.Form2.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.pdb

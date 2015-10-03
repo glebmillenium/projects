@@ -1,0 +1,6 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\server_SMO\server_SMO\bin\Debug\server_SMO.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\server_SMO\server_SMO\bin\Debug\server_SMO.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\server_SMO\server_SMO\bin\Debug\server_SMO.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\server_SMO\server_SMO\obj\Debug\server_SMO.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\server_SMO\server_SMO\obj\Debug\server_SMO.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\server_SMO\server_SMO\obj\Debug\server_SMO.pdb
