@@ -12,9 +12,9 @@ public class GraphFrame extends javax.swing.JFrame {
      * Creates new form GraphFrame
      */
     public GraphFrame() {
-        //initComponents(); // without using frame construct netbeans
+        initComponents();  netbeans
     }
- public void paint(Graphics g)
+ /*public void paint(Graphics g)
             {
                     g.drawLine(20, 20, 360, 20);
                     Color oldColor = g.getColor();
@@ -61,7 +61,7 @@ public class GraphFrame extends javax.swing.JFrame {
                     g.drawPolyline(xArray, yArray, nPoint);
                     g.setColor(oldColor);
                     g.drawString("y = f(x)", 180, 267);
-            }
+            }*/
       
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,6 +79,11 @@ public class GraphFrame extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +185,10 @@ public class GraphFrame extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        AGV.windowClose(evt);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
