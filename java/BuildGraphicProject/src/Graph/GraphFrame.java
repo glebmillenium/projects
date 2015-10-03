@@ -1,4 +1,4 @@
-package newpackage;
+package Graph;
 
 import java.awt.*;
 
