@@ -1,6 +1,10 @@
 package Graph;
 
 import java.awt.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.script.ScriptException;
 import javax.swing.JPanel;
 
 /**
@@ -113,7 +117,14 @@ public class GraphFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
-        
+        String expression = TextField.getText();
+        try {
+            AGV.treatmentExpression(expression);
+        } catch (ScriptException ex) {
+            Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ButtonActionPerformed
 
     /**
@@ -192,8 +203,8 @@ public class GraphFrame extends javax.swing.JFrame {
             g.drawLine(this.width, this.centr[1], this.width-10, this.centr[1]-5);
             
             
-            Polygon poly = new Polygon(this.arrayX, this.arrayY, this.arrayX.length);
-            g.drawPolygon(poly);        
+            //Polygon poly = new Polygon(this.arrayX, this.arrayY, this.arrayX.length);
+           // g.drawPolygon(poly);        
         }
         
         /*public void paint(Graphics g)
