@@ -12,7 +12,7 @@ public class GraphFrame extends javax.swing.JFrame {
     /**
      * Creates new form GraphFrame
      */
-    private JPanel_modif Panel = new JPanel_modif();
+    private JPanel_modif Panel = new JPanel_modif(300,520);
     public GraphFrame() {
         initComponents();
         paintPanel();
@@ -65,7 +65,6 @@ public class GraphFrame extends javax.swing.JFrame {
         Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 700));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -114,7 +113,7 @@ public class GraphFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
-        Panel.listener = 1;
+        
     }//GEN-LAST:event_ButtonActionPerformed
 
     /**
@@ -161,10 +160,16 @@ public class GraphFrame extends javax.swing.JFrame {
 
     class JPanel_modif extends javax.swing.JPanel {
 
-        public int listener = 0;
-        JPanel_modif() {
-            // set a preferred size for the custom panel.
-            setPreferredSize(new Dimension(420,420));
+        private int width;
+        private int height;
+        private int[] centr = new int[2];
+        
+        JPanel_modif(int h, int w) {
+            
+            this.width = w;
+            this.height = h;
+            this.centr[0] = w/2;
+            this.centr[1] = h/2;
         }
 
         @Override
@@ -172,11 +177,18 @@ public class GraphFrame extends javax.swing.JFrame {
             
             super.paintComponent(g);
             
-            g.drawString("BLAH", 20, 20);
-            g.drawRect(200, 200, 200, 200);
+            g.drawString("O", 240, 170);
+            g.drawString("x", 500, 170);
+            g.drawString("y", 270, 10);
             
-            g.drawString("БЛЯ", 60, 60);
-            repaint();
+            g.drawLine(this.centr[0], 0, this.centr[0], this.height);
+            g.drawLine(this.centr[0], 0, this.centr[0]-5, 0+10);
+            g.drawLine(this.centr[0], 0, this.centr[0]+5, 0+10);
+            
+            g.drawLine(0, this.centr[1], this.width, this.centr[1]);
+            g.drawLine(this.width, this.centr[1], this.width-10, this.centr[1]+5);
+            g.drawLine(this.width, this.centr[1], this.width-10, this.centr[1]-5);
+            
         }
     }
 
