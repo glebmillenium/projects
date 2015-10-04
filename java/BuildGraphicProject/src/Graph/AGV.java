@@ -5,6 +5,11 @@
  */
 package Graph;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Polygon;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class AGV {
     
-    public static void windowClose(java.awt.event.WindowEvent evt){
+    public static void windowClose(java.awt.event.WindowEvent evt)
+    {
                 Object[] options = { "Нет", "Да" };
         int n = JOptionPane
                         .showOptionDialog(evt.getWindow(), "Закрыть приложение?",

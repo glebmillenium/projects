@@ -1,6 +1,7 @@
 package Graph;
 
 import java.awt.*;
+import javax.swing.JPanel;
 
 /**
  *
@@ -11,57 +12,44 @@ public class GraphFrame extends javax.swing.JFrame {
     /**
      * Creates new form GraphFrame
      */
+    private JPanel_modif Panel = new JPanel_modif();
     public GraphFrame() {
-        initComponents();  netbeans
+        initComponents();
+        paintPanel();
     }
- /*public void paint(Graphics g)
-            {
-                    g.drawLine(20, 20, 360, 20);
-                    Color oldColor = g.getColor();
-                    Color newColor = new Color(0, 0, 255);
-                    g.setColor(newColor);
-                    g.drawLine(20, 30, 360, 30);
-                    g.setColor(oldColor);
-                    g.drawRect(20, 40, 340, 20);
-                    newColor = new Color(0, 215, 255);
-                    g.setColor(newColor);
-                    g.fillRect(21, 41, 339, 19);
-                    g.setColor(oldColor);
-                    g.drawRoundRect(20, 70, 340, 30, 20, 15);
-                    g.drawOval(20, 110, 150, 60);
-                    g.drawOval(200, 110, 60, 60);
-                    g.drawArc(280, 110, 80, 60, 0, 180);
-                    int[] arrayX = {20, 100, 100, 250, 250, 20, 20, 50};
-                    int[] arrayY = {180, 180, 200, 200, 220, 200, 200, 190};
-                    Polygon poly = new Polygon(arrayX, arrayY, 8);
-                    g.drawPolygon(poly);
-                    Point aPoint = new Point(50, 190);
-                    if(poly.contains(aPoint))
-                    {
-                            g.drawString("Yes", 50, 190);
-                    }
-                    newColor = new Color(0, 0, 255);
-                    g.setColor(newColor);
-                    Font font = new Font("Tahoma", Font.BOLD|Font.ITALIC, 40);
-                    Font oldFont = g.getFont();
-                    g.setFont(font);
-                    g.drawString("SBP", 270, 220);
-                    g.setFont(oldFont);
-                    g.setColor(oldColor);
-                    // Draw axes;
-                    g.drawLine(20, 220, 20, 350);
-                    g.drawLine(20, 350, 360, 350);
-                    g.drawString("Y", 25, 230);
-                    g.drawString("X", 350, 346);		
-                    // Draw a curve;
-                    int[] xArray = {20, 40, 60, 80, 100, 120, 130, 140, 280, 332};
-                    int[] yArray = {350, 345, 340, 310, 290, 280, 275, 273, 271, 269};
-                    int nPoint = 10;
-                    g.setColor(newColor);
-                    g.drawPolyline(xArray, yArray, nPoint);
-                    g.setColor(oldColor);
-                    g.drawString("y = f(x)", 180, 267);
-            }*/
+    
+    public void paintPanel()
+    {
+        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(Panel);
+        Panel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+            .addGap(0, 520, Short.MAX_VALUE)
+        );
+        jPanelLayout.setVerticalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(112, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
+        );
+
+        pack();
+    }
       
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,45 +60,24 @@ public class GraphFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        TextField = new javax.swing.JTextField();
+        Label = new javax.swing.JLabel();
+        Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 700));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        Label.setText("f(x, y)     =");
 
-        jLabel1.setText("f(x, y)     =");
-
-        jButton1.setText("Построить!");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Button.setText("Построить!");
+        Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Назад");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("Справка");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ButtonActionPerformed(evt);
             }
         });
 
@@ -119,76 +86,36 @@ public class GraphFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(6, 6, 6)
-                        .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 171, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .add(layout.createSequentialGroup()
-                        .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 84, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jButton3)
-                        .add(23, 23, 23))))
+                .add(6, 6, 6)
+                .add(Label)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 293, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(38, 38, 38)
+                .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(20, 20, 20)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1)
-                    .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 386, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton2)
-                    .add(jButton3))
-                .addContainerGap())
+                    .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(Label)
+                    .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(639, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new HelpFrame().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         AGV.windowClose(evt);
     }//GEN-LAST:event_formWindowClosing
+
+    private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
+        Panel.listener = 1;
+    }//GEN-LAST:event_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,10 +154,31 @@ public class GraphFrame extends javax.swing.JFrame {
     
       
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton Button;
+    private javax.swing.JLabel Label;
+    private javax.swing.JTextField TextField;
     // End of variables declaration//GEN-END:variables
+
+    class JPanel_modif extends javax.swing.JPanel {
+
+        public int listener = 0;
+        JPanel_modif() {
+            // set a preferred size for the custom panel.
+            setPreferredSize(new Dimension(420,420));
+        }
+
+        @Override
+        public void paintComponent(Graphics g) {
+            
+            super.paintComponent(g);
+            
+            g.drawString("BLAH", 20, 20);
+            g.drawRect(200, 200, 200, 200);
+            
+            g.drawString("БЛЯ", 60, 60);
+            repaint();
+        }
+    }
+
 }
+
