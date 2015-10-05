@@ -33,70 +33,23 @@ public class AGV {
                 if (n == 0) 
                     System.exit(0);
     }
+      
     
     /**
+     * Метод readFileAsString - считывает метаданные из файла и переводит
+     * полученные данные в переменную типа String
      *
-     * @param range
-     * @param step
-     * @return
-     */
-    public static int[] createArrayX(int range, int step)
-    {
-        int[] arrayX = new int[range];
-        for(int i=0;i<range;i++)
-            arrayX[i] = i;
-
-        return arrayX;
-    }
-    
-    public static double[] treatmentExpression(String str, int[] x) throws ScriptException, IOException
-    {  
-        double[] y = null;
-        // Это текст сценария, который требуется скомпилировать.
-        String scripttext = readFileAsString
-            ("/home/glebmillenium/projects/java/BuildGraphicProject/src/Graph/Data/AGV.js");
-        // Создать экземпляр интерпретатора, или "ScriptEngine", для запуска сценария
-        ScriptEngineManager scriptManager = new ScriptEngineManager();
-        ScriptEngine js = scriptManager.getEngineByExtension("js");
-        // Запустить сценарий. Результат его работы отбрасывается, поскольку
-        // интерес для нас представляет только определение функции.
-        js.eval(scripttext);
-        // Теперь можно вызвать функцию, объявленную в сценарии.
-        try {
-                // Привести ScriptEngine к типу интерфейса Invokable, 
-                // чтобы получить возможность вызова функций.
-                Invocable invocable = (Invocable) js;
-                for(int i = 0; i < x.length; i++) {   
-                    // Вызов функции function evaluationExpression(i)
-                    Object result = invocable.invokeFunction("evaluationExpression", str, x[i]);
-                    //y[i] = (double) result;
-                    System.out.print(x[i]+" ");
-                    System.out.println(result);
-                }
-            }
-        catch(NoSuchMethodException e) {
-            // Эта часть программы выполняется, если сценарий не содержит
-            // определение функции с именем "f".
-            System.out.println(e);
-        }
-
-        return y;
-    }
-    
-    /**
-     * Метод readFileAsString - считывает метаданные 
-     * из файла и переводит полученные данные в переменную типа String
-     * 
      * Входные параметры:
+     *
      * @param filePath - полный путь к файлу, включая название самого файла
-     * 
+     *
      * Выходные параметры:
-     * @return fileData.toString() - переменная типа String, содержащая 
+     * @return fileData.toString() - переменная типа String, содержащая
      * метаданные из файла
-     * 
-     * @throws IOException 
+     *
+     * @throws IOException
      */
-    private static String readFileAsString(String filePath) throws IOException {
+    public static String readFileAsString(String filePath) throws IOException {
         StringBuffer fileData = new StringBuffer();
         BufferedReader reader = new BufferedReader(
                 new FileReader(filePath));

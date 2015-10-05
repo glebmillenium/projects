@@ -16,45 +16,47 @@ public class GraphFrame extends javax.swing.JFrame {
     /**
      * Creates new form GraphFrame
      */
-    private JPanel_modif Panel = new JPanel_modif(300,520);
+    private int width = 520;
+    private int height = 300;
+    private JPanel_modif Panel = new JPanel_modif(this.width, this.height);
+
     public GraphFrame() {
         initComponents();
         paintPanel();
     }
-    
-    public void paintPanel()
-    {
+
+    public void paintPanel() {
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
-            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-            .addGap(0, 520, Short.MAX_VALUE)
+                jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGap(0, 520, Short.MAX_VALUE)
         );
         jPanelLayout.setVerticalGroup(
-            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-            .addGap(0, 300, Short.MAX_VALUE)
+                jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGap(0, 300, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(107, Short.MAX_VALUE)
-                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(107, Short.MAX_VALUE)
+                        .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))
         );
 
         pack();
     }
-      
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,10 +120,9 @@ public class GraphFrame extends javax.swing.JFrame {
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
         String expression = TextField.getText();
-        int[] arrayX = AGV.createArrayX(520, 1);
+        int[] arrayX = Panel.createArrayX(520, 1);
         try {
-            double[] arrayY = AGV.treatmentExpression(expression, arrayX);
-            System.out.print(arrayY);
+            double[] arrayY = Panel.treatmentExpression(expression);
         } catch (ScriptException ex) {
             Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -163,15 +164,11 @@ public class GraphFrame extends javax.swing.JFrame {
             }
         });
     }
-    
-      
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button;
     private javax.swing.JLabel Label;
     private javax.swing.JTextField TextField;
     // End of variables declaration//GEN-END:variables
 
-    
-
 }
-
