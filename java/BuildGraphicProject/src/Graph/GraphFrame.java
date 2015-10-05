@@ -18,7 +18,8 @@ public class GraphFrame extends javax.swing.JFrame {
      */
     private int width = 520;
     private int height = 300;
-    private JPanel_modif Panel = new JPanel_modif(this.width, this.height);
+    private double step = 1;
+    private JPanel_modif Panel = new JPanel_modif(this.width, this.height, this.step);
 
     public GraphFrame() {
         initComponents();
@@ -120,7 +121,6 @@ public class GraphFrame extends javax.swing.JFrame {
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
         String expression = TextField.getText();
-        int[] arrayX = Panel.createArrayX(520, 1);
         try {
             double[] arrayY = Panel.treatmentExpression(expression);
         } catch (ScriptException ex) {

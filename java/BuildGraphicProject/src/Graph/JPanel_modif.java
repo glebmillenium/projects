@@ -23,16 +23,18 @@ class JPanel_modif extends javax.swing.JPanel {
     private int width;
     private int height;
     private int[] centr = new int[2];
-    private int[] arrayX;
+    private double[] arrayX;
     private double[] arrayY;
+    private double step;
 
-    JPanel_modif(int w, int h) {
+    JPanel_modif(int w, int h, double step) {
         this.width = w;
         this.height = h;
         this.centr[0] = w / 2;
         this.centr[1] = h / 2;
-        this.arrayX = new int[2 * w + 1];
+        this.arrayX = new double[2 * w + 1];
         this.arrayY = new double[2 * w + 1];
+        this.step = step;
     }
 
     @Override
@@ -59,20 +61,24 @@ class JPanel_modif extends javax.swing.JPanel {
          }*/
     }
 
-    public int[] createArrayX(int range, int step) {
-        int j = 0;
-        for (int i = -range; i < range; i += step) {
-            this.arrayX[j] = i;
-            j++;
+    //step - цена шага в 1 пиксель
+    private void createArrayX() {
+        int i = 0;
+
+        for (double go = -this.centr[0] * step; go < (this.width - this.centr[0]) * step; go += step) {
+            this.arrayX[i] = go;
+            //System.out.println(this.arrayX[i]);
+            i++;
         }
 
-        return this.arrayX;
     }
 
-    public double[] treatmentExpression(String str) throws ScriptException, IOException {
-        String temp;
+    public double[] treatmentExpression(String str)
+            throws ScriptException, IOException {
         // Это текст сценария, который требуется скомпилировать.
-        String scripttext = AGV.readFileAsString("/home/glebmillenium/projects/java/BuildGraphicProject/src/Graph/Data/AGV.js");
+        String scripttext = AGV.readFileAsString("/home/glebmillenium/projects/"
+                + "java/BuildGraphicProject/"
+                + "src/Graph/Data/AGV.js");
         // Создать экземпляр интерпретатора, или "ScriptEngine", для запуска сценария
         ScriptEngineManager scriptManager = new ScriptEngineManager();
         ScriptEngine js = scriptManager.getEngineByExtension("js");
@@ -80,18 +86,17 @@ class JPanel_modif extends javax.swing.JPanel {
         // интерес для нас представляет только определение функции.
         js.eval(scripttext);
         // Теперь можно вызвать функцию, объявленную в сценарии.
+        createArrayX();
         try {
             // Привести ScriptEngine к типу интерфейса Invokable, 
             // чтобы получить возможность вызова функций.
             Invocable invocable = (Invocable) js;
-            for (int i = 0; i < this.arrayX.length; i++) {
+            for (int i = 0; i < this.width; i++) {
                 // Вызов функции function evaluationExpression(i)
                 this.arrayY[i] = (double) invocable.invokeFunction("evaluationExpression", str, this.arrayX[i]);
-                //this.arrayY[i] = result;
 
                 System.out.print(this.arrayX[i] + " ");
                 System.out.println(this.arrayY[i]);
-                //System.out.println(result);
             }
         } catch (NoSuchMethodException e) {
             // Эта часть программы выполняется, если сценарий не содержит
