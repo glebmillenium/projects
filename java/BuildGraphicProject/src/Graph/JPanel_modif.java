@@ -25,7 +25,10 @@ class JPanel_modif extends javax.swing.JPanel {
     private int[] centr = new int[2];
     private double[] arrayX;
     private double[] arrayY;
+    private int[] arrayX_graph;
+    private int[] arrayY_graph;
     private double step;
+    private int ready = 0;
 
     JPanel_modif(int w, int h, double step) {
         this.width = w;
@@ -34,6 +37,8 @@ class JPanel_modif extends javax.swing.JPanel {
         this.centr[1] = h / 2;
         this.arrayX = new double[2 * w + 1];
         this.arrayY = new double[2 * w + 1];
+        this.arrayX_graph = new int[2 * w + 1];
+        this.arrayY_graph = new int[2 * w + 1];
         this.step = step;
     }
 
@@ -55,10 +60,10 @@ class JPanel_modif extends javax.swing.JPanel {
         g.drawLine(this.width, this.centr[1], this.width - 10, this.centr[1] + 5);
         g.drawLine(this.width, this.centr[1], this.width - 10, this.centr[1] - 5);
 
-        /*if (this.arrayX.length != 0) {
-         Polygon poly = new Polygon(this.arrayX, this.arrayY, this.arrayX.length);
-         g.drawPolygon(poly);
-         }*/
+        if (this.ready == 1) {
+         //Polygon poly = new Polygon(this.arrayX, this.arrayY, this.arrayX.length);
+         //g.drawPolygon(poly);
+         }
     }
 
     //step - цена шага в 1 пиксель
@@ -73,7 +78,7 @@ class JPanel_modif extends javax.swing.JPanel {
 
     }
 
-    public double[] treatmentExpression(String str)
+    public void treatmentExpression(String str)
             throws ScriptException, IOException {
         // Это текст сценария, который требуется скомпилировать.
         String scripttext = AGV.readFileAsString("/home/glebmillenium/projects/"
@@ -103,8 +108,8 @@ class JPanel_modif extends javax.swing.JPanel {
             // определение функции с именем "evaluationExpression".
             System.out.println(e);
         }
+        this.ready = 1;
 
-        return this.arrayY;
     }
 
     /*public void paint(Graphics g)

@@ -122,7 +122,7 @@ public class GraphFrame extends javax.swing.JFrame {
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
         String expression = TextField.getText();
         try {
-            double[] arrayY = Panel.treatmentExpression(expression);
+            Panel.treatmentExpression(expression);
         } catch (ScriptException ex) {
             Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
