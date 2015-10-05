@@ -29,6 +29,7 @@ public class GraphFrame extends javax.swing.JFrame {
     public void paintPanel() {
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(jPanelLayout);
+        Panel.setBackground(Color.white);
         jPanelLayout.setHorizontalGroup(
                 jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                 .addGap(0, this.width, Short.MAX_VALUE)
@@ -70,6 +71,7 @@ public class GraphFrame extends javax.swing.JFrame {
         TextField = new javax.swing.JTextField();
         Label = new javax.swing.JLabel();
         Button = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -87,6 +89,13 @@ public class GraphFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Справка");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,17 +107,24 @@ public class GraphFrame extends javax.swing.JFrame {
                 .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 293, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(38, 38, 38)
                 .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
+                .add(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(20, 20, 20)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(Label)
-                    .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(35, 35, 35)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(Label)
+                            .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jButton1)))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,6 +146,15 @@ public class GraphFrame extends javax.swing.JFrame {
         }
         Panel.drawGraph();
     }//GEN-LAST:event_ButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new HelpFrame().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,6 +195,7 @@ public class GraphFrame extends javax.swing.JFrame {
     private javax.swing.JButton Button;
     private javax.swing.JLabel Label;
     private javax.swing.JTextField TextField;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 
 }
