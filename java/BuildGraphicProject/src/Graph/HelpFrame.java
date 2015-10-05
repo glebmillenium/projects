@@ -5,6 +5,8 @@
  */
 package Graph;
 
+import java.io.IOException;
+
 /**
  *
  * @author glebmillenium
@@ -14,9 +16,12 @@ public class HelpFrame extends javax.swing.JFrame {
     /**
      * Creates new form HelpFrame
      */
-    public HelpFrame() {
+    public HelpFrame() throws IOException {
         initComponents();
-        jLabel1.setText("");
+        String htmlText = AGV.readFileAsString("/home/glebmillenium"
+                + "/projects/java/BuildGraphicProject"
+                + "/src/Graph/Data/help.html");
+        jLabel1.setText(htmlText);
     }
 
     /**
@@ -28,21 +33,28 @@ public class HelpFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(650, 600));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setBackground(new java.awt.Color(237, 156, 76));
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 2, 15)); // NOI18N
+        jLabel1.setText("Error! Не открылся HTML-скрипт.");
+        jScrollPane1.setViewportView(jLabel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -75,15 +87,10 @@ public class HelpFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HelpFrame().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

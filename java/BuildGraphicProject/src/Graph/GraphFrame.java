@@ -151,7 +151,11 @@ public class GraphFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new HelpFrame().setVisible(true);
+                try {
+                    new HelpFrame().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }//GEN-LAST:event_jButton1ActionPerformed
