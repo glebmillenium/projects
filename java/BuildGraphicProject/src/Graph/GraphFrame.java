@@ -118,8 +118,10 @@ public class GraphFrame extends javax.swing.JFrame {
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
         String expression = TextField.getText();
+        int[] arrayX = AGV.createArrayX(520, 1);
         try {
-            AGV.treatmentExpression(expression);
+            double[] arrayY = AGV.treatmentExpression(expression, arrayX);
+            System.out.print(arrayY);
         } catch (ScriptException ex) {
             Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -174,8 +176,8 @@ public class GraphFrame extends javax.swing.JFrame {
         private int width;
         private int height;
         private int[] centr = new int[2];
-        private int[] arrayX;
-        private int[] arrayY;
+        private int[] arrayX = {};
+        private int[] arrayY = {};
         
         JPanel_modif(int h, int w) {            
             this.width = w;
@@ -203,8 +205,11 @@ public class GraphFrame extends javax.swing.JFrame {
             g.drawLine(this.width, this.centr[1], this.width-10, this.centr[1]-5);
             
             
-            //Polygon poly = new Polygon(this.arrayX, this.arrayY, this.arrayX.length);
-           // g.drawPolygon(poly);        
+            if (this.arrayX.length != 0)
+            {
+                Polygon poly = new Polygon(this.arrayX, this.arrayY, this.arrayX.length);
+                g.drawPolygon(poly); 
+            }
         }
         
         /*public void paint(Graphics g)

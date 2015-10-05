@@ -1,5 +1,7 @@
-function evaluationExpression(str) {
-    return eval(str);
+function evaluationExpression(str, x) {
+    var y;
+    y=eval(str);
+    return y;
 }
 
 

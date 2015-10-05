@@ -34,37 +34,53 @@ public class AGV {
                     System.exit(0);
     }
     
-    public static double treatmentExpression(String str) throws ScriptException, IOException
-    {  
-        
-    // Это текст сценария, который требуется скомпилировать.
-    String scripttext = readFileAsString
-        ("/home/glebmillenium/projects/java/BuildGraphicProject/src/Graph/Data/AGV.js");
-    // Создать экземпляр интерпретатора, или "ScriptEngine", для запуска сценария
-    ScriptEngineManager scriptManager = new ScriptEngineManager();
-    ScriptEngine js = scriptManager.getEngineByExtension("js");
-    // Запустить сценарий. Результат его работы отбрасывается, поскольку
-    // интерес для нас представляет только определение функции.
-    js.eval(scripttext);
-    // Теперь можно вызвать функцию, объявленную в сценарии.
-    try {
-            // Привести ScriptEngine к типу интерфейса Invokable, 
-            // чтобы получить возможность вызова функций.
-            Invocable invocable = (Invocable) js;
-            for(int i = 0; i < 5; i++) {   
-                Object result = invocable.invokeFunction("evaluationExpression", i*2); 
-                // Вызов функции f(i)
-                System.out.printf("f(%d) = %s%n", i, result); 
-                // Вывод результата
-            }
-        }
-    catch(NoSuchMethodException e) {
-        // Эта часть программы выполняется, если сценарий не содержит
-        // определение функции с именем "f".
-        System.out.println(e);
+    /**
+     *
+     * @param range
+     * @param step
+     * @return
+     */
+    public static int[] createArrayX(int range, int step)
+    {
+        int[] arrayX = new int[range];
+        for(int i=0;i<range;i++)
+            arrayX[i] = i;
+
+        return arrayX;
     }
-        
-    return 2.0;
+    
+    public static double[] treatmentExpression(String str, int[] x) throws ScriptException, IOException
+    {  
+        double[] y = null;
+        // Это текст сценария, который требуется скомпилировать.
+        String scripttext = readFileAsString
+            ("/home/glebmillenium/projects/java/BuildGraphicProject/src/Graph/Data/AGV.js");
+        // Создать экземпляр интерпретатора, или "ScriptEngine", для запуска сценария
+        ScriptEngineManager scriptManager = new ScriptEngineManager();
+        ScriptEngine js = scriptManager.getEngineByExtension("js");
+        // Запустить сценарий. Результат его работы отбрасывается, поскольку
+        // интерес для нас представляет только определение функции.
+        js.eval(scripttext);
+        // Теперь можно вызвать функцию, объявленную в сценарии.
+        try {
+                // Привести ScriptEngine к типу интерфейса Invokable, 
+                // чтобы получить возможность вызова функций.
+                Invocable invocable = (Invocable) js;
+                for(int i = 0; i < x.length; i++) {   
+                    // Вызов функции function evaluationExpression(i)
+                    Object result = invocable.invokeFunction("evaluationExpression", str, x[i]);
+                    //y[i] = (double) result;
+                    System.out.print(x[i]+" ");
+                    System.out.println(result);
+                }
+            }
+        catch(NoSuchMethodException e) {
+            // Эта часть программы выполняется, если сценарий не содержит
+            // определение функции с именем "f".
+            System.out.println(e);
+        }
+
+        return y;
     }
     
     /**
