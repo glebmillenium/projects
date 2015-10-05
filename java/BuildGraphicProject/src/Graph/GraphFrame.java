@@ -17,9 +17,9 @@ public class GraphFrame extends javax.swing.JFrame {
      * Creates new form GraphFrame
      */
     private int width = 520;
-    private int height = 300;
-    private double step = 1;
-    private JPanel_modif Panel = new JPanel_modif(this.width, this.height, this.step);
+    private int height = 520;
+    private double step = 0.05;
+    private JPanelGraph Panel = new JPanelGraph(this.width, this.height, this.step);
 
     public GraphFrame() {
         initComponents();
@@ -31,11 +31,11 @@ public class GraphFrame extends javax.swing.JFrame {
         Panel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
                 jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                .addGap(0, 520, Short.MAX_VALUE)
+                .addGap(0, this.width, Short.MAX_VALUE)
         );
         jPanelLayout.setVerticalGroup(
                 jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                .addGap(0, 300, Short.MAX_VALUE)
+                .addGap(0, this.height, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -98,7 +98,7 @@ public class GraphFrame extends javax.swing.JFrame {
                 .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 293, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(38, 38, 38)
                 .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -108,7 +108,7 @@ public class GraphFrame extends javax.swing.JFrame {
                     .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(Label)
                     .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(639, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,6 +128,7 @@ public class GraphFrame extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Panel.drawGraph();
     }//GEN-LAST:event_ButtonActionPerformed
 
     /**

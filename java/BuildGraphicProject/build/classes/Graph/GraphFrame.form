@@ -33,7 +33,7 @@
               <Component id="TextField" min="-2" pref="293" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="Button" min="-2" pref="129" max="-2" attributes="0"/>
-              <EmptySpace pref="361" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,7 +46,7 @@
                   <Component id="Label" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Button" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="639" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
