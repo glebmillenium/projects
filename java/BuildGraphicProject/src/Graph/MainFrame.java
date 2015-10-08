@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
  * @author student
  */
 public class MainFrame extends javax.swing.JFrame {
-    private Object event;
 
     /**
      * Creates new form MainFrame
@@ -33,7 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

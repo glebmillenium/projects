@@ -13,21 +13,35 @@ import java.awt.Polygon;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import javax.swing.JOptionPane;
 import javax.script.*;
 
 /**
- *
+ * class AGV - набор функций (пространство имён),
+ * не имеющих прямого отношения
+ * к решаемой задачи.
+ * 
  * @author glebmillenium
  */
 public class AGV {
     
+    /**
+     * Метод windowClose - создает скрытое окно,
+     * которое всплывает при закрытии основного фрейма,
+     * из которого оно создано.
+     * 
+     * @param evt
+     * 
+     * @return void
+     */
     public static void windowClose(java.awt.event.WindowEvent evt)
     {
-                Object[] options = { "Нет", "Да" };
+                Object[] options = { "Да", "Нет" };
         int n = JOptionPane
                         .showOptionDialog(evt.getWindow(), "Закрыть приложение?",
-                                "Подтверждение", JOptionPane.YES_NO_OPTION,
+                                "Подтверждение", JOptionPane.YES_NO_CANCEL_OPTION,
                                 JOptionPane.QUESTION_MESSAGE, null, options,
                                 options[1]);
                 if (n == 0) 
@@ -61,6 +75,13 @@ public class AGV {
         }
         reader.close();
         return (fileData.toString()+"\r\n");
+    }
+    
+    public static String wayToJar() throws UnsupportedEncodingException
+    {
+        String path = AGV.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        path = URLDecoder.decode(path, "UTF-8");
+        return path;
     }
     
 }

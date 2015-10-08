@@ -6,6 +6,7 @@
 package Graph;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 
 /**
  *
@@ -18,10 +19,11 @@ public class HelpFrame extends javax.swing.JFrame {
      */
     public HelpFrame() throws IOException {
         initComponents();
-        String htmlText = AGV.readFileAsString("/home/glebmillenium"
-                + "/projects/java/BuildGraphicProject"
-                + "/src/Graph/Data/help.html");
-        jLabel1.setText(htmlText);
+        String path = AGV.wayToJar();
+        path = path.replaceAll("BuildGraphicProject.jar", "") + "/Data/help.html";
+        String htmlText = AGV.readFileAsString(path);
+        
+        jLabel.setText(htmlText);
     }
 
     /**
@@ -34,15 +36,15 @@ public class HelpFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(650, 600));
 
-        jLabel1.setBackground(new java.awt.Color(237, 156, 76));
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 2, 15)); // NOI18N
-        jLabel1.setText("Error! Не открылся HTML-скрипт.");
-        jScrollPane1.setViewportView(jLabel1);
+        jLabel.setBackground(new java.awt.Color(237, 156, 76));
+        jLabel.setFont(new java.awt.Font("Trebuchet MS", 2, 15)); // NOI18N
+        jLabel.setText("Error! Не открылся HTML-скрипт.");
+        jScrollPane1.setViewportView(jLabel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,7 +92,7 @@ public class HelpFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

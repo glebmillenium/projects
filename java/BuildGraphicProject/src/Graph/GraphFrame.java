@@ -1,11 +1,17 @@
 package Graph;
 
 import java.awt.*;
+import java.awt.event.FocusListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.script.ScriptException;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,17 +25,21 @@ public class GraphFrame extends javax.swing.JFrame {
     private int width = 520;
     private int height = 520;
     private double step = 0.05;
-    private JPanelGraph Panel = new JPanelGraph(this.width, this.height, this.step);
-
+    private JPanelGraph PanelGraph = new JPanelGraph(this.width, this.height, this.step);
+    private static java.util.List<JTextField> FieldsFunction = new ArrayList<JTextField>();
+    private int delta = 0;
+    
     public GraphFrame() {
         initComponents();
-        paintPanel();
+        paintGraphPanel(PanelGraph);
+        addTextField();
     }
 
-    public void paintPanel() {
-        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(Panel);
-        Panel.setLayout(jPanelLayout);
-        Panel.setBackground(Color.white);
+    public void paintGraphPanel(JPanelGraph Graph) {
+            
+        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(Graph);
+        Graph.setLayout(jPanelLayout);
+        Graph.setBackground(Color.white);
         jPanelLayout.setHorizontalGroup(
                 jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                 .addGap(0, this.width, Short.MAX_VALUE)
@@ -41,18 +51,16 @@ public class GraphFrame extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Graph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(112, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(107, Short.MAX_VALUE)
-                        .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(157, Short.MAX_VALUE)
+                        .addComponent(Graph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85))
         );
 
@@ -68,19 +76,20 @@ public class GraphFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TextField = new javax.swing.JTextField();
-        Label = new javax.swing.JLabel();
+        scrollPane1 = new java.awt.ScrollPane();
         Button = new javax.swing.JButton();
+        jButtonHelp = new javax.swing.JButton();
+        jButtonFunction = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        JLabel = new javax.swing.JLabel();
+        text = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-
-        Label.setText("f(x)   =");
 
         Button.setText("Построить!");
         Button.addActionListener(new java.awt.event.ActionListener() {
@@ -89,42 +98,71 @@ public class GraphFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Справка");
+        jButtonHelp.setText("Справка");
+        jButtonHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHelpActionPerformed(evt);
+            }
+        });
+
+        jButtonFunction.setBackground(java.awt.SystemColor.desktop);
+        jButtonFunction.setText("Добавить функцию");
+        jButtonFunction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFunctionActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(java.awt.SystemColor.desktop);
+        jButton1.setText("Удалить функцию");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        text.setText("f(x) =");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(6, 6, 6)
-                .add(Label, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(text)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 293, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(38, 38, 38)
-                .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 129, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 27, Short.MAX_VALUE)
-                .add(jButton1)
-                .addContainerGap())
+                .add(JLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 185, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 181, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(jButtonFunction, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 149, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(38, 38, 38)
+                        .add(jButtonHelp))
+                    .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 124, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(63, 63, 63))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(35, 35, 35)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(TextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(Label)
-                            .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(53, 53, 53)
+                        .add(text))
                     .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jButton1)))
-                .addContainerGap(140, Short.MAX_VALUE))
+                        .add(14, 14, 14)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(JLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                    .add(jButtonHelp)
+                                    .add(jButtonFunction, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
+                .add(0, 153, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,18 +174,27 @@ public class GraphFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
-        String expression = TextField.getText();
+        String[] expression = new String[FieldsFunction.size()];
+        
+        for(int i=0;i<FieldsFunction.size();i++)
+        {
+            expression[i]= FieldsFunction.get(i).getText();
+        }
+        
         try {
-            Panel.treatmentExpression(expression);
+            
+            PanelGraph.treatmentExpression(expression);
+            PanelGraph.drawGraph();
+            
         } catch (ScriptException ex) {
             Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Panel.drawGraph();
+        
     }//GEN-LAST:event_ButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHelpActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -158,8 +205,35 @@ public class GraphFrame extends javax.swing.JFrame {
                 }
             }
         });
+    }//GEN-LAST:event_jButtonHelpActionPerformed
+
+    private void jButtonFunctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFunctionActionPerformed
+        addTextField();
+    }//GEN-LAST:event_jButtonFunctionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(FieldsFunction.size() > 1) {
+            int index = FieldsFunction.size() - 1;
+            JTextField field = FieldsFunction.remove(index);
+            JLabel.remove(field);
+            this.delta-=25;
+            JLabel.repaint();
+            //scrollPane.revalidate();                    
+        }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void addTextField(){
+        JTextField field = new JTextField(" ");
+        FieldsFunction.add(field);
+        field.setAlignmentX(JButton.CENTER_ALIGNMENT);
+        //field.setFont(font);
+        field.setSize(150, 30);
+        field.setLocation(0, delta);
+        this.delta+=25;
+        JLabel.add(field);
+        JLabel.revalidate();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -197,9 +271,12 @@ public class GraphFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button;
-    private javax.swing.JLabel Label;
-    private javax.swing.JTextField TextField;
+    private javax.swing.JLabel JLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonFunction;
+    private javax.swing.JButton jButtonHelp;
+    private java.awt.ScrollPane scrollPane1;
+    private javax.swing.JLabel text;
     // End of variables declaration//GEN-END:variables
 
 }
