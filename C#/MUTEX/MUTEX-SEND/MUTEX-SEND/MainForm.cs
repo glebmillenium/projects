@@ -22,7 +22,8 @@ namespace MUTEX_SEND
 	public partial class MainForm : Form
 	{
 		private static Mutex MyMutex = new Mutex(false, "TreatmentFiles");
-		private static Process MyProcess = new Process();
+		private static Process MyProcess;
+		private static Mutex ControllStartProcess = new Mutex(false, "ControllStartProcess");
 		
 		public MainForm()
 		{
@@ -34,12 +35,12 @@ namespace MUTEX_SEND
 		
 		void Button1Click(object sender, EventArgs e)
 		{
-			Process.Start("C:\\Users\\Глеб\\Documents\\SharpDevelop Projects\\MUTEX_RECIPIENT\\MUTEX_RECIPIENT\\bin\\Debug\\MUTEX_RECIPIENT.exe", textBox3.Text);
+			MyProcess = Process.Start("C:\\Users\\Глеб\\Documents\\SharpDevelop Projects\\MUTEX_RECIPIENT\\MUTEX_RECIPIENT\\bin\\Debug\\MUTEX_RECIPIENT.exe", textBox3.Text);
 			Directory.CreateDirectory(textBox3.Text);
 			Directory.CreateDirectory(textBox3.Text + "temp");
 			label4.Text = "Идет передача файлов...";
-			Thread myThreadMD1 = new Thread(()=> getAwayFiles());
- 			myThreadMD1.Start();
+			Thread myThreadMD = new Thread(()=> getAwayFiles());
+ 			myThreadMD.Start();
 		}
 		
 		void getAwayFiles()
@@ -47,17 +48,18 @@ namespace MUTEX_SEND
 			Mutex m = null;
 			DirectoryInfo dirInfo = new DirectoryInfo(textBox1.Text);
 			int listener = 0;
+			m = Mutex.OpenExisting("TreatmentFiles");
 		  	foreach (FileInfo file in dirInfo.GetFiles("*."+textBox2.Text))
 		  	{
 		  		if (listener != 0)
 		  		{
-		  			Thread.Sleep(20000);
+		  			Thread.Sleep(10000);
 		  		}
 		  		else
 		  		{
 		  			listener = 1;
 		  		}
-		  		m = Mutex.OpenExisting("TreatmentFiles");
+		  		
 		  		if(m.WaitOne())
 		  		{
 			    	File.Copy(file.FullName, textBox3.Text + "temp" + "\\" + file.Name, true);
@@ -65,6 +67,8 @@ namespace MUTEX_SEND
 		  		}
 			}
 		  	label4.Invoke(new Action(updateLabel));
+		  	
+		  	MyProcess.Close();
 		}
 		void updateLabel()
         {

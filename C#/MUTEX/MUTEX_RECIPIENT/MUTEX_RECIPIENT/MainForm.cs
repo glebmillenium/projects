@@ -25,6 +25,7 @@ namespace MUTEX_RECIPIENT
 		public MainForm(string[] input)
 		{
 			InitializeComponent();
+			Thread.Sleep(1000);
 			this.args = input;
 			Thread myThreadMD1 = new Thread(()=> getAwayFiles( args ));
  			myThreadMD1.Start();
@@ -38,16 +39,17 @@ namespace MUTEX_RECIPIENT
 		}
 		void getAwayFiles(string[] args)
 		{
-			string text = "";
+			string[] files = null;
+			Mutex m = null;
+			m = Mutex.OpenExisting("TreatmentFiles");
 			while(true) {
-				string[] files = null;
-				Mutex m = null;
-				m = Mutex.OpenExisting("TreatmentFiles");
+				
 				if(m.WaitOne())
 				{
 					files = Directory.GetFiles(args[0]+"temp");
-					if(files == null){
-						label1.Text = "123";
+					if(files.Length == 0){
+						label1.Text += "Перенос файлов завершен!";
+						m.ReleaseMutex();
 						break;
 					}
 					DirectoryInfo dirInfo = new DirectoryInfo(args[0]+"temp");
@@ -55,10 +57,10 @@ namespace MUTEX_RECIPIENT
 			  		{
 				  		File.Copy(file.FullName, args[0]+file.Name, true);
 				  		File.Delete(file.FullName);
-				  		text += "Файл "+file.FullName+" перемещен!\n";
-				  		label1.Text = text;
+				  		label1.Text += "Файл "+file.FullName+" перемещен!\n";
 					}
 				  	m.ReleaseMutex();
+				  	Thread.Sleep(10000);
 				}
 			}
 		}

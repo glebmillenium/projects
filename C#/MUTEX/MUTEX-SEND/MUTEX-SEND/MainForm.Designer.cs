@@ -22,6 +22,7 @@ namespace MUTEX_SEND
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label label5;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -52,6 +53,7 @@ namespace MUTEX_SEND
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -119,11 +121,19 @@ namespace MUTEX_SEND
 			this.label4.Size = new System.Drawing.Size(181, 20);
 			this.label4.TabIndex = 8;
 			// 
+			// label5
+			// 
+			this.label5.Location = new System.Drawing.Point(115, 225);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(123, 23);
+			this.label5.TabIndex = 9;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(284, 262);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.textBox3);
 			this.Controls.Add(this.textBox2);
