@@ -1,0 +1,10 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\bin\Debug\ControllerProcess.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\bin\Debug\ControllerProcess.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\bin\Debug\ControllerProcess.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.MUT.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.SEM.resources

@@ -4,30 +4,41 @@
  * Дата: 21.10.2015
  * Время: 22:48
  * 
- * Для изменения этого шаблона используйте меню "Инструменты | Параметры | Кодирование | Стандартные заголовки".
  */
 using System;
 using System.Windows.Forms;
 
 namespace MUTEX_RECIPIENT
 {
-	/// <summary>
-	/// Class with program entry point.
-	/// </summary>
+	/**
+	 * class Program 
+	 * Основной класс откуда происходит вызов графического интерфейса.
+	 * 
+	 */
 	internal sealed class Program
 	{
-		/// <summary>
-		/// Program entry point.
-		/// </summary>
+		/**
+		 * Main - Метод класса Program (начальная точка вызова программы)
+		 * 
+		 * @param  args параметры передаваемые приложению при вызове через консоль
+		 * 
+		 * @return void
+		 * 
+		 */
 		[STAThread]
 		private static void Main(string[] args)
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			if (args.Length == 0)
-				Application.Run(new MainForm());
+			
+			if (args.Length == 0) 					 // Если параметры при вызове 
+													 // программы отсуствовали, то 
+				Application.Run(new MainForm());	 // вызываем обычный конструктор
 			else 
-				Application.Run(new MainForm(args));
+				Application.Run(new MainForm(args)); // Если параметры были переданы, то 
+													 // вызываем графический фрейм, который 
+													 // производит передачу данных
+			// endif
 		}
 		
 	}

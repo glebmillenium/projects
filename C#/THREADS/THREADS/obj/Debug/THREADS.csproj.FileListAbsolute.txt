@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\THREADS\THREADS\bin\Debug\THREADS.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\THREADS\THREADS\bin\Debug\THREADS.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\THREADS\THREADS\bin\Debug\THREADS.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\THREADS\THREADS\obj\Debug\THREADS.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\THREADS\THREADS\obj\Debug\THREADS.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\THREADS\THREADS\obj\Debug\THREADS.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\THREADS\THREADS\obj\Debug\THREADS.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\THREADS\THREADS\obj\Debug\THREADS.pdb

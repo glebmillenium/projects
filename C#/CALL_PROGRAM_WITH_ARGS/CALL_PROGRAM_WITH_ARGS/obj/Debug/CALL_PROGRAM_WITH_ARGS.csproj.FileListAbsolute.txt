@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\CALL_PROGRAM_WITH_ARGS\CALL_PROGRAM_WITH_ARGS\obj\Debug\CALL_PROGRAM_WITH_ARGS.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\CALL_PROGRAM_WITH_ARGS\CALL_PROGRAM_WITH_ARGS\obj\Debug\CALL_PROGRAM_WITH_ARGS.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\CALL_PROGRAM_WITH_ARGS\CALL_PROGRAM_WITH_ARGS\obj\Debug\CALL_PROGRAM_WITH_ARGS.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\CALL_PROGRAM_WITH_ARGS\CALL_PROGRAM_WITH_ARGS\bin\Debug\CALL_PROGRAM_WITH_ARGS.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\CALL_PROGRAM_WITH_ARGS\CALL_PROGRAM_WITH_ARGS\bin\Debug\CALL_PROGRAM_WITH_ARGS.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\CALL_PROGRAM_WITH_ARGS\CALL_PROGRAM_WITH_ARGS\bin\Debug\CALL_PROGRAM_WITH_ARGS.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\CALL_PROGRAM_WITH_ARGS\CALL_PROGRAM_WITH_ARGS\obj\Debug\CALL_PROGRAM_WITH_ARGS.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\CALL_PROGRAM_WITH_ARGS\CALL_PROGRAM_WITH_ARGS\obj\Debug\CALL_PROGRAM_WITH_ARGS.pdb
