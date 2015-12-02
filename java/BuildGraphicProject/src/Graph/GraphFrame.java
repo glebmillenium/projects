@@ -1,40 +1,67 @@
 package Graph;
 
 import java.awt.*;
-import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.script.ScriptException;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
- *
- * @author student
+ *  GraphFrame - графический класс, инициализирует пользовательский интерфейс
+ *               путем создания объекта данного класса, через стандартный 
+ *               (не расширенный) конструктор GraphFrame.
+ * 
+ *  @author Ан Глеб
  */
 public class GraphFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form GraphFrame
+     *  Поля класса GraphFrame.
+     * 
+     *  private int delta   - 
+     *  private int width   - ширина графика функции (по умолчанию 520)
+     *  private int height  - высота графика функции (по умолчанию 520)
+     *  private double step - шаг значения функции в один пиксель 
+     *                        (масштаб графика)
+     * 
+     *  private JPanelGraph PanelGraph - Объект переопределенного графического
+     *                                   пользовательского класса 
+     *                                   типа PanelGraph
+     *  private static java.util.List<JTextField> FieldsFunction - коллекция, 
+     *          содержит функции(формулы) вводимые пользователем в TextField-ы
      */
     private int width = 520;
     private int height = 520;
     private double step = 0.05;
-    private JPanelGraph PanelGraph = new JPanelGraph(this.width, this.height, this.step);
-    private static java.util.List<JTextField> FieldsFunction = new ArrayList<JTextField>();
+    private JPanelGraph PanelGraph = 
+            new JPanelGraph(this.width, this.height, this.step);
+    private static java.util.List<JTextField> FieldsFunction = 
+            new ArrayList<JTextField>();
     private int delta = 0;
     
+    /**
+     * GraphFrame - конструктор графического класса, который инициализирует и 
+     *              визуализирует графические компоненты вызываемого окна.
+     * 
+     * @param - отсуствуют
+     */
     public GraphFrame() {
-        initComponents();
-        paintGraphPanel(PanelGraph);
-        addTextField();
+        initComponents();           //Вызов инициализаторов графических 
+        paintGraphPanel(PanelGraph);//компонентов
+        addTextField();             //Вывод Текстового поля для ввода функции
     }
-
+    
+    /**
+     * Метод paintGraphPanel - вырисовывает дополнительные элемент, в котором
+     *                         будет вырисовываться график функции
+     * 
+     * @param Graph 
+     * @return void
+     */
     public void paintGraphPanel(JPanelGraph Graph) {
             
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(Graph);
@@ -76,13 +103,16 @@ public class GraphFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrollPane1 = new java.awt.ScrollPane();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         Button = new javax.swing.JButton();
         jButtonHelp = new javax.swing.JButton();
         jButtonFunction = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        JLabel = new javax.swing.JLabel();
         text = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JLabel = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -105,7 +135,6 @@ public class GraphFrame extends javax.swing.JFrame {
             }
         });
 
-        jButtonFunction.setBackground(java.awt.SystemColor.desktop);
         jButtonFunction.setText("Добавить функцию");
         jButtonFunction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +142,6 @@ public class GraphFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(java.awt.SystemColor.desktop);
         jButton1.setText("Удалить функцию");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,16 +151,29 @@ public class GraphFrame extends javax.swing.JFrame {
 
         text.setText("f(x) =");
 
+        jScrollPane1.setViewportView(JLabel);
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("2D-график");
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("3D-график");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(6, 6, 6)
+                .add(2, 2, 2)
                 .add(text)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(JLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 185, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 181, Short.MAX_VALUE)
+                .add(10, 10, 10)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 194, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 57, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jRadioButton1)
+                    .add(jRadioButton2))
+                .add(36, 36, 36)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
@@ -146,23 +187,28 @@ public class GraphFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .add(14, 14, 14)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonHelp)
+                    .add(jButtonFunction, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 0, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(53, 53, 53)
-                        .add(text))
-                    .add(layout.createSequentialGroup()
-                        .add(14, 14, 14)
+                        .add(22, 22, 22)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(JLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                    .add(jButtonHelp)
-                                    .add(jButtonFunction, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                .add(0, 153, Short.MAX_VALUE))
+                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 116, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(text)))
+                    .add(layout.createSequentialGroup()
+                        .add(37, 37, 37)
+                        .add(jRadioButton1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jRadioButton2)))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         pack();
@@ -218,6 +264,8 @@ public class GraphFrame extends javax.swing.JFrame {
             JLabel.remove(field);
             this.delta-=25;
             JLabel.repaint();
+            jScrollPane1.repaint();
+            jScrollPane1.revalidate();
             //scrollPane.revalidate();                    
         }  
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -269,13 +317,18 @@ public class GraphFrame extends javax.swing.JFrame {
         });
     }
 
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button;
     private javax.swing.JLabel JLabel;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonFunction;
     private javax.swing.JButton jButtonHelp;
-    private java.awt.ScrollPane scrollPane1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel text;
     // End of variables declaration//GEN-END:variables
 

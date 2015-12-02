@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Graph;
 
 import java.awt.Graphics;
@@ -56,6 +51,14 @@ class JPanelGraph extends javax.swing.JPanel {
     private int count = 0;
     private int ready = 0;
 
+    /**
+     * JPanelGraph(int w, int h, double step) - расширенный конструктор класса,
+     * позволяющий динамически определить поля создаваемого объекта
+     * 
+     * @param w - высота 
+     * @param h
+     * @param step 
+     */
     JPanelGraph(int w, int h, double step) {
         this.width = w;
         this.height = h;
