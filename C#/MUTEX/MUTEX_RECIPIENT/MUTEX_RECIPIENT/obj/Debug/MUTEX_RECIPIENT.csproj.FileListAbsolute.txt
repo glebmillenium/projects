@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX_RECIPIENT\MUTEX_RECIPIENT\obj\Debug\MUTEX_RECIPIENT.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX_RECIPIENT\MUTEX_RECIPIENT\obj\Debug\MUTEX_RECIPIENT.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX_RECIPIENT\MUTEX_RECIPIENT\obj\Debug\MUTEX_RECIPIENT.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX_RECIPIENT\MUTEX_RECIPIENT\bin\Debug\MUTEX_RECIPIENT.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX_RECIPIENT\MUTEX_RECIPIENT\bin\Debug\MUTEX_RECIPIENT.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX_RECIPIENT\MUTEX_RECIPIENT\bin\Debug\MUTEX_RECIPIENT.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX_RECIPIENT\MUTEX_RECIPIENT\obj\Debug\MUTEX_RECIPIENT.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX_RECIPIENT\MUTEX_RECIPIENT\obj\Debug\MUTEX_RECIPIENT.pdb
