@@ -41,7 +41,11 @@ public class GraphFrame extends javax.swing.JFrame {
             new JPanelGraph(this.width, this.height, this.step);
     private static java.util.List<JTextField> FieldsFunction = 
             new ArrayList<JTextField>();
+    private static java.util.List<JButton> ButtonsFunction = 
+            new ArrayList<JButton>();
+    private static java.util.List<Color> ColorsFunction = new ArrayList<Color>();
     private int delta = 0;
+    private ShowColor ColorChoose = new ShowColor();
     
     /**
      * GraphFrame - конструктор графического класса, который инициализирует и 
@@ -135,6 +139,7 @@ public class GraphFrame extends javax.swing.JFrame {
             }
         });
 
+        jButtonFunction.setBackground(java.awt.SystemColor.desktop);
         jButtonFunction.setText("Добавить функцию");
         jButtonFunction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +147,7 @@ public class GraphFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(java.awt.SystemColor.desktop);
         jButton1.setText("Удалить функцию");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,8 +174,8 @@ public class GraphFrame extends javax.swing.JFrame {
                 .add(2, 2, 2)
                 .add(text)
                 .add(10, 10, 10)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 194, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 57, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 203, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 48, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jRadioButton1)
                     .add(jRadioButton2))
@@ -221,15 +227,16 @@ public class GraphFrame extends javax.swing.JFrame {
 
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
         String[] expression = new String[FieldsFunction.size()];
+        Color[] colors = new Color[ButtonsFunction.size()];
         
         for(int i=0;i<FieldsFunction.size();i++)
         {
             expression[i]= FieldsFunction.get(i).getText();
+            colors[i] = ButtonsFunction.get(i).getBackground();
         }
         
         try {
-            
-            PanelGraph.treatmentExpression(expression);
+            PanelGraph.treatmentExpression(expression, colors);
             PanelGraph.drawGraph();
             
         } catch (ScriptException ex) {
@@ -261,24 +268,39 @@ public class GraphFrame extends javax.swing.JFrame {
         if(FieldsFunction.size() > 1) {
             int index = FieldsFunction.size() - 1;
             JTextField field = FieldsFunction.remove(index);
+            JButton button = ButtonsFunction.remove(index);
             JLabel.remove(field);
+            JLabel.remove(button);
             this.delta-=25;
+            JLabel.setPreferredSize(new Dimension(172,this.delta));
             JLabel.repaint();
-            jScrollPane1.repaint();
-            jScrollPane1.revalidate();
-            //scrollPane.revalidate();                    
+            JLabel.revalidate();                   
         }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void addTextField(){
         JTextField field = new JTextField(" ");
+        final JButton button = new JButton("...");
+        ButtonsFunction.add(button);
         FieldsFunction.add(field);
         field.setAlignmentX(JButton.CENTER_ALIGNMENT);
         //field.setFont(font);
         field.setSize(150, 30);
+        button.setSize(30, 30);
+        button.setBackground(Color.black);
+        button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button.setBackground(ColorChoose.choose());
+            }
+        });
+ 
         field.setLocation(0, delta);
+        button.setLocation(150, delta);
         this.delta+=25;
         JLabel.add(field);
+        JLabel.add(button);
+        JLabel.setPreferredSize(new Dimension(172,this.delta));
+        JLabel.repaint();
         JLabel.revalidate();
     }
     
