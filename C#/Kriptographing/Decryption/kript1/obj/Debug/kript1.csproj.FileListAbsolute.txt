@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\kript1\kript1\bin\Debug\kript1.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\kript1\kript1\bin\Debug\kript1.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\kript1\kript1\bin\Debug\kript1.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\kript1\kript1\obj\Debug\kript1.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\kript1\kript1\obj\Debug\kript1.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\kript1\kript1\obj\Debug\kript1.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\kript1\kript1\obj\Debug\kript1.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\kript1\kript1\obj\Debug\kript1.pdb

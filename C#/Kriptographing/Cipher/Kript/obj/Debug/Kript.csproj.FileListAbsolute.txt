@@ -1,0 +1,15 @@
+C:\Documents and Settings\student\Мои документы\SharpDevelop Projects\Kript\Kript\bin\Debug\Kript.exe
+C:\Documents and Settings\student\Мои документы\SharpDevelop Projects\Kript\Kript\bin\Debug\Kript.pdb
+C:\Documents and Settings\student\Мои документы\SharpDevelop Projects\Kript\Kript\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\student\Мои документы\SharpDevelop Projects\Kript\Kript\obj\Debug\Kript.MainForm.resources
+C:\Documents and Settings\student\Мои документы\SharpDevelop Projects\Kript\Kript\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\student\Мои документы\SharpDevelop Projects\Kript\Kript\obj\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\student\Мои документы\SharpDevelop Projects\Kript\Kript\obj\Debug\Kript.exe
+C:\Documents and Settings\student\Мои документы\SharpDevelop Projects\Kript\Kript\obj\Debug\Kript.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\Kript\Kript\bin\Debug\Kript.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\Kript\Kript\bin\Debug\Kript.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\Kript\Kript\obj\Debug\Kript.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\Kript\Kript\obj\Debug\Kript.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\Kript\Kript\obj\Debug\Kript.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\Kript\Kript\obj\Debug\Kript.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\Kript\Kript\obj\Debug\Kript.pdb
