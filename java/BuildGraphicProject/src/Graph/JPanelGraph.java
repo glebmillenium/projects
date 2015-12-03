@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Graph;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
 import javax.script.Invocable;
@@ -55,7 +51,16 @@ class JPanelGraph extends javax.swing.JPanel {
     private int division;
     private int count = 0;
     private int ready = 0;
+    private Color[] colors = new Color[256];
 
+    /**
+     * JPanelGraph(int w, int h, double step) - расширенный конструктор класса,
+     * позволяющий динамически определить поля создаваемого объекта
+     * 
+     * @param w - высота 
+     * @param h
+     * @param step 
+     */
     JPanelGraph(int w, int h, double step) {
         this.width = w;
         this.height = h;
@@ -77,6 +82,11 @@ class JPanelGraph extends javax.swing.JPanel {
         super.paintComponent(g);
         int delta;
         
+        if (this.colors == null ) 
+        {
+            for(int i=0; i < 256;i++)
+                this.colors[i] = Color.black;
+        }
 
         g.drawString("O", this.centr[0] - 20, this.centr[1] + 20);
         g.drawString("x", this.width - 20, this.centr[1] + 15);
@@ -126,7 +136,7 @@ class JPanelGraph extends javax.swing.JPanel {
             
             for (int k = 0; k< this.count; k++)
             {
-                
+                g.setColor(this.colors[k]);
                 for (int i=1; i<this.arrayX_graph[k].length;i++)
                 {
                     g.drawLine(this.arrayX_graph[k][i-1],this.arrayY_graph[k][i-1],
@@ -166,8 +176,9 @@ class JPanelGraph extends javax.swing.JPanel {
 
     }
 
-    public void treatmentExpression(String[] str)
+    public void treatmentExpression(String[] str, Color[] colors)
             throws ScriptException, IOException {
+        this.colors = colors;
         // Это текст сценария, который требуется скомпилировать.
         String path = AGV.wayToJar();
         path = path.replaceAll("BuildGraphicProject.jar", "") + "/Data/AGV.js";

@@ -1,22 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Graph;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Polygon;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import javax.swing.JOptionPane;
-import javax.script.*;
 
 /**
  * class AGV - набор функций (пространство имён),
@@ -32,8 +21,11 @@ public class AGV {
      * которое всплывает при закрытии основного фрейма,
      * из которого оно создано.
      * 
-     * @param evt
+     * Входные параметры:
+     * @param evt - элемент события, которое вызывается при закрытии
+     *              графического окна.
      * 
+     * Выходные параметры:
      * @return void
      */
     public static void windowClose(java.awt.event.WindowEvent evt)
@@ -54,7 +46,6 @@ public class AGV {
      * полученные данные в переменную типа String
      *
      * Входные параметры:
-     *
      * @param filePath - полный путь к файлу, включая название самого файла
      *
      * Выходные параметры:
@@ -77,6 +68,14 @@ public class AGV {
         return (fileData.toString()+"\r\n");
     }
     
+    /**
+     * Метод wayToJar - Определяет путь, в котором находжится исполняемый 
+     *                  jar файл
+     * 
+     * @return path  - путь к файлу в формате String
+     * 
+     * @throws UnsupportedEncodingException
+     */
     public static String wayToJar() throws UnsupportedEncodingException
     {
         String path = AGV.class.getProtectionDomain().getCodeSource().getLocation().getPath();

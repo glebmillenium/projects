@@ -1,0 +1,3 @@
+#Ignore compile jar file
+dist
+*.jar
