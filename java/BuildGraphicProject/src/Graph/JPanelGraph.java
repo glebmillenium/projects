@@ -43,13 +43,15 @@ class JPanelGraph extends javax.swing.JPanel {
     private int width;
     private int height;
     private int[] centr = new int[2];
+    public int mv_w = 0;
+    public int mv_h = 0;
     private double[][] arrayX;
     private double[][] arrayY;
     private int[][] arrayX_graph;
     private int[][] arrayY_graph;
     private double step;
     private int division;
-    private int count = 0;
+    private int count = 256;
     private int ready = 0;
     private Color[] colors = new Color[256];
 
@@ -64,15 +66,14 @@ class JPanelGraph extends javax.swing.JPanel {
     JPanelGraph(int w, int h, double step) {
         this.width = w;
         this.height = h;
-        this.centr[0] = w / 2;
-        this.centr[1] = h / 2;
+        this.centr[0] = (w+mv_w) / 2;
+        this.centr[1] = (h+mv_h) / 2;
         this.step = step;
         this.division = (int) (1 / step);
-        this.count = 250;
-        this.arrayX = new double[count][w];
-        this.arrayY = new double[count][w];
-        this.arrayX_graph = new int[count][w];
-        this.arrayY_graph = new int[count][w];
+        this.arrayX = new double[count][w+1];
+        this.arrayY = new double[count][w+1];
+        this.arrayX_graph = new int[count][w+1];
+        this.arrayY_graph = new int[count][w+1];
     }
 
     @Override
@@ -137,7 +138,7 @@ class JPanelGraph extends javax.swing.JPanel {
             for (int k = 0; k< this.count; k++)
             {
                 g.setColor(this.colors[k]);
-                for (int i=1; i<this.arrayX_graph[k].length;i++)
+                for (int i = 1; i < (this.arrayX_graph[k].length - 1);i++)
                 {
                     g.drawLine(this.arrayX_graph[k][i-1],this.arrayY_graph[k][i-1],
                             this.arrayX_graph[k][i],this.arrayY_graph[k][i]);
@@ -146,8 +147,19 @@ class JPanelGraph extends javax.swing.JPanel {
         }
     }
 
-    public void drawGraph() {
-        
+    public void move_h(int mv)
+    {
+        this.mv_h = this.mv_h + mv;
+        drawGraph();
+    }
+    
+    public void move_w(int mv)
+    {
+        this.mv_w = this.mv_w + mv;
+        drawGraph();
+    }
+    
+    public void drawGraph() {    
         repaint();
     }
 
@@ -176,9 +188,13 @@ class JPanelGraph extends javax.swing.JPanel {
 
     }
 
-    public void treatmentExpression(String[] str, Color[] colors)
+    public void treatmentExpression(String[] str, Color[] colors, double interval, int w, int h)
             throws ScriptException, IOException {
+        this.centr[0] = (w + this.height) / 2;
+        this.centr[1] = (h + this.width) / 2;
         this.colors = colors;
+        this.division = (int) (1/interval);
+        this.step = interval;
         // Это текст сценария, который требуется скомпилировать.
         String path = AGV.wayToJar();
         path = path.replaceAll("BuildGraphicProject.jar", "") + "/Data/AGV.js";
@@ -201,7 +217,7 @@ class JPanelGraph extends javax.swing.JPanel {
                 for (int i = 0; i < this.width; i++) 
                 {
                     // Вызов функции function evaluationExpression(i)
-                    this.arrayY[k][i] = (double) invocable.invokeFunction("evaluationExpression", str[k], this.arrayX[k][i]);
+                    this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression", str[k], this.arrayX[k][i]));
                 }
             }
         } catch (NoSuchMethodException e) {
@@ -209,6 +225,7 @@ class JPanelGraph extends javax.swing.JPanel {
             // определение функции с именем "evaluationExpression".
             System.out.println(e);
         }
+
         this.ready = 1;
     }
 

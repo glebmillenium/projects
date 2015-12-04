@@ -21,5 +21,5 @@ function evaluationExpression(str, x) {
 	str = str.replace(/ /g, "");
 
     y=eval(str);
-    return y;
+    return y * 1.0;
 }
