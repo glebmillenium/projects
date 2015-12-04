@@ -1,3 +1,8 @@
 #Ignore compile jar file
 dist
 *.jar
+/java/BuildGraphProject/build/
+/java/BuildGraphProject/Data/java/Daemons/ControllFileSystem/Daemon/build/
+/java/BuildGraphProject/Data/java/Daemons/ControllFileSystem/Daemon/nbproject/private/
+/java/BuildGraphProject/Data/java/Daemons/ControllFileSystem/DemonFrame/build/
+/java/BuildGraphProject/Data/java/Daemons/ControllFileSystem/DemonFrame/nbproject/private/

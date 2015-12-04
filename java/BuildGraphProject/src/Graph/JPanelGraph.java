@@ -197,7 +197,7 @@ class JPanelGraph extends javax.swing.JPanel {
         this.step = interval;
         // Это текст сценария, который требуется скомпилировать.
         String path = AGV.wayToJar();
-        path = path.replaceAll("BuildGraphicProject.jar", "") + "/Data/AGV.js";
+        path = path.replaceAll("BuildGraphProject.jar", "") + "/Data/AGV.js";
         String scripttext = AGV.readFileAsString(path);
         // Создать экземпляр интерпретатора, или "ScriptEngine", для запуска сценария
         ScriptEngineManager scriptManager = new ScriptEngineManager();

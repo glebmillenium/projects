@@ -20,6 +20,6 @@ function evaluationExpression(str, x) {
 
 	str = str.replace(/ /g, "");
 
-    y=eval(str);
+    y=eval(str)*1.0;
     return y * 1.0;
 }
