@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\obj\Debug\ExampleUsingDLL.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\obj\Debug\ExampleUsingDLL.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\obj\Debug\ExampleUsingDLL.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\bin\Debug\ExampleUsingDLL.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\bin\Debug\ExampleUsingDLL.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\bin\Debug\ExampleUsingDLL.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\obj\Debug\ExampleUsingDLL.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\obj\Debug\ExampleUsingDLL.pdb

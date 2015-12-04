@@ -1,0 +1,82 @@
+library my_library;
+
+{ Important note about DLL memory management: ShareMem must be the
+  first unit in your library's USES clause AND your project's (select
+  Project-View Source) USES clause if your DLL exports any procedures or
+  functions that pass strings as parameters or function results. This
+  applies to all strings passed to and from your DLL--even those that
+  are nested in records and classes. ShareMem is the interface unit to
+  the BORLNDMM.DLL shared memory manager, which must be deployed along
+  with your DLL. To avoid using BORLNDMM.DLL, pass string information
+  using PChar or ShortString parameters. }
+
+{ ShareMem должна быть первой в списке вызываемых модулей
+  а также в вашем проекте
+}
+
+uses
+  ShareMem, Windows, SysUtils,  Classes, ActiveX;
+
+{$R *.res}
+
+function Triple (C: Char): Longint; stdcall; overload;
+begin
+//  ShowMessage ('Triple (Char) function called');
+  MessageBox (0, 'Вызвана функция Triple',
+    'First DLL', mb_OK);
+  Result := Ord (C) * 3;
+end;
+
+function Triple (N: Longint): Longint; stdcall; overload;
+begin
+//  ShowMessage ('Triple function called');
+  MessageBox (0, 'Вызвана функция Triple',
+    'First DLL', mb_OK);
+  Result := N * 3;
+end;
+
+function Double (N: Longint): Longint; stdcall;
+begin
+//  ShowMessage ('Double function called');
+  MessageBox (0, 'Вызвана функция Double',
+    'First DLL', mb_OK);
+  Result := N * 2;
+end;
+function DoubleString (s: string; Separat: string): string; stdcall;
+var Res: WideString;
+begin
+  Res:= s+Separat+s;
+  DoubleString := SysAllocStringLen(PWideChar(Res), Length(Res));
+end;
+
+
+function DoublePChar (BufferIn, BufferOut: PChar;
+  BufferOutLen: Cardinal; Separator: Char): LongBool; stdcall;
+var
+  SepStr: array [0..1] of Char;
+begin
+  // если буфер недостаточно большой
+  if BufferOutLen > StrLen (BufferIn) * 2 + 2 then
+  begin
+    // копировать входной буфер в выходной
+    StrCopy (BufferOut, BufferIn);
+    // Построить разделяющую строку (заканчивающуюся нулевым байтом)
+    SepStr [0] := Separator; // это второй параметр функции
+    SepStr [1] := #0;
+    // добавить разделитель
+    StrCat (BufferOut, SepStr);
+    // добавить входной буфер
+    StrCat (BufferOut, BufferIn);
+    Result := True;
+  end
+  else
+    // Недостаточно места
+    Result := False;
+end;
+exports
+  Triple (N: Longint),
+  Triple (C: Char) name 'TripleChar',
+  Double, DoubleString, DoublePChar;
+begin
+end.
+
