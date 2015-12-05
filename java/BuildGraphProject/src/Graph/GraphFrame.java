@@ -39,7 +39,7 @@ public class GraphFrame extends javax.swing.JFrame {
     private int height = 520;
     private int w = 0;
     private int h = 0;
-    private double step = 0.05;
+    private double step = 0.025;
     private JPanelGraph PanelGraph = 
             new JPanelGraph(this.width, this.height, this.step);
     private static java.util.List<JTextField> FieldsFunction = 
@@ -50,6 +50,21 @@ public class GraphFrame extends javax.swing.JFrame {
     private int delta = 0;
     private ShowColor ColorChoose = new ShowColor();
     
+    Color[] button_color_cold = {new Color(180, 121, 100), 
+                                 new Color(187, 23, 90),
+                                 new Color(197, 43, 92),
+                                 new Color(177, 82, 70),
+                                 new Color(180, 100, 50),
+                                 new Color(180, 41, 31)
+                                 };
+    
+    Color[] button_color_warm = {new Color(180,121,100), 
+                                 new Color(0,47,94),
+                                 new Color(0,55,80),
+                                 new Color(0,75,65),
+                                 new Color(0,55,80),
+                                 new Color(0,100,55)
+                                 };
     /**
      * GraphFrame - конструктор графического класса, который инициализирует и 
      *              визуализирует графические компоненты вызываемого окна.
@@ -131,10 +146,10 @@ public class GraphFrame extends javax.swing.JFrame {
         jRadioButton11 = new javax.swing.JRadioButton();
         jRadioButton12 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        left = new javax.swing.JButton();
+        down = new javax.swing.JButton();
+        right = new javax.swing.JButton();
+        up = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -148,6 +163,11 @@ public class GraphFrame extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         Button.setText("Построить!");
         Button.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +177,7 @@ public class GraphFrame extends javax.swing.JFrame {
         });
 
         jButtonHelp.setText("Справка");
+        jButtonHelp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHelpActionPerformed(evt);
@@ -181,6 +202,11 @@ public class GraphFrame extends javax.swing.JFrame {
 
         text.setText("f(x) =");
 
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        JLabel.setForeground(new java.awt.Color(198, 45, 45));
+        JLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(242, 241, 240), new java.awt.Color(242, 241, 240)));
+        JLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(JLabel);
 
         buttonGroup1.add(jRadioButton1);
@@ -265,27 +291,27 @@ public class GraphFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Масштаб:");
 
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        left.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                leftActionPerformed(evt);
             }
         });
 
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        down.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                downActionPerformed(evt);
             }
         });
 
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        right.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                rightActionPerformed(evt);
             }
         });
 
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        up.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                upActionPerformed(evt);
             }
         });
 
@@ -344,7 +370,27 @@ public class GraphFrame extends javax.swing.JFrame {
                                 .add(jRadioButton7)
                                 .add(26, 26, 26)
                                 .add(jRadioButton12))
-                            .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 87, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                            .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 87, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(layout.createSequentialGroup()
+                                .add(17, 17, 17)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 124, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jLabel2)))
+                            .add(layout.createSequentialGroup()
+                                .add(jButton9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(6, 6, 6)
+                                .add(left, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(0, 0, 0)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(down, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(layout.createSequentialGroup()
+                                        .add(up, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(0, 0, 0)
+                                        .add(right, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(6, 6, 6)
+                                        .add(jButton8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                    .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
                         .add(text)
@@ -359,28 +405,7 @@ public class GraphFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .add(jButtonHelp)
                         .add(413, 413, 413)
-                        .add(filler1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(28, 28, 28)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 124, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel2)))
-                    .add(layout.createSequentialGroup()
-                        .add(11, 11, 11)
-                        .add(jButton9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(6, 6, 6)
-                        .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(0, 0, 0)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(layout.createSequentialGroup()
-                                .add(jButton5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(0, 0, 0)
-                                .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(6, 6, 6)
-                                .add(jButton8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                        .add(filler1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(413, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -437,13 +462,13 @@ public class GraphFrame extends javax.swing.JFrame {
                             .add(layout.createSequentialGroup()
                                 .add(27, 27, 27)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(jButton2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                            .add(jButton5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(left, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(right, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                            .add(up, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(0, 0, 0)
-                .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(down, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(6, 6, 6)
                 .add(jButton6, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -574,25 +599,29 @@ public class GraphFrame extends javax.swing.JFrame {
         buildGraph();
     }//GEN-LAST:event_jRadioButton12ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.w += 10;
+    private void rightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightActionPerformed
+        this.w += 2/step;
         buildGraph();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        colorButton_w();
+    }//GEN-LAST:event_rightActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.h -= 10;
+    private void upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upActionPerformed
+        this.h -= 2/step;
         buildGraph();
-    }//GEN-LAST:event_jButton5ActionPerformed
+        colorButton_h();
+    }//GEN-LAST:event_upActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.h += 10;
+    private void downActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downActionPerformed
+        this.h += 2/step;
         buildGraph();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        colorButton_h();
+    }//GEN-LAST:event_downActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.w -= 10;
+    private void leftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftActionPerformed
+        this.w -= 2/step;
         buildGraph();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        colorButton_w();
+    }//GEN-LAST:event_leftActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
@@ -610,6 +639,40 @@ public class GraphFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        
+    }//GEN-LAST:event_formKeyPressed
+
+    private void colorButton_w()
+    {
+        int k = (int) ( this.w / (2/step) );
+        if (k >= 0)
+        {
+            left.setBackground(button_color_warm[k]);
+            right.setBackground(button_color_cold[k]);
+        }
+        else
+        {
+            right.setBackground(button_color_warm[Math.abs(k)]);
+            left.setBackground(button_color_cold[Math.abs(k)]);
+        }
+    }
+    
+    private void colorButton_h()
+    {
+        int k = (int) ( this.h / (2/step) );
+        if (k >= 0)
+        {
+            down.setBackground(button_color_warm[k]);
+            up.setBackground(button_color_cold[k]);
+        }
+        else
+        {
+            down.setBackground(button_color_warm[Math.abs(k)]);
+            up.setBackground(button_color_cold[Math.abs(k)]);
+        }
+    }
+    
     private void addTextField(){
         JTextField field = new JTextField(" ");
         final JButton button = new JButton("...");
@@ -675,12 +738,9 @@ public class GraphFrame extends javax.swing.JFrame {
     private javax.swing.JButton Button;
     private javax.swing.JLabel JLabel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton down;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -700,7 +760,10 @@ public class GraphFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton left;
+    private javax.swing.JButton right;
     private javax.swing.JLabel text;
+    private javax.swing.JButton up;
     // End of variables declaration//GEN-END:variables
 
 }
