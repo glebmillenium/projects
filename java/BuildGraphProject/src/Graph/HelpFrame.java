@@ -5,6 +5,8 @@
  */
 package Graph;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
 
@@ -20,109 +22,11 @@ public class HelpFrame extends javax.swing.JFrame {
     public HelpFrame() throws IOException {
         initComponents();
         String path = AGV.wayToJar();
-        path = path.replaceAll("BuildGraphicProject.jar", "") + "/Data/help.html";
+        path = path.replaceAll("BuildGraphProject.jar", "") + "/Data/template.html";
         //String htmlText = AGV.readFileAsString(path);
-        
-        jLabel.setText("<html>\n" +
-"    <head>\n" +
-"        <title>Описание используемых функций для построения графика</title>\n" +
-"        <meta charset=\"UTF-8\">\n" +
-"        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-"    </head>\n" +
-"    \n" +
-"    <body BGCOLOR=\"#FFFACD\">\n" +
-"        <div>\n" +
-"        <table border=\"1\" cellspacing=\"0\" cellpadding=\"5\">\n" +
-"        <tbody>\n" +
-"        <tr>\n" +
-"        <th>Свойство</th>\n" +
-"        <th>Описание</th>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>E</tt></td>\n" +
-"        <td>Основание натуральных логарифмов e.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>LN10</tt></td>\n" +
-"        <td>Число ln 10.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>LN2</tt></td>\n" +
-"        <td>Число ln 2.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>SQRT1_2</tt></td>\n" +
-"        <td>Квадратный корень из 1/2.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>SQRT2</tt></td>\n" +
-"        <td>Квадратный корень из 2.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <th>Метод</th>\n" +
-"        <th>Описание</th>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>abs</tt></td>\n" +
-"        <td>Возвращает модуль аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>arccos</tt></td>\n" +
-"        <td>Возвращает арккосинус аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>arcsin</tt></td>\n" +
-"        <td>Возвращает арксинус аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>arctg</tt></td>\n" +
-"        <td>Возвращает арктангенс аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <tr>\n" +
-"        <td><tt>sin</tt></td>\n" +
-"        <td>Возвращает синус аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n"+
-"        <td><tt>cos</tt></td>\n" +
-"        <td>Возвращает косинус аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n"+
-"        <td><tt>sc</tt></td>\n" +
-"        <td>Возвращает секанс аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n"+
-"        <td><tt>csc</tt></td>\n" +
-"        <td>Возвращает косеканс аргумента.</td>\n" +
-"        </tr>\n" +
-"        <td><tt>tg</tt></td>\n" +
-"        <td>Возвращает тангенс аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>ctg</tt></td>\n" +
-"        <td>Возвращает котангенс аргумента</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>e</tt></td>\n" +
-"        <td>Возвращает экспоненту аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>pow</tt></td>\n" +
-"        <td>Возводит первый аргумент в степень, заданную вторым.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>sqrt</tt></td>\n" +
-"        <td>Возвращает квадратный корень из аргумента.</td>\n" +
-"        </tr>\n" +
-"        <tr>\n" +
-"        <td><tt>ln</tt></td>\n" +
-"        <td>Возвращает натуральный логарифм аргумента.</td>\n" +
-"        </tr>\n" +
-"        </tbody>\n" +
-"        </table>\n" +
-"        </div>\n" +
-"    </body>\n" +
-"</html>");
+        File htmlFile = new File(path);
+        Desktop.getDesktop().browse(htmlFile.toURI());
+        //jLabel.setText(htmlText);
     }
 
     /**
