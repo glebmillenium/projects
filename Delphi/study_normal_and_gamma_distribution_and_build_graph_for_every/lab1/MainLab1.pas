@@ -47,10 +47,6 @@ type
     Edit6: TEdit;
     Edit7: TEdit;
     Edit8: TEdit;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
     procedure N1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -93,27 +89,30 @@ begin
 
   if mi<2 then z2:=1 else for i:=1 to mi do z2:=z2*i;
 
- 
+
 
                 { Экспоненциальный закон и Эрланг }
 
- 
+
 
   if mi<=0 then z3:=k else z3:=Power(k,mi+1)*Power(t,mi);
 
- 
+
 
   z3:=z3*exp(-k*t)/z2;
 
- 
+
 
   Erlang:=z3;
 
 end;
 
- 
 
-function GammaEE(Nmod:integer; m:single):single;
+
+function GammaEE(Nmod:integer; m:single):single;  {Частный случай гамма распред - распред Пирсона,
+                                                   сумма квадрвтов случ чисел с мат ожид. =0, СКО = сигма
+                                                   Распред Пирсона с Nmod степенями свободы. Nmod является для распред Пирсона это мат ожидание.
+                                                   С помощью Nmod задаем коэффициент формы}
 
 var x: single;
     i: integer;
@@ -122,8 +121,7 @@ begin
  { Генератор случайных чисел с плотностью Гамма распределения }
  x:=0;
 
- for i:=1 to Nmod do x:=x+SQR(RandG(0,1));       // дает распределение Пирсона c Nmod - степенями свободы.
- // Для распределения Пирсона Nmod - мат. ожидание, Nmod - коэф формы
+ for i:=1 to Nmod do x:=x+SQR(RandG(0,1));
  x:=x*m/Nmod;
 
  GammaEE:=x;
@@ -260,8 +258,7 @@ end;
 
 
 procedure TForm1.Button3Click(Sender: TObject);
-var i,j,k,n,code:integer;
-    x,m,s, matem_ojid,dispers,sigma,assim,akces:double;
+var i,j,k,n,code:integer; x,m,s:double;
 
     Xmin,Xmax,dx,y:Single;
 
@@ -270,10 +267,6 @@ var i,j,k,n,code:integer;
     t:ShortString;
 
 begin
-  matem_ojid:=0;
-  dispers   :=0;
-  assim     :=0;
-  akces     :=0;
  { Построение гистограмм по выборкам нормально распределенных случайных чисел }
 
 
@@ -352,15 +345,9 @@ begin
 
  
 
- for i:=1 to n do
-  begin
-  xm[i]:=RandG(m,s);
-  matem_ojid:=matem_ojid+xm[i];
-  end;
-matem_ojid:=matem_ojid/n;
-STR(matem_ojid:5:3,t);
-form1.Edit5.Text:=t;
+ for i:=1 to n do xm[i]:=RandG(m,s);
 
+ 
 
  Xmin:=xm[1];
 
@@ -373,25 +360,9 @@ form1.Edit5.Text:=t;
    if Xmin>xm[i] then Xmin:=xm[i];
 
    if Xmax<xm[i] then Xmax:=xm[i];
-   assim  :=assim+sqr(xm[i]-matem_ojid)*(xm[i]-matem_ojid);
-   dispers:=dispers+sqr(xm[i]-matem_ojid);
-   akces  :=akces+sqr(xm[i]-matem_ojid)*sqr(xm[i]-matem_ojid);
+
   end;
 
- akces:=akces/(n-1);
- assim:=assim/(n-1);
-
- dispers:=dispers/(n-1);
- sigma:=sqrt(dispers);
- assim:=assim/(sigma*sigma*sigma);
- STR(sigma:5:3,t);
- form1.Edit6.Text:=t;
- STR(assim:5:3,t);
- form1.Edit7.Text:=t;
- akces:=akces/(sqr(sigma)*sqr(sigma)) - 3;
- STR(akces:5:3,t);
- form1.Edit8.Text:=t;
- 
  dx:=(Xmax-Xmin)/k;
 
  
@@ -564,18 +535,26 @@ var i,j,k:integer; x,y:double;
 begin
   { Построение графиков }
 
+ 
+
+ 
+
  if form1.StringGrid1.RowCount<10 then exit;
 
+ 
+
 { Очистка графиков, отключение легенд }
+
+
 
  for i:=0 to 4 do
 
   begin
-
+{Обращаемся к графику как к массиву}
    form1.Chart1.Series[i].Clear;
-
-   form1.Chart1.Series[i].ShowInLegend:=false;   //Скрыть название графика
-
+{Отчистка графиков}
+   form1.Chart1.Series[i].ShowInLegend:=false;
+{Скрыть название графика}
   end;
 
 
@@ -584,25 +563,26 @@ begin
 
 
 
- form1.Chart1.Title.Visible:=True;         //Сделать видимой надпись на графике
-
- form1.Chart1.Title.Text.Clear;            //Очищаем старую запись
-
- form1.Chart1.Title.Text.Add(TitleText);   //Добавить новую строчку, с надписью в TitleText
-
+ form1.Chart1.Title.Visible:=True;
+{Сделай видимой надпись на графике}
+ form1.Chart1.Title.Text.Clear;
+{Очищаем старую надпись (иначе добавится доп. строчкой)}
+ form1.Chart1.Title.Text.Add(TitleText);
+{Добавить новую строчку с надписью переменной TitleText}
 
 
  { Вывод легенд из таблицы }
 
 
-
- for j:=1 to form1.StringGrid1.ColCount-1 do if form1.StringGrid1.Cells[j,0]<>'' then
+  for j:=1 to form1.StringGrid1.ColCount-1 do if form1.StringGrid1.Cells[j,0]<>'' then
+ {Подписываем графики. Если нулевая строка не пустая, то текст оттуда помещаем в название графика}
 
   begin
 
-   form1.Chart1.Series[j].Title:=form1.StringGrid1.Cells[j,0]+'   '; //Подписываем график,  '   ' - чтобы подписи не наползали друг на друга
+   form1.Chart1.Series[j].Title:=form1.StringGrid1.Cells[j,0]+'   ';
+   {пробелы нужны, чтобы надписи не наползали друг на друга}
 
-   form1.Chart1.Series[j].ShowInLegend:=True;                        //Сделать видимым подпись
+   form1.Chart1.Series[j].ShowInLegend:=True;
 
   end;
 
@@ -618,19 +598,24 @@ begin
 
    t:=form1.StringGrid1.Cells[0,i];
 
-   Val(t,x,k);               // преобразуем t  в переменную x, рез-т k, k не равно 0 строку в число преобразовать невозможно!
 
+   Val(t,x,k);
+  {преобразуем строку t в переменную x, k должно быть равно 0 (k!=0, если преобразовать не возможно}
    if k<>0 then
 
     begin
 
-     StrPCopy(ADF,'В строке '+IntToStr(i)+' ошибка по х!!!'); //преобразует строку short string в строку ANSIString
-                                              //StrPCopy имеет правило языка C, поэтому она не проверяет совместимость типов данных,
-                                              // массив ADF исп-ся как буфер
-     Application.MessageBox(ADF,'Ошибка чтения таблицы',0);//функция Win32API, которая выводит стандартное окно сообщения
-     //Ошибка чтения таблицы - заголовок формы, ADF - содержимое формы, 0 -число кнопок в таблице,
-     // 00 - да, 01 - Да Нет, 11 - Да Нет Отменить
+     StrPCopy(ADF,'В строке '+IntToStr(i)+' ошибка по х!!!');
+     {Преобразует Short String в ANSIString.
+     Процедура имеет правила языка С, поэтому она не проверяет совместимость типов данных
+     Поэтому массив ADF используется как буфер}
 
+     Application.MessageBox(ADF,'Ошибка чтения таблицы',0);
+     {Функция Win32 API, которая выводит стандартное окно сообщения.
+     Синтаксис: (Содержимое формы, Заголовок формы, Число кнопок в таблице в двоичном виде)
+     00 OR DA
+     01 OR NET DA NET "ИЛИ"
+     11 DA NET OTMENIT'}
      exit;
 
     end;
@@ -661,8 +646,8 @@ begin
 
         end;
 
-       form1.Chart1.Series[j-1].AddXY(x,y);//Присоединить еще одну точку к графику
-
+       form1.Chart1.Series[j-1].AddXY(x,y);
+       {Присоединить ещё одну точку к графику}
       end;
 
     end;
@@ -677,13 +662,10 @@ var i,j,k,Nmod:integer; x,m,s:double;
     t:ShortString;
 
 begin
+
 { Формирование Гамма распределенной выборки случайных чисел }
 
- 
-
  TitleText:='График выброк случайных чисел';
-
- 
 
  val(form1.Edit1.Text,j,k);
 
@@ -707,7 +689,7 @@ begin
 
  form1.Edit2.Text:=t;
 
- 
+
 
  val(form1.Edit3.Text,m,k);
 
@@ -717,9 +699,9 @@ begin
 
  form1.Edit3.Text:=t;
 
- 
 
- Nmod:=Round(2*SQR(m)/SQR(s)); //mu - для случая когда  mu - int
+
+ Nmod:=Round(2*SQR(m)/SQR(s)); {NMmod - это мю, для случая когда мю целое число}
 
  if Nmod=0 then Nmod:=1;
 
@@ -735,7 +717,7 @@ begin
 
   begin
 
-   x:=GammaEE(Nmod,s);  // Генератор случ. чисел для случаев когда mu - int ( 1, 2, 3 .. )
+   x:=GammaEE(Nmod,s); {генератор случ чисел, когда мю целое число}
 
    if form1.StringGrid1.RowCount<i+1 then form1.StringGrid1.RowCount:=i+1;
 
@@ -745,20 +727,13 @@ begin
 
    form1.StringGrid1.Cells[3,i]:=t;
 
-  end;                                                                   
-
-
+  end;
 end;
 
 procedure TForm1.Button5Click(Sender: TObject);
 var i,j,k,Nmod:integer; x,m,s:double;
-
     t:ShortString;
-
 begin
-
- 
-
 { Формирование Гамма распределенной выборки
 
   дискретных по амплитуде случайных чисел }
@@ -791,7 +766,7 @@ begin
 
  form1.Edit2.Text:=t;
 
- 
+
 
  val(form1.Edit3.Text,m,k);
 
@@ -801,13 +776,13 @@ begin
 
  form1.Edit3.Text:=t;
 
- 
+
 
  Nmod:=Round(2*SQR(m)/SQR(s));
 
  if Nmod=0 then Nmod:=1;
 
- 
+
 
  form1.StringGrid1.Cells[0,0]:='№ п/п';
 
@@ -833,11 +808,8 @@ begin
 
 end;
 
-
-
 procedure TForm1.Button6Click(Sender: TObject);
-var i,j,k,n,code,Nmod,mm:integer;
-    x,m,s,kk,matem_ojid,dispers,assim,akces,sigma:double;
+var i,j,k,n,code,Nmod,mm:integer; x,m,s,kk:double;
 
     Xmin,Xmax,dx,y:Single;
 
@@ -846,15 +818,16 @@ var i,j,k,n,code,Nmod,mm:integer;
     t:ShortString;
 
 begin
-  matem_ojid:=0;
-  dispers   :=0;
-  assim     :=0;
-  akces     :=0;
+
+ 
+
 { Построение гистограмм по выборкам Гамма распределенных случайных чисел }
+
+ 
 
  TitleText:='Гистограммы гамма распределенных случайных чисел, гамма и нормальный закон распределения';
 
- 
+
 
  val(form1.Edit1.Text,n,code);
 
@@ -866,7 +839,7 @@ begin
 
  form1.Edit1.Text:=IntToStr(n);
 
- 
+
 
  val(form1.Edit2.Text,s,code);
 
@@ -900,23 +873,27 @@ begin
 
  form1.Edit4.Text:=IntToStr(k);
 
+
+
  kk:=m/SQR(s);
 
  mm:=Round(m*kk-1);
 
+
+
  Nmod:=Round(2*SQR(m)/SQR(s));
 
- 
+
 
  if Nmod=0 then Nmod:=1;
 
- 
+
 
  for i:=0 to form1.StringGrid1.RowCount-1 do
 
  for j:=0 to form1.StringGrid1.ColCount-1 do form1.StringGrid1.Cells[j,i]:='';
 
- 
+
 
  form1.StringGrid1.RowCount:=2;
 
@@ -932,22 +909,15 @@ begin
 
  form1.StringGrid1.Cells[4,0]:='y G';
 
- 
+
 
  { х непрерывный }
 
  
 
- for i:=1 to n do
- begin
-  xm[i]:=GammaEE(Nmod,m);
-  matem_ojid:=matem_ojid+xm[i];
- end;
-matem_ojid:=matem_ojid/n;
-STR(matem_ojid:5:3,t);
-form1.Edit5.Text:=t;
+ for i:=1 to n do xm[i]:=GammaEE(Nmod,m);
 
- 
+
 
  Xmin:=xm[1];
 
@@ -961,28 +931,11 @@ form1.Edit5.Text:=t;
 
    if Xmax<xm[i] then Xmax:=xm[i];
 
-   assim  :=assim+sqr(xm[i]-matem_ojid)*(xm[i]-matem_ojid);
-   dispers:=dispers+sqr(xm[i]-matem_ojid);
-   akces  :=akces+sqr(xm[i]-matem_ojid)*sqr(xm[i]-matem_ojid);
   end;
-
- akces:=akces/(n-1);
- assim:=assim/(n-1);
-
- dispers:=dispers/(n-1);
- sigma:=sqrt(dispers);
- assim:=assim/(sigma*sigma*sigma);
- STR(sigma:5:3,t);
- form1.Edit6.Text:=t;
- STR(assim:5:3,t);
- form1.Edit7.Text:=t;
- akces:=akces/(sqr(sigma)*sqr(sigma)) - 3;
- STR(akces:5:3,t);
- form1.Edit8.Text:=t;
 
  dx:=(Xmax-Xmin)/k;
 
- 
+
 
  for j:=0 to k+1 do xp[j]:=0;
 
@@ -990,7 +943,7 @@ form1.Edit5.Text:=t;
 
  { Гистограмма }
 
- 
+
 
  for j:=1 to k+1 do
 
@@ -1002,7 +955,7 @@ form1.Edit5.Text:=t;
 
  { Вывод в таблицу }
 
- 
+
 
  for j:=0 to k do
 
@@ -1018,7 +971,7 @@ form1.Edit5.Text:=t;
 
    form1.StringGrid1.Cells[0,j+1]:=t;
 
- 
+
 
    y:=xp[j]/n/dx;
 
@@ -1026,15 +979,15 @@ form1.Edit5.Text:=t;
 
    form1.StringGrid1.Cells[1,j+1]:=t;
 
- 
 
-   if x>=0 then y:=Erlang(kk,mm,x) else y:=0;     //Erlang - теоретич. гамма распр. для целых mu
+
+   if x>=0 then y:=Erlang(kk,mm,x) else y:=0; {теоретич гамма распред для целых мю}
 
    STR(y:7:5,t);
 
    form1.StringGrid1.Cells[3,j+1]:=t;
 
- 
+
 
    y:=exp(-SQR(x-m)/(2*SQR(s)))/SQRT(2*Pi)/s;
 
@@ -1042,7 +995,7 @@ form1.Edit5.Text:=t;
 
    form1.StringGrid1.Cells[4,j+1]:=t;
 
- 
+
 
   end;
 
@@ -1085,11 +1038,8 @@ form1.Edit5.Text:=t;
    form1.StringGrid1.Cells[2,j+1]:=t;
 
   end;
-
- 
-
 end;
-
+ 
 
 
 

@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 199
-  Top = 116
+  Left = 134
+  Top = 119
   Width = 1145
-  Height = 720
+  Height = 732
   Caption = #1040#1085
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,15 +19,15 @@ object Form1: TForm1
     Left = 0
     Top = 0
     Width = 1137
-    Height = 686
+    Height = 698
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #1042#1099#1095#1080#1089#1083#1077#1085#1080#1103
       object Label2: TLabel
-        Left = 32
-        Top = 56
+        Left = 288
+        Top = 48
         Width = 180
         Height = 13
         Caption = #1053#1086#1088#1084#1072#1083#1100#1085#1099#1081' '#1079#1072#1082#1086#1085' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1103
@@ -78,34 +78,6 @@ object Form1: TForm1
         Width = 6
         Height = 13
         Caption = 'k'
-      end
-      object Label8: TLabel
-        Left = 288
-        Top = 328
-        Width = 41
-        Height = 13
-        Caption = #1089#1088'. '#1079#1085#1072#1095
-      end
-      object Label9: TLabel
-        Left = 288
-        Top = 360
-        Width = 51
-        Height = 13
-        Caption = #1089#1088'. '#1082#1074#1072#1076#1088'.'
-      end
-      object Label10: TLabel
-        Left = 288
-        Top = 392
-        Width = 67
-        Height = 13
-        Caption = #1082#1086#1101#1092'. '#1086#1090#1082#1083#1086#1085
-      end
-      object Label11: TLabel
-        Left = 288
-        Top = 424
-        Width = 43
-        Height = 13
-        Caption = #1069#1082#1089#1094#1077#1089#1089
       end
       object Edit1: TEdit
         Left = 296
@@ -213,39 +185,42 @@ object Form1: TForm1
       object StringGrid1: TStringGrid
         Left = 664
         Top = 16
-        Width = 345
-        Height = 609
+        Width = 369
+        Height = 641
         RowCount = 2
-        ScrollBars = ssVertical
         TabOrder = 12
       end
       object Edit5: TEdit
-        Left = 360
-        Top = 328
+        Left = 296
+        Top = 288
         Width = 121
         Height = 21
         TabOrder = 13
+        Text = 'Edit5'
       end
       object Edit6: TEdit
-        Left = 360
-        Top = 360
+        Left = 296
+        Top = 312
         Width = 121
         Height = 21
         TabOrder = 14
+        Text = 'Edit6'
       end
       object Edit7: TEdit
-        Left = 360
-        Top = 392
+        Left = 296
+        Top = 352
         Width = 121
         Height = 21
         TabOrder = 15
+        Text = 'Edit7'
       end
       object Edit8: TEdit
-        Left = 360
-        Top = 424
+        Left = 296
+        Top = 376
         Width = 121
         Height = 21
         TabOrder = 16
+        Text = 'Edit8'
       end
     end
     object TabSheet2: TTabSheet
@@ -255,7 +230,7 @@ object Form1: TForm1
         Left = 0
         Top = 0
         Width = 1129
-        Height = 658
+        Height = 670
         BackWall.Brush.Color = clWhite
         BackWall.Brush.Style = bsClear
         Title.Text.Strings = (
