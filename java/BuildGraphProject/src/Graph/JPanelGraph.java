@@ -88,7 +88,7 @@ class JPanelGraph extends javax.swing.JPanel {
         drawSimbolsGraph(g);
         drawLinesCoordinates(g);
         drawDividesGraph(g);
-                  
+
         conversionFunctionToPanel();
 
         for (int k = 0; k< this.count; k++)
@@ -210,12 +210,26 @@ class JPanelGraph extends javax.swing.JPanel {
     {
         g.drawString("O", this.centr[0] - 20, this.centr[1] + 20);
         if (this.type_function == 1)
+        {
             g.drawString("x", this.width - 20, this.centr[1] + 15);
+            g.drawString("y", this.centr[0] + 10, 10);
+        }
         if (this.type_function == 2)
+        {
             g.drawString("t", this.width - 20, this.centr[1] + 15);
+            g.drawString("y", this.centr[0] + 10, 10);
+        }
+        if (this.type_function == 3)
+        {
+            g.drawString("x(t)", this.width - 20, this.centr[1] + 15);
+            g.drawString("y(t)", this.centr[0] + 10, 10);
+        }
         if (this.type_function == 4)
-            g.drawString("ρ", this.width - 20, this.centr[1] + 15);
-        g.drawString("y", this.centr[0] + 10, 10);
+        {
+            g.drawString("r*cos(φ)", this.width - 45, this.centr[1] + 15);
+            g.drawString("r*sin(φ)", this.centr[0] + 10, 10);
+        }
+        
         g.drawString("1", this.centr[0] + this.division, this.centr[1] + 20);
         g.drawString("1", this.centr[0] + (int)(this.division*0.1), this.centr[1] - (int)(this.division*0.9));
     }
@@ -312,7 +326,7 @@ class JPanelGraph extends javax.swing.JPanel {
         // интерес для нас представляет только определение функции.
         js.eval(scripttext);
         this.count = str.length;
-        if (this.type_function == 1 || this.type_function == 2)
+        if (this.type_function == 1)
         {
             // Теперь можно вызвать функцию, объявленную в сценарии.
             createArrayX();
@@ -325,7 +339,29 @@ class JPanelGraph extends javax.swing.JPanel {
                     for (int i = 0; i < this.width; i++) 
                     {
                         // Вызов функции function evaluationExpression(i)
-                        this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression", str[k], this.arrayX[k][i]));
+                        this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression_fx", str[k], this.arrayX[k][i]));
+                    }
+                }
+            } catch (NoSuchMethodException e) {
+                // Эта часть программы выполняется, если сценарий не содержит
+                // определение функции с именем "evaluationExpression".
+                System.out.println(e);
+            }
+        }
+        if (this.type_function == 2)
+        {
+            // Теперь можно вызвать функцию, объявленную в сценарии.
+            createArrayX();
+            try {
+                // Привести ScriptEngine к типу интерфейса Invokable, 
+                // чтобы получить возможность вызова функций.
+                Invocable invocable = (Invocable) js;
+                for(int k=0; k < this.count; k++)
+                {
+                    for (int i = 0; i < this.width; i++) 
+                    {
+                        // Вызов функции function evaluationExpression(i)
+                        this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression_ft", str[k], this.arrayX[k][i]));
                     }
                 }
             } catch (NoSuchMethodException e) {
@@ -346,8 +382,8 @@ class JPanelGraph extends javax.swing.JPanel {
                 for (double go = -this.centr[0] * step;
                         go < (this.width - this.centr[0]) * step; go += step) {
                     sub_str = str[k].split(";");
-                    this.arrayX[k][i] = (double) (invocable.invokeFunction("evaluationExpression", sub_str[0], go));
-                    this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression", sub_str[1], go));
+                    this.arrayX[k][i] = (double) (invocable.invokeFunction("evaluationExpression_ft", sub_str[0], go));
+                    this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression_ft", sub_str[1], go));
                     i++;
                 }
             }
@@ -370,7 +406,7 @@ class JPanelGraph extends javax.swing.JPanel {
                     for (double g = 0; g < 2*Math.PI; g+=0.0174533) 
                     {
                         // Вызов функции function evaluationExpression(i)
-                        this.array_radius[k][i] = (double) (invocable.invokeFunction("evaluationExpression", str[k], g));
+                        this.array_radius[k][i] = (double) (invocable.invokeFunction("evaluationExpression_polar", str[k], g));
                         this.arrayX[k][i] = Math.cos(g)*this.array_radius[k][i];
                         this.arrayY[k][i] = Math.sin(g)*this.array_radius[k][i];
                         i++;

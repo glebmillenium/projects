@@ -1,6 +1,26 @@
-function evaluationExpression(str, x) {
+function evaluationExpression_fx(str, x) {
+    var y;
+    y=eval(treatmenter(str));
+    return y * 1.0;
+}
+
+
+function evaluationExpression_ft(str, t) {
+    var y;
+    y=eval(treatmenter(str));
+    return y * 1.0;
+}
+
+function evaluationExpression_polar(str, a) {
     var y;
 	
+	treatmenter(str);
+    y=eval(treatmenter(str));
+    return y * 1.0;
+}
+
+function treatmenter(str)
+{
 	str = str.replace(/arccos/g, "Math.ac os");
 	str = str.replace(/arcsin/g, "Math.as in");
 	str = str.replace(/sin/g, "Math.s in");
@@ -19,7 +39,5 @@ function evaluationExpression(str, x) {
 	str = str.replace(/abs/g, "Math.ab s");
 
 	str = str.replace(/ /g, "");
-
-    y=eval(str)*1.0;
-    return y * 1.0;
+	return str;
 }
