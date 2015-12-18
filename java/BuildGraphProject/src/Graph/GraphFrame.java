@@ -1,14 +1,13 @@
 package Graph;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.script.ScriptException;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 /**
@@ -23,9 +22,15 @@ public class GraphFrame extends javax.swing.JFrame {
     /**
      *  Поля класса GraphFrame.
      * 
-     *  private int delta   - 
+     *  private int delta   - (по умолчанию 0) динамически, изменяемое значение
+     *                      координат Y ( в пикселях ) для отрисовки текстовых
+     *                      полей для ввода формул функций
      *  private int width   - ширина графика функции (по умолчанию 520)
      *  private int height  - высота графика функции (по умолчанию 520)
+     * 
+     *  private int w = 0 - фиксирует сдвиг вдоль оси X
+     *  private int h = 0 - фиксирует сдвиг вдоль оси Y
+     * 
      *  private double step - шаг значения функции в один пиксель 
      *                        (масштаб графика)
      * 
@@ -34,7 +39,17 @@ public class GraphFrame extends javax.swing.JFrame {
      *                                   типа PanelGraph
      *  private static java.util.List<JTextField> FieldsFunction - коллекция, 
      *          содержит функции(формулы) вводимые пользователем в TextField-ы
+     * 
+     * private static java.util.List<JButton> ButtonsFunction - коллекция, 
+     *                      кнопок вызова диалогового окна выбора цвета кривой
+     *                      линии для функции
+     * private static java.util.List<Color> ColorsFunction - коллекция,
+     *                      сохранения выбранного цвета для соответствующей
+     *                      функции
+     * private ShowColor ColorChoose - графический объект, 
+     *                          является диалоговым окном выбора цвета
      */
+    
     private int width = 520;
     private int height = 520;
     private int w = 0;
@@ -75,10 +90,18 @@ public class GraphFrame extends javax.swing.JFrame {
         initComponents();           //Вызов инициализаторов графических 
         paintGraphPanel(PanelGraph);//компонентов
         addTextField();             //Вывод Текстового поля для ввода функции
-        jRadioButton3.setToolTipText("Используется для построения математической модели вида: y = f(x)");
-        jRadioButton4.setToolTipText("Применяется для построения и исследования математических моделей зависящей от переменной времени: y = f(t)");
-        jRadioButton13.setToolTipText("Построение параметрической функции, зависимость которой выражается через дополнительную величину — параметр: x(t);y(t)");
-        jRadioButton12.setToolTipText("Построение в полярной системе координат, в которой каждая точка на плоскости определяется двумя числами — полярным углом и полярным радиусом: φ = r(a)");
+        jRadioButton3.setToolTipText
+        ("Используется для построения математической модели вида: y = f(x)");
+        jRadioButton4.setToolTipText
+        ("Применяется для построения и исследования математических моделей "
+                + "зависящей от переменной времени: y = f(t)");
+        jRadioButton13.setToolTipText
+        ("Построение параметрической функции, зависимость которой выражается "
+                + "через дополнительную величину — параметр: x(t);y(t)");
+        jRadioButton12.setToolTipText
+        ("Построение в полярной системе координат, в которой каждая точка на "
+                + "плоскости определяется двумя числами — полярным углом и "
+                + "полярным радиусом: φ = r(a)");
     }
     
     /**
@@ -94,26 +117,38 @@ public class GraphFrame extends javax.swing.JFrame {
         Graph.setLayout(jPanelLayout);
         Graph.setBackground(Color.white);
         jPanelLayout.setHorizontalGroup(
-                jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                jPanelLayout.createParallelGroup
+        (javax.swing.GroupLayout.Alignment.CENTER)
                 .addGap(0, this.width, Short.MAX_VALUE)
         );
         jPanelLayout.setVerticalGroup(
-                jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                jPanelLayout.createParallelGroup
+        (javax.swing.GroupLayout.Alignment.CENTER)
                 .addGap(0, this.height, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = 
+                new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup
+        (layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                         .addGap(320, 320, 320)
-                        .addComponent(Graph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent
+        (Graph, javax.swing.GroupLayout.PREFERRED_SIZE,
+                javax.swing.GroupLayout.DEFAULT_SIZE, 
+                javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(112, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        layout.setVerticalGroup(layout.createParallelGroup
+        (javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 
+                        layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(Graph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Graph, 
+                                javax.swing.GroupLayout.PREFERRED_SIZE, 
+                                javax.swing.GroupLayout.DEFAULT_SIZE, 
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(112, Short.MAX_VALUE))
         );
 
@@ -442,9 +477,9 @@ public class GraphFrame extends javax.swing.JFrame {
                                 .add(0, 0, 0)
                                 .add(jRadioButton13)
                                 .add(0, 0, 0)
-                                .add(jRadioButton12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))))
+                                .add(jRadioButton12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(jButtonHelp))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jButtonFunction, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -483,26 +518,44 @@ public class GraphFrame extends javax.swing.JFrame {
                 .add(down, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(Button, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    /**
+     * formWindowClosing - метод вызывающий диалоговое окно, подтверждающее
+     *          закрытие приложения
+     * 
+     * @param evt 
+     */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         AGV.windowClose(evt);
     }//GEN-LAST:event_formWindowClosing
 
+    /**
+     * ButtonActionPerformed - вызывает построение графика, по определенным 
+     * свойствам объекта PanelGraph
+     * 
+     * @param evt 
+     */
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
         buildGraph();
     }//GEN-LAST:event_ButtonActionPerformed
 
+    /**
+     * buildGraph - метод, определяет введенные пользователем функции и 
+     *              сответсвующие назначаемые цвета кривым, а так определяет
+     *              "корректность" введенных формул.
+     * 
+     */
     private void buildGraph()
     {
         String[] expression = new String[FieldsFunction.size()];
         String[] sub_expression = {"0"};
         Color[] colors = new Color[ButtonsFunction.size()];
+
         int check_correct_expression = 0;
         for(int i=0;i < FieldsFunction.size();i++)
         {
@@ -511,40 +564,66 @@ public class GraphFrame extends javax.swing.JFrame {
             if (expression[i].isEmpty()) 
                 check_correct_expression = 1;
         }
+
         try {
             
             if (check_correct_expression == 1)
-                PanelGraph.treatmentExpression(sub_expression, colors, this.step, this.w, this.h);
+                PanelGraph.treatmentExpression
+        (sub_expression, colors, this.step, this.w, this.h);
             else
-                PanelGraph.treatmentExpression(expression, colors, this.step, this.w, this.h);
+                PanelGraph.treatmentExpression
+        (expression, colors, this.step, this.w, this.h);
             
             PanelGraph.drawGraph();
 
         } catch (ScriptException ex) {
-            Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger
+                (GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger
+                (GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
     
+    /**
+     * Вызывает справочную службу
+     * 
+     * @param evt 
+     */
     private void jButtonHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHelpActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 try {
-                    new HelpFrame().setVisible(true);
+                    String path = AGV.wayToJar();
+                    path = path.replaceAll("BuildGraphProject.jar", "")
+                            + "/Data/template.html";
+                    File htmlFile = new File(path);
+                    Desktop.getDesktop().browse(htmlFile.toURI());
                 } catch (IOException ex) {
-                    Logger.getLogger(GraphFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger
+                        (GraphFrame.class.getName()).
+                            log(Level.SEVERE, null, ex);
                 }
             }
         });
     }//GEN-LAST:event_jButtonHelpActionPerformed
 
+    /**
+     * Добавляет новое текстовое поля для ввода функции
+     * 
+     * @param evt 
+     */
     private void jButtonFunctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFunctionActionPerformed
         addTextField();
     }//GEN-LAST:event_jButtonFunctionActionPerformed
 
+    /**
+     * Удаляет текстовое поле для ввода функции
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(FieldsFunction.size() > 1) {
             int index = FieldsFunction.size() - 1;
@@ -559,69 +638,134 @@ public class GraphFrame extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         this.step = 0.125;
         buildGraph();
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         this.step = 0.1;
         buildGraph();
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
         this.step = 0.075;
         buildGraph();
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
         this.step = 0.05;
         buildGraph();
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
         this.step = 0.0375;
         buildGraph();
     }//GEN-LAST:event_jRadioButton7ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton8ActionPerformed
         this.step = 0.025;
         buildGraph();
     }//GEN-LAST:event_jRadioButton8ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton9ActionPerformed
         this.step = 0.0125;
         buildGraph();
     }//GEN-LAST:event_jRadioButton9ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton10ActionPerformed
         this.step = 0.05*0.15;
         buildGraph();
     }//GEN-LAST:event_jRadioButton10ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void jRadioButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton11ActionPerformed
         this.step = 0.005;
         buildGraph();
     }//GEN-LAST:event_jRadioButton11ActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void rightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightActionPerformed
         this.w += 2/step;
         buildGraph();
         colorButton_w();
     }//GEN-LAST:event_rightActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void upActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upActionPerformed
         this.h -= 2/step;
         buildGraph();
         colorButton_h();
     }//GEN-LAST:event_upActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void downActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downActionPerformed
         this.h += 2/step;
         buildGraph();
         colorButton_h();
     }//GEN-LAST:event_downActionPerformed
 
+    /**
+     * Изменяет масштаб графика
+     *
+     * @param evt
+     */
     private void leftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftActionPerformed
         this.w -= 2/step;
         buildGraph();
@@ -632,6 +776,11 @@ public class GraphFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formKeyPressed
 
+    /**
+     * Включает/отключает прорисовку десятичных делений в осях координат
+     *
+     * @param evt
+     */
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if (jCheckBox1.isSelected())
             PanelGraph.drawDecimalDivision(1);
@@ -639,26 +788,51 @@ public class GraphFrame extends javax.swing.JFrame {
             PanelGraph.drawDecimalDivision(0);
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    /**
+     * Изменяет тип строимого графика
+     * 
+     * @param evt 
+     */
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
         PanelGraph.changedTypeFunction(2);
         text.setText("y=f(t):");
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
+   /**
+     * Изменяет тип строимого графика
+     * 
+     * @param evt 
+     */
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         PanelGraph.changedTypeFunction(1);
         text.setText("y=f(x):");
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
+    /**
+     * Изменяет тип строимого графика
+     * 
+     * @param evt 
+     */
     private void jRadioButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton12ActionPerformed
         PanelGraph.changedTypeFunction(4);
         text.setText("r=f(a):");
     }//GEN-LAST:event_jRadioButton12ActionPerformed
 
+    /**
+     * Изменяет тип строимого графика
+     * 
+     * @param evt 
+     */
     private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
         PanelGraph.changedTypeFunction(3);
         text.setText("y(t)=x(t):");
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
+    /**
+     * Изменяет цвет кнопок
+     * 
+     * @param evt 
+     */
     private void colorButton_w()
     {
         int k = (int) ( this.w / (2/step) );
@@ -674,6 +848,11 @@ public class GraphFrame extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Изменяет цвет кнопок
+     * 
+     * @param evt 
+     */
     private void colorButton_h()
     {
         int k = (int) ( this.h / (2/step) );
@@ -689,13 +868,19 @@ public class GraphFrame extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * addTextField - добавляет кнопку выбора цвета построения кривой линии
+     * 
+     */
     private void addTextField(){
         JTextField field = new JTextField(" ");
         final JButton button = new JButton("...");
+        
         ButtonsFunction.add(button);
         FieldsFunction.add(field);
+        
         field.setAlignmentX(JButton.CENTER_ALIGNMENT);
-        //field.setFont(font);
+        
         field.setSize(150, 30);
         button.setSize(30, 30);
         button.setBackground(Color.black);

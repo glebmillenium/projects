@@ -32,9 +32,30 @@ import javax.script.ScriptException;
  * private int[] arrayX_graph
  * private int[] arrayY_graph
  * 
+ * private double[][] array_radius - массив значений радиуса на каждом промежутке
+ *                                   в диапазоне [0;2pi], для построения полярной
+ *                                   функции
+ * private int count = 256 - максимальное кол-во строемых функций 
+ *                          (256 - по умолчанию, для динамического изменения
+ *                          пока что заблокировано
+ * 
  * private double step - шаг функции в 1 пиксель
  * 
  * private int division - величина обратная step
+ * private int decimal_division - (по умолчанию 0), одноместный мьютекс,
+ *                                  контролирующий разрешения построения 
+ *                                  десятичной шкалы координат
+ * 
+ * private Color[] colors  - (по умолчанию 256) каждый индекс массива, 
+ *                          соответствует цвету линии функции построенной в графе.
+ * 
+ * private int type_function - (по умолчанию 1) тип строемой функции, всего 
+ *                              поддерживается 4 типа:
+ *                                  1 - y = f(x)
+ *                                  2 - y = f(t)
+ *                                  3 - y(t) = x(t)
+ *                                  4 - φ = r(a)
+ * 
  * 
  * @author glebmillenium
  */
@@ -61,8 +82,8 @@ class JPanelGraph extends javax.swing.JPanel {
      * JPanelGraph(int w, int h, double step) - расширенный конструктор класса,
      * позволяющий динамически определить поля создаваемого объекта
      * 
-     * @param w - высота 
-     * @param h
+     * @param w - высота JPanel в пикселях (области построения графика)
+     * @param h - ширина JPanel в пикселях (области построения графика)
      * @param step 
      */
     JPanelGraph(int w, int h, double step) {
@@ -79,16 +100,24 @@ class JPanelGraph extends javax.swing.JPanel {
         this.array_radius = new double [count][w+1];
     }
 
+    /**
+     * paintComponent(Graphic g) - переопределенный метод класса JPanel, 
+     *          наследующий свойство родительского метода, и переопределяющий
+     *          некоторое поведение класса, путем изменения свойств объекта.
+     * 
+     * @param g - создаваемый объект, позволяющий фиксировать визуальные 
+     *          изменения на графическом компоненте JPanel
+     */
     @Override
     @SuppressWarnings("empty-statement")
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
+
         setDefaultColorLines();
         drawSimbolsGraph(g);
         drawLinesCoordinates(g);
         drawDividesGraph(g);
-
         conversionFunctionToPanel();
 
         for (int k = 0; k< this.count; k++)
@@ -103,25 +132,38 @@ class JPanelGraph extends javax.swing.JPanel {
 
     }
     
+    /**
+     * drawDividesGraph(Graphic g) - отрисовывает деления на осях координат,
+     *                              если требуется и десятичные
+     * 
+     * @param g - создаваемый объект, позволяющий фиксировать визуальные 
+     *          изменения на графическом компоненте JPanel
+     */
     private void drawDividesGraph(Graphics g)
     {
         double delta;
         delta = this.division;
         while (delta < this.width) {
-            g.drawLine(this.centr[0] + (int)delta, this.centr[1] - 4, this.centr[0] + (int)delta, this.centr[1] + 4);
-            g.drawLine(this.centr[0] - (int)delta, this.centr[1] - 4, this.centr[0] - (int)delta, this.centr[1] + 4);
+            g.drawLine(this.centr[0] + 
+                    (int)delta, this.centr[1] - 4, this.centr[0] + 
+                            (int)delta, this.centr[1] + 4);
+            g.drawLine(this.centr[0] - 
+                    (int)delta, this.centr[1] - 4, this.centr[0] - 
+                            (int)delta, this.centr[1] + 4);
             delta += this.division;
         }
 
         delta = this.division;
         while (delta < this.height) {
-            g.drawLine(this.centr[0] - 4, this.centr[1] + (int)delta, this.centr[0] + 4, this.centr[1] + (int)delta);
+            g.drawLine(this.centr[0] - 4, this.centr[1] + 
+                    (int)delta, this.centr[0] + 4, this.centr[1] + (int)delta);
             delta += this.division;
         }
 
         delta = this.division;
         while (this.centr[1] - delta > 0) {
-            g.drawLine(this.centr[0] - 4, this.centr[1] - (int)delta, this.centr[0] + 4, this.centr[1] - (int)delta);
+            g.drawLine(this.centr[0] - 4, this.centr[1] - 
+                    (int)delta, this.centr[0] + 4, this.centr[1] - (int)delta);
             delta += this.division;
         }
         
@@ -133,13 +175,17 @@ class JPanelGraph extends javax.swing.JPanel {
                 if (five_div == 5)
                 {
                     five_div = 0;
-                    g.drawLine(this.centr[0] + (int)delta, this.centr[1] - 2, this.centr[0] + (int)delta, this.centr[1] + 2);
-                    g.drawLine(this.centr[0] - (int)delta, this.centr[1] - 2, this.centr[0] - (int)delta, this.centr[1] + 2);
+                    g.drawLine(this.centr[0] + (int)delta, this.centr[1] - 2, 
+                            this.centr[0] + (int)delta, this.centr[1] + 2);
+                    g.drawLine(this.centr[0] - (int)delta, this.centr[1] - 2, 
+                            this.centr[0] - (int)delta, this.centr[1] + 2);
                 }
                 else
                 {
-                    g.drawLine(this.centr[0] + (int)delta, this.centr[1] - 1, this.centr[0] + (int)delta, this.centr[1] + 1);
-                    g.drawLine(this.centr[0] - (int)delta, this.centr[1] - 1, this.centr[0] - (int)delta, this.centr[1] + 1);
+                    g.drawLine(this.centr[0] + (int)delta, this.centr[1] - 1, 
+                            this.centr[0] + (int)delta, this.centr[1] + 1);
+                    g.drawLine(this.centr[0] - (int)delta, this.centr[1] - 1, 
+                            this.centr[0] - (int)delta, this.centr[1] + 1);
                 }
                 
                 delta += this.division*0.1;
@@ -152,10 +198,12 @@ class JPanelGraph extends javax.swing.JPanel {
                 if (five_div == 5)
                 {
                     five_div = 0;
-                    g.drawLine(this.centr[0] - 2, this.centr[1] + (int)delta, this.centr[0] + 2, this.centr[1] + (int)delta);
+                    g.drawLine(this.centr[0] - 2, this.centr[1] + (int)delta, 
+                            this.centr[0] + 2, this.centr[1] + (int)delta);
                 }
                     else
-                    g.drawLine(this.centr[0] - 1, this.centr[1] + (int)delta, this.centr[0] + 1, this.centr[1] + (int)delta);
+                    g.drawLine(this.centr[0] - 1, this.centr[1] + (int)delta, 
+                            this.centr[0] + 1, this.centr[1] + (int)delta);
                 delta += this.division*0.1;
                 five_div++;
             }
@@ -166,22 +214,36 @@ class JPanelGraph extends javax.swing.JPanel {
                 if (five_div == 5)
                 {
                     five_div = 0;
-                    g.drawLine(this.centr[0] - 2, this.centr[1] - (int)delta, this.centr[0] + 2, this.centr[1] - (int)delta);
+                    g.drawLine(this.centr[0] - 2, this.centr[1] - (int)delta, 
+                            this.centr[0] + 2, this.centr[1] - (int)delta);
                 }
                 else
-                    g.drawLine(this.centr[0] - 1, this.centr[1] - (int)delta, this.centr[0] + 1, this.centr[1] - (int)delta);
+                    g.drawLine(this.centr[0] - 1, this.centr[1] - (int)delta, 
+                            this.centr[0] + 1, this.centr[1] - (int)delta);
                 delta += this.division*0.1;
                 five_div++;
             }
         }
     }
     
+    /**
+     * changedTypeFunction - метод, изменяет тип строемых функций
+     * 
+     * @param n 
+     */
     public void changedTypeFunction(int n)
     {
         this.type_function = n;
         drawGraph();
     }
     
+    
+    /**
+     * drawLinesCoordinates(Graphic g) - вырисовывает оси координат
+     * 
+     * @param g - создаваемый объект, позволяющий фиксировать визуальные 
+     *          изменения на графическом компоненте JPanel
+     */
     private void drawLinesCoordinates(Graphics g)
     {
         g.drawLine(this.centr[0], 0, this.centr[0], this.height);
@@ -197,6 +259,11 @@ class JPanelGraph extends javax.swing.JPanel {
                 this.centr[1] - 5);
     }
     
+    /**
+     * setDefaultColorLines(Graphic g) - назначает цвет кривой функции,
+     *                                  если цвет линии не был назначен
+     * 
+     */
     private void setDefaultColorLines()
     {
         if (this.colors == null ) 
@@ -206,6 +273,13 @@ class JPanelGraph extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * drawSimbolsGraph(Graphic g) - отрисовывает символы начала координат, 
+     *                              и названия самих осей
+     * 
+     * @param g - создаваемый объект, позволяющий фиксировать визуальные 
+     *          изменения на графическом компоненте JPanel
+     */
     private void drawSimbolsGraph(Graphics g)
     {
         g.drawString("O", this.centr[0] - 20, this.centr[1] + 20);
@@ -231,31 +305,59 @@ class JPanelGraph extends javax.swing.JPanel {
         }
         
         g.drawString("1", this.centr[0] + this.division, this.centr[1] + 20);
-        g.drawString("1", this.centr[0] + (int)(this.division*0.1), this.centr[1] - (int)(this.division*0.9));
+        g.drawString("1", this.centr[0] + (int)(this.division*0.1), 
+                this.centr[1] - (int)(this.division*0.9));
     }
     
+    
+    /**
+     * move_h - Делает принудительный сдвиг - вдоль оси Y
+     * 
+     * @param mv 
+     */
     public void move_h(int mv)
     {
         this.mv_h = this.mv_h + mv;
         drawGraph();
     }
     
+    /**
+     * drawDecimalDivision - метод, принудительно включает/отключает отрисовку 
+     *                      десятичных делений на осях X, Y
+     * 
+     * @param value 
+     */
     public void drawDecimalDivision(int value)
     {
         this.decimal_division = value;
         drawGraph();
     }
     
+    /**
+     * move_w - Делает принудительный сдвиг - вдоль оси X
+     * 
+     * @param mv 
+     */
     public void move_w(int mv)
     {
         this.mv_w = this.mv_w + mv;
         drawGraph();
     }
     
+    /**
+     * drawGraph - отрисовывает граф, по записанным свойствам класса Graphics g
+     * 
+     */
     public void drawGraph() {    
         repaint();
     }
 
+    
+    /**
+     * drawDividesGraph(Graphic g) - переводит полученные координаты функции, в
+     *                              координатах вида пикселей
+     * 
+     */
     private void conversionFunctionToPanel() {
         if(this.type_function == 4)
         {
@@ -263,9 +365,11 @@ class JPanelGraph extends javax.swing.JPanel {
             {
                 int i=0;
                 for (double g = 0; g < (2*Math.PI); g+=0.0174533) {
-                    this.arrayX_graph[k][i] = (int) Math.round(this.arrayX[k][i]/this.step)
+                    this.arrayX_graph[k][i] = 
+                            (int) Math.round(this.arrayX[k][i]/this.step)
                             + this.centr[0];
-                    this.arrayY_graph[k][i] = -(int) Math.round(this.arrayY[k][i]/this.step)
+                    this.arrayY_graph[k][i] = 
+                            -(int) Math.round(this.arrayY[k][i]/this.step)
                             + this.centr[1];
                     i++;
                 }
@@ -276,7 +380,8 @@ class JPanelGraph extends javax.swing.JPanel {
             {
                 for (int i = 0; i < this.width; i++) {
                     this.arrayX_graph[k][i] = i;
-                    this.arrayY_graph[k][i] = -(int) Math.round(this.arrayY[k][i] / this.step)
+                    this.arrayY_graph[k][i] = 
+                            -(int) Math.round(this.arrayY[k][i] / this.step)
                             + this.centr[1];
                 }
             }
@@ -284,22 +389,29 @@ class JPanelGraph extends javax.swing.JPanel {
                 for (int k=0; k< this.count; k++)
                 {
                     for (int i = 0; i < this.width; i++) {
-                    this.arrayX_graph[k][i] = (int) Math.round(this.arrayX[k][i]/this.step)
+                    this.arrayX_graph[k][i] = 
+                            (int) Math.round(this.arrayX[k][i]/this.step)
                             + this.centr[0];
-                    this.arrayY_graph[k][i] = -(int) Math.round(this.arrayY[k][i]/this.step)
+                    this.arrayY_graph[k][i] = 
+                            -(int) Math.round(this.arrayY[k][i]/this.step)
                             + this.centr[1];
                     }
                 }
     }
 
-    
+    /**
+     * createArrayX() - создает массив координат X для дальнейшего вычисления
+     *              координат Y (действует только для функций вида f(x), f(t))
+     * 
+     */
     private void createArrayX() {
         
         if (this.type_function == 1 || this.type_function == 2)
             for(int k=0; k<this.count; k++) {
                 int i = 0;
                 for (double go = -this.centr[0] * step;
-                        go < (this.width - this.centr[0]) * step; go += step) {
+                        go < (this.width - this.centr[0]) * step; 
+                        go += step) {
                     this.arrayX[k][i] = go;
                     i++;
                 }
@@ -308,7 +420,23 @@ class JPanelGraph extends javax.swing.JPanel {
 
     }
 
-    public void treatmentExpression(String[] str, Color[] colors, double interval, int w, int h)
+    
+    /**
+     * treatmentExpression
+     *  (String[] str, Color[] colors, double interval, int w, int h) - метод,
+     *                      обрабатывает выражение функции, 
+     *                      и вызывает перерисовку JPanel
+     * 
+     * @param str - массив формул строемых функций
+     * @param colors - массив цветов линий функций
+     * @param interval - задаем шаг функции в один пиксель
+     * @param w - сдвиг графика вдоль оси x
+     * @param h - сдвиг графика вдоль оси y
+     * @throws ScriptException
+     * @throws IOException 
+     */
+    public void treatmentExpression
+        (String[] str, Color[] colors, double interval, int w, int h)
             throws ScriptException, IOException {
         this.centr[0] = (w + this.height) / 2;
         this.centr[1] = (h + this.width) / 2;
@@ -339,7 +467,11 @@ class JPanelGraph extends javax.swing.JPanel {
                     for (int i = 0; i < this.width; i++) 
                     {
                         // Вызов функции function evaluationExpression(i)
-                        this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression_fx", str[k], this.arrayX[k][i]));
+                        this.arrayY[k][i] = (double) 
+                                (invocable.invokeFunction
+                                    ("evaluationExpression_fx", 
+                                    str[k], 
+                                    this.arrayX[k][i]));
                     }
                 }
             } catch (NoSuchMethodException e) {
@@ -361,7 +493,11 @@ class JPanelGraph extends javax.swing.JPanel {
                     for (int i = 0; i < this.width; i++) 
                     {
                         // Вызов функции function evaluationExpression(i)
-                        this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression_ft", str[k], this.arrayX[k][i]));
+                        this.arrayY[k][i] = (double) 
+                                (invocable.invokeFunction
+                                    ("evaluationExpression_ft", 
+                                    str[k], 
+                                    this.arrayX[k][i]));
                     }
                 }
             } catch (NoSuchMethodException e) {
@@ -382,8 +518,16 @@ class JPanelGraph extends javax.swing.JPanel {
                 for (double go = -this.centr[0] * step;
                         go < (this.width - this.centr[0]) * step; go += step) {
                     sub_str = str[k].split(";");
-                    this.arrayX[k][i] = (double) (invocable.invokeFunction("evaluationExpression_ft", sub_str[0], go));
-                    this.arrayY[k][i] = (double) (invocable.invokeFunction("evaluationExpression_ft", sub_str[1], go));
+                    this.arrayX[k][i] = (double) 
+                            (invocable.invokeFunction
+                                ("evaluationExpression_ft", 
+                                sub_str[0], 
+                                go));
+                    this.arrayY[k][i] = (double) 
+                            (invocable.invokeFunction
+                                ("evaluationExpression_ft",
+                                sub_str[1], 
+                                go));
                     i++;
                 }
             }
@@ -406,7 +550,11 @@ class JPanelGraph extends javax.swing.JPanel {
                     for (double g = 0; g < 2*Math.PI; g+=0.0174533) 
                     {
                         // Вызов функции function evaluationExpression(i)
-                        this.array_radius[k][i] = (double) (invocable.invokeFunction("evaluationExpression_polar", str[k], g));
+                        this.array_radius[k][i] = (double) 
+                                (invocable.invokeFunction
+                                    ("evaluationExpression_polar", 
+                                    str[k], 
+                                    g));
                         this.arrayX[k][i] = Math.cos(g)*this.array_radius[k][i];
                         this.arrayY[k][i] = Math.sin(g)*this.array_radius[k][i];
                         i++;
