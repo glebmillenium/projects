@@ -1,0 +1,5 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\Graph\Graph\bin\Debug\Graph.dll
+C:\Users\Глеб\Documents\SharpDevelop Projects\Graph\Graph\bin\Debug\Graph.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\Graph\Graph\obj\Debug\Graph.fsprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\Graph\Graph\obj\Debug\Graph.dll
+C:\Users\Глеб\Documents\SharpDevelop Projects\Graph\Graph\obj\Debug\Graph.pdb
