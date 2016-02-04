@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\KRI\KRI\obj\Debug\KRI.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\KRI\KRI\obj\Debug\KRI.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\KRI\KRI\obj\Debug\KRI.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\KRI\KRI\bin\Debug\KRI.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\KRI\KRI\bin\Debug\KRI.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\KRI\KRI\bin\Debug\KRI.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\KRI\KRI\obj\Debug\KRI.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\KRI\KRI\obj\Debug\KRI.pdb
