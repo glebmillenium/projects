@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\курсова\курсова\obj\Debug\курсова.fsprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\курсова\курсова\bin\Debug\курсова.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\курсова\курсова\bin\Debug\курсова.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\курсова\курсова\bin\Debug\курсова.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\курсова\курсова\bin\Debug\FSharp.Core.dll
+C:\Users\Глеб\Documents\SharpDevelop Projects\курсова\курсова\bin\Debug\FSharp.Core.xml
+C:\Users\Глеб\Documents\SharpDevelop Projects\курсова\курсова\obj\Debug\курсова.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\курсова\курсова\obj\Debug\курсова.pdb
