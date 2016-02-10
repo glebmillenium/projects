@@ -1,0 +1,6 @@
+D:\Учебные материалы\3 курс_ИРГУПС\Эксплуатация ПО\Фурье\MainFrame\Library\bin\Debug\Library.exe.config
+D:\Учебные материалы\3 курс_ИРГУПС\Эксплуатация ПО\Фурье\MainFrame\Library\bin\Debug\Library.exe
+D:\Учебные материалы\3 курс_ИРГУПС\Эксплуатация ПО\Фурье\MainFrame\Library\bin\Debug\Library.pdb
+D:\Учебные материалы\3 курс_ИРГУПС\Эксплуатация ПО\Фурье\MainFrame\Library\obj\Debug\Library.csprojResolveAssemblyReference.cache
+D:\Учебные материалы\3 курс_ИРГУПС\Эксплуатация ПО\Фурье\MainFrame\Library\obj\Debug\Library.exe
+D:\Учебные материалы\3 курс_ИРГУПС\Эксплуатация ПО\Фурье\MainFrame\Library\obj\Debug\Library.pdb
