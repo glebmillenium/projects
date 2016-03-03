@@ -35,12 +35,6 @@ type
     Label7: TLabel;
     StringGrid1: TStringGrid;
     PopupMenu1: TPopupMenu;
-    Chart1: TChart;
-    Series1: TFastLineSeries;
-    Series2: TFastLineSeries;
-    Series3: TFastLineSeries;
-    Series4: TFastLineSeries;
-    Series5: TFastLineSeries;
     N1: TMenuItem;
     N2: TMenuItem;
     Edit5: TEdit;
@@ -73,6 +67,10 @@ var
   ADF: array [0..255] of Char;
   xm: array [1..100000] of double;
   TitleText: ShortString;
+  glob_matem_ojid: array [0..255] of double;
+  glob_dispers   : array [0..255] of double;
+  glob_assim     : array [0..255] of double;
+  glob_akces     : array [0..255] of double;
 
 implementation
 

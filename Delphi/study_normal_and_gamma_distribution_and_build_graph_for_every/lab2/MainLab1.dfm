@@ -1,8 +1,8 @@
 object Form1: TForm1
   Left = 199
   Top = 116
-  Width = 1145
-  Height = 720
+  Width = 1137
+  Height = 716
   Caption = #1040#1085
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,8 +18,8 @@ object Form1: TForm1
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 1137
-    Height = 686
+    Width = 1129
+    Height = 682
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
@@ -225,7 +225,6 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 13
-        Text = 'Edit5'
       end
       object Edit6: TEdit
         Left = 360
@@ -233,7 +232,6 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 14
-        Text = 'Edit6'
       end
       object Edit7: TEdit
         Left = 360
@@ -241,7 +239,6 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 15
-        Text = 'Edit7'
       end
       object Edit8: TEdit
         Left = 360
@@ -249,34 +246,63 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 16
-        Text = 'Edit8'
+      end
+      object Button9: TButton
+        Left = 480
+        Top = 136
+        Width = 75
+        Height = 25
+        Caption = #1084#1072#1090'_'#1086#1078#1080#1076
+        TabOrder = 17
+        OnClick = Button9Click
+      end
+      object Button10: TButton
+        Left = 480
+        Top = 176
+        Width = 75
+        Height = 25
+        Caption = #1069#1082#1094#1077#1089#1089
+        TabOrder = 18
+        OnClick = Button10Click
+      end
+      object Button11: TButton
+        Left = 480
+        Top = 216
+        Width = 75
+        Height = 25
+        Caption = #1044#1080#1089#1087#1077#1088#1089#1080#1103
+        TabOrder = 19
+        OnClick = Button11Click
+      end
+      object Button12: TButton
+        Left = 480
+        Top = 256
+        Width = 75
+        Height = 25
+        Caption = #1040#1089#1089#1080#1084
+        TabOrder = 20
+        OnClick = Button12Click
       end
     end
     object TabSheet2: TTabSheet
       Caption = #1043#1088#1072#1092#1080#1082#1080
       ImageIndex = 1
       object Chart1: TChart
-        Left = 0
-        Top = 0
-        Width = 1129
-        Height = 658
+        Left = 8
+        Top = 48
+        Width = 1089
+        Height = 577
         BackWall.Brush.Color = clWhite
         BackWall.Brush.Style = bsClear
         Title.Text.Strings = (
           'TChart')
-        Title.Visible = False
-        Legend.Alignment = laBottom
-        Legend.Frame.Visible = False
         View3D = False
-        Align = alClient
-        PopupMenu = PopupMenu1
         TabOrder = 0
         object Series1: TFastLineSeries
           Marks.ArrowLength = 8
           Marks.Visible = False
           SeriesColor = clRed
           LinePen.Color = clRed
-          LinePen.Width = 2
           XValues.DateTime = False
           XValues.Name = 'X'
           XValues.Multiplier = 1.000000000000000000
@@ -289,9 +315,8 @@ object Form1: TForm1
         object Series2: TFastLineSeries
           Marks.ArrowLength = 8
           Marks.Visible = False
-          SeriesColor = 16711808
-          LinePen.Color = 16711808
-          LinePen.Width = 2
+          SeriesColor = clGreen
+          LinePen.Color = clGreen
           XValues.DateTime = False
           XValues.Name = 'X'
           XValues.Multiplier = 1.000000000000000000
@@ -304,9 +329,8 @@ object Form1: TForm1
         object Series3: TFastLineSeries
           Marks.ArrowLength = 8
           Marks.Visible = False
-          SeriesColor = clLime
-          LinePen.Color = clLime
-          LinePen.Width = 2
+          SeriesColor = clPurple
+          LinePen.Color = clPurple
           XValues.DateTime = False
           XValues.Name = 'X'
           XValues.Multiplier = 1.000000000000000000
@@ -321,7 +345,6 @@ object Form1: TForm1
           Marks.Visible = False
           SeriesColor = clBlue
           LinePen.Color = clBlue
-          LinePen.Width = 2
           XValues.DateTime = False
           XValues.Name = 'X'
           XValues.Multiplier = 1.000000000000000000
@@ -334,9 +357,8 @@ object Form1: TForm1
         object Series5: TFastLineSeries
           Marks.ArrowLength = 8
           Marks.Visible = False
-          SeriesColor = 4194432
-          LinePen.Color = 4194432
-          LinePen.Width = 2
+          SeriesColor = 4210688
+          LinePen.Color = 4210688
           XValues.DateTime = False
           XValues.Name = 'X'
           XValues.Multiplier = 1.000000000000000000

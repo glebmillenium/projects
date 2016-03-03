@@ -35,12 +35,6 @@ type
     Label7: TLabel;
     StringGrid1: TStringGrid;
     PopupMenu1: TPopupMenu;
-    Chart1: TChart;
-    Series1: TFastLineSeries;
-    Series2: TFastLineSeries;
-    Series3: TFastLineSeries;
-    Series4: TFastLineSeries;
-    Series5: TFastLineSeries;
     N1: TMenuItem;
     N2: TMenuItem;
     Edit5: TEdit;
@@ -51,6 +45,16 @@ type
     Label9: TLabel;
     Label10: TLabel;
     Label11: TLabel;
+    Chart1: TChart;
+    Series1: TFastLineSeries;
+    Series2: TFastLineSeries;
+    Series3: TFastLineSeries;
+    Series4: TFastLineSeries;
+    Series5: TFastLineSeries;
+    Button9: TButton;
+    Button10: TButton;
+    Button11: TButton;
+    Button12: TButton;
     procedure N1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -61,23 +65,231 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure Button12Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
-
+const count_exp=10000;
 var
   Form1: TForm1;
   { Массив вместо объявления переменной типа PChar }
   ADF: array [0..255] of Char;
   xm: array [1..100000] of double;
+  Xmin,Xmax : double;
   TitleText: ShortString;
+  glob_matem_ojid: array [0..10000] of double;
+  glob_dispers   : array [0..10000] of double;
+  glob_assim     : array [0..10000] of double;
+  glob_akces     : array [0..10000] of double;
 
 implementation
 
 {$R *.dfm}
 {$R+}
+
+
+procedure output_graph(mass:array of double) ;
+
+  var i,j,k,n,code:integer; x,m,s:double;
+
+    Xmin,Xmax,dx,y:Single;
+
+    xp: array [0..201] of integer;
+
+    t:ShortString;
+
+begin
+
+{ Построение гистограмм по выборкам нормально распределенных случайных чисел }
+
+
+
+ TitleText:='Гистограммы нормально распределенных случайных чисел и нормальный закон распределения';
+
+
+
+ val(form1.Edit1.Text,n,code);
+
+ if code<>0  then n:=1000;
+
+ if n<10     then n:=10;
+
+ if n>100000 then n:=100000;
+
+ form1.Edit1.Text:=IntToStr(n);
+
+ 
+
+ val(form1.Edit2.Text,s,code);
+
+ if code<>0 then s:=10;
+
+ if s<0.001 then s:=0.001;
+
+ STR(s:5:3,t);
+
+ form1.Edit2.Text:=t;
+
+
+
+ val(form1.Edit3.Text,m,code);
+
+ if code<>0 then m:=20;
+
+ STR(m:5:3,t);
+
+ form1.Edit3.Text:=t;
+
+ 
+
+ val(form1.Edit4.Text,k,code);
+
+ if code<>0 then k:=100;
+
+ if k<10    then k:=10;
+
+ if k>200   then k:=200;
+
+ form1.Edit4.Text:=IntToStr(k);
+
+ 
+
+ for i:=0 to form1.StringGrid1.RowCount-1 do
+
+ for j:=0 to form1.StringGrid1.ColCount-1 do form1.StringGrid1.Cells[j,i]:='';
+
+ 
+
+ form1.StringGrid1.RowCount:=2;
+
+ 
+
+ form1.StringGrid1.Cells[0,0]:='x';
+
+ form1.StringGrid1.Cells[1,0]:='y непр.  G';
+
+ form1.StringGrid1.Cells[2,0]:='y дискр. G';
+
+ form1.StringGrid1.Cells[3,0]:='y G';
+
+ 
+
+ { х непрерывный }
+
+ 
+
+ for i:=1 to n do xm[i]:=mass[i];
+
+ 
+
+ Xmin:=xm[1];
+
+ Xmax:=xm[1];
+
+ for i:=1 to n do
+
+  begin
+
+   if Xmin>xm[i] then Xmin:=xm[i];
+
+   if Xmax<xm[i] then Xmax:=xm[i];
+
+  end;
+
+ dx:=(Xmax-Xmin)/k;
+
+ 
+
+ for j:=0 to k+1 do xp[j]:=0;
+
+ 
+
+ { Гистограмма }
+
+ 
+
+ for j:=1 to k+1 do
+
+ for i:=1 to n do
+
+ if (xm[i]>=Xmin+(j-1)*dx) and (xm[i]<Xmin+j*dx) then xp[j]:=xp[j]+1;
+
+ 
+
+ for j:=0 to k do
+
+  begin
+
+   if form1.StringGrid1.RowCount<j+1 then form1.StringGrid1.RowCount:=j+1;
+
+
+
+   x:=Xmin+j*dx-0.5*dx;
+
+   STR(x:7:5,t);
+
+   form1.StringGrid1.Cells[0,j+1]:=t;
+
+ 
+
+   y:=xp[j]/n/dx;
+
+   STR(y:7:5,t);
+
+   form1.StringGrid1.Cells[1,j+1]:=t;
+
+
+
+   y:=exp(-SQR(x-m)/(2*SQR(s)))/SQRT(2*Pi)/s;
+
+   STR(y:7:5,t);
+
+   form1.StringGrid1.Cells[3,j+1]:=t;
+
+  end;
+
+ 
+
+ { х дискретный }
+
+ 
+
+ for j:=0 to k+1 do xp[j]:=0;
+
+ 
+
+ { Гистограмма }
+
+
+
+ for j:=1 to k+1 do
+
+ for i:=1 to n do
+
+ if (Round(xm[i])>=Xmin+(j-1)*dx) and (Round(xm[i])<Xmin+j*dx) then xp[j]:=xp[j]+1;
+
+
+
+ for j:=0 to k do
+
+  begin
+
+   x:=Xmin+j*dx-0.5*dx;
+
+   y:=xp[j]/n/dx;
+
+   STR(y:5:3,t);
+
+   form1.StringGrid1.Cells[2,j+1]:=t;
+
+  end;
+
+end;
 
 function Erlang(k:single; mi:integer; t:single):single;
 
@@ -260,20 +472,17 @@ end;
 
 
 procedure TForm1.Button3Click(Sender: TObject);
-var i,j,k,n,code:integer;
+var i,j,k,n,code,agv:integer;
     x,m,s, matem_ojid,dispers,sigma,assim,akces:double;
 
-    Xmin,Xmax,dx,y:Single;
+    dx,y:Single;
 
     xp: array [0..201] of integer;
 
     t:ShortString;
 
 begin
-  matem_ojid:=0;
-  dispers   :=0;
-  assim     :=0;
-  akces     :=0;
+
  { Построение гистограмм по выборкам нормально распределенных случайных чисел }
 
 
@@ -346,11 +555,15 @@ begin
 
  form1.StringGrid1.Cells[3,0]:='y G';
 
- 
+  {* ************************* *}
 
  { х непрерывный }
-
- 
+for agv:=0 to count_exp do
+  begin
+  matem_ojid:=0;
+  dispers   :=0;
+  assim     :=0;
+  akces     :=0;
 
  for i:=1 to n do
   begin
@@ -384,25 +597,34 @@ form1.Edit5.Text:=t;
  dispers:=dispers/(n-1);
  sigma:=sqrt(dispers);
  assim:=assim/(sigma*sigma*sigma);
+ akces:=akces/(sqr(sigma)*sqr(sigma)) - 3;
+
+  glob_matem_ojid[agv]:=matem_ojid;
+  glob_dispers[agv]:=dispers;
+  glob_assim[agv]:=assim;
+  glob_akces[agv]:=akces;
+
+ end;
+ {* ************************* *}
+
  STR(sigma:5:3,t);
  form1.Edit6.Text:=t;
  STR(assim:5:3,t);
  form1.Edit7.Text:=t;
- akces:=akces/(sqr(sigma)*sqr(sigma)) - 3;
  STR(akces:5:3,t);
  form1.Edit8.Text:=t;
- 
+
  dx:=(Xmax-Xmin)/k;
 
- 
+
 
  for j:=0 to k+1 do xp[j]:=0;
 
- 
+
 
  { Гистограмма }
 
- 
+
 
  for j:=1 to k+1 do
 
@@ -410,7 +632,7 @@ form1.Edit5.Text:=t;
 
  if (xm[i]>=Xmin+(j-1)*dx) and (xm[i]<Xmin+j*dx) then xp[j]:=xp[j]+1;
 
- 
+
 
  for j:=0 to k do
 
@@ -418,7 +640,7 @@ form1.Edit5.Text:=t;
 
    if form1.StringGrid1.RowCount<j+1 then form1.StringGrid1.RowCount:=j+1;
 
- 
+
 
    x:=Xmin+j*dx-0.5*dx;
 
@@ -426,7 +648,7 @@ form1.Edit5.Text:=t;
 
    form1.StringGrid1.Cells[0,j+1]:=t;
 
- 
+
 
    y:=xp[j]/n/dx;
 
@@ -434,7 +656,7 @@ form1.Edit5.Text:=t;
 
    form1.StringGrid1.Cells[1,j+1]:=t;
 
- 
+
 
    y:=exp(-SQR(x-m)/(2*SQR(s)))/SQRT(2*Pi)/s;
 
@@ -444,19 +666,19 @@ form1.Edit5.Text:=t;
 
   end;
 
- 
+
 
  { х дискретный }
 
- 
+
 
  for j:=0 to k+1 do xp[j]:=0;
 
- 
+
 
  { Гистограмма }
 
- 
+
 
  for j:=1 to k+1 do
 
@@ -464,7 +686,7 @@ form1.Edit5.Text:=t;
 
  if (Round(xm[i])>=Xmin+(j-1)*dx) and (Round(xm[i])<Xmin+j*dx) then xp[j]:=xp[j]+1;
 
- 
+
 
  for j:=0 to k do
 
@@ -836,7 +1058,7 @@ end;
 
 
 procedure TForm1.Button6Click(Sender: TObject);
-var i,j,k,n,code,Nmod,mm:integer;
+var i,j,k,n,code,Nmod,mm,agv:integer;
     x,m,s,kk,matem_ojid,dispers,assim,akces,sigma:double;
 
     Xmin,Xmax,dx,y:Single;
@@ -854,7 +1076,7 @@ begin
 
  TitleText:='Гистограммы гамма распределенных случайных чисел, гамма и нормальный закон распределения';
 
- 
+
 
  val(form1.Edit1.Text,n,code);
 
@@ -866,7 +1088,7 @@ begin
 
  form1.Edit1.Text:=IntToStr(n);
 
- 
+
 
  val(form1.Edit2.Text,s,code);
 
@@ -878,7 +1100,7 @@ begin
 
  form1.Edit2.Text:=t;
 
- 
+
 
  val(form1.Edit3.Text,m,code);
 
@@ -888,7 +1110,7 @@ begin
 
  form1.Edit3.Text:=t;
 
- 
+
 
  val(form1.Edit4.Text,k,code);
 
@@ -906,17 +1128,17 @@ begin
 
  Nmod:=Round(2*SQR(m)/SQR(s));
 
- 
+
 
  if Nmod=0 then Nmod:=1;
 
- 
+
 
  for i:=0 to form1.StringGrid1.RowCount-1 do
 
  for j:=0 to form1.StringGrid1.ColCount-1 do form1.StringGrid1.Cells[j,i]:='';
 
- 
+
 
  form1.StringGrid1.RowCount:=2;
 
@@ -936,8 +1158,8 @@ begin
 
  { х непрерывный }
 
- 
-
+for agv:=0 to count_exp do
+ begin
  for i:=1 to n do
  begin
   xm[i]:=GammaEE(Nmod,m);
@@ -972,11 +1194,20 @@ form1.Edit5.Text:=t;
  dispers:=dispers/(n-1);
  sigma:=sqrt(dispers);
  assim:=assim/(sigma*sigma*sigma);
+ akces:=akces/(sqr(sigma)*sqr(sigma)) - 3;
+
+glob_matem_ojid[agv]:=matem_ojid;
+glob_dispers[agv]:=dispers;
+glob_assim[agv]:=assim;
+glob_akces[agv]:=akces;
+
+ end;
+ {* ********* *}
+
  STR(sigma:5:3,t);
  form1.Edit6.Text:=t;
  STR(assim:5:3,t);
  form1.Edit7.Text:=t;
- akces:=akces/(sqr(sigma)*sqr(sigma)) - 3;
  STR(akces:5:3,t);
  form1.Edit8.Text:=t;
 
@@ -1086,11 +1317,32 @@ form1.Edit5.Text:=t;
 
   end;
 
- 
+
 
 end;
 
 
 
+
+
+procedure TForm1.Button9Click(Sender: TObject);
+begin
+  output_graph(glob_matem_ojid);
+end;
+
+procedure TForm1.Button10Click(Sender: TObject);
+begin
+  output_graph(glob_akces);
+end;
+
+procedure TForm1.Button11Click(Sender: TObject);
+begin
+output_graph(glob_dispers);
+end;
+
+procedure TForm1.Button12Click(Sender: TObject);
+begin
+output_graph(glob_assim);
+end;
 
 end.

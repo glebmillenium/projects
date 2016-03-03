@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 199
   Top = 116
-  Width = 1145
-  Height = 720
   Caption = #1040#1085
+  ClientHeight = 682
+  ClientWidth = 1129
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +18,8 @@ object Form1: TForm1
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 1137
-    Height = 686
+    Width = 1129
+    Height = 682
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
@@ -225,7 +225,6 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 13
-        Text = 'Edit5'
       end
       object Edit6: TEdit
         Left = 360
@@ -233,7 +232,6 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 14
-        Text = 'Edit6'
       end
       object Edit7: TEdit
         Left = 360
@@ -241,7 +239,6 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 15
-        Text = 'Edit7'
       end
       object Edit8: TEdit
         Left = 360
@@ -249,104 +246,11 @@ object Form1: TForm1
         Width = 121
         Height = 21
         TabOrder = 16
-        Text = 'Edit8'
       end
     end
     object TabSheet2: TTabSheet
       Caption = #1043#1088#1072#1092#1080#1082#1080
       ImageIndex = 1
-      object Chart1: TChart
-        Left = 0
-        Top = 0
-        Width = 1129
-        Height = 658
-        BackWall.Brush.Color = clWhite
-        BackWall.Brush.Style = bsClear
-        Title.Text.Strings = (
-          'TChart')
-        Title.Visible = False
-        Legend.Alignment = laBottom
-        Legend.Frame.Visible = False
-        View3D = False
-        Align = alClient
-        PopupMenu = PopupMenu1
-        TabOrder = 0
-        object Series1: TFastLineSeries
-          Marks.ArrowLength = 8
-          Marks.Visible = False
-          SeriesColor = clRed
-          LinePen.Color = clRed
-          LinePen.Width = 2
-          XValues.DateTime = False
-          XValues.Name = 'X'
-          XValues.Multiplier = 1.000000000000000000
-          XValues.Order = loAscending
-          YValues.DateTime = False
-          YValues.Name = 'Y'
-          YValues.Multiplier = 1.000000000000000000
-          YValues.Order = loNone
-        end
-        object Series2: TFastLineSeries
-          Marks.ArrowLength = 8
-          Marks.Visible = False
-          SeriesColor = 16711808
-          LinePen.Color = 16711808
-          LinePen.Width = 2
-          XValues.DateTime = False
-          XValues.Name = 'X'
-          XValues.Multiplier = 1.000000000000000000
-          XValues.Order = loAscending
-          YValues.DateTime = False
-          YValues.Name = 'Y'
-          YValues.Multiplier = 1.000000000000000000
-          YValues.Order = loNone
-        end
-        object Series3: TFastLineSeries
-          Marks.ArrowLength = 8
-          Marks.Visible = False
-          SeriesColor = clLime
-          LinePen.Color = clLime
-          LinePen.Width = 2
-          XValues.DateTime = False
-          XValues.Name = 'X'
-          XValues.Multiplier = 1.000000000000000000
-          XValues.Order = loAscending
-          YValues.DateTime = False
-          YValues.Name = 'Y'
-          YValues.Multiplier = 1.000000000000000000
-          YValues.Order = loNone
-        end
-        object Series4: TFastLineSeries
-          Marks.ArrowLength = 8
-          Marks.Visible = False
-          SeriesColor = clBlue
-          LinePen.Color = clBlue
-          LinePen.Width = 2
-          XValues.DateTime = False
-          XValues.Name = 'X'
-          XValues.Multiplier = 1.000000000000000000
-          XValues.Order = loAscending
-          YValues.DateTime = False
-          YValues.Name = 'Y'
-          YValues.Multiplier = 1.000000000000000000
-          YValues.Order = loNone
-        end
-        object Series5: TFastLineSeries
-          Marks.ArrowLength = 8
-          Marks.Visible = False
-          SeriesColor = 4194432
-          LinePen.Color = 4194432
-          LinePen.Width = 2
-          XValues.DateTime = False
-          XValues.Name = 'X'
-          XValues.Multiplier = 1.000000000000000000
-          XValues.Order = loAscending
-          YValues.DateTime = False
-          YValues.Name = 'Y'
-          YValues.Multiplier = 1.000000000000000000
-          YValues.Order = loNone
-        end
-      end
     end
   end
   object PopupMenu1: TPopupMenu
