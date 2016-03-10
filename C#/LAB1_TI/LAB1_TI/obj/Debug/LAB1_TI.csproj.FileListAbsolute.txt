@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\bin\Debug\LAB1_TI.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\bin\Debug\LAB1_TI.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\bin\Debug\LAB1_TI.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\obj\Debug\LAB1_TI.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\obj\Debug\LAB1_TI.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\obj\Debug\LAB1_TI.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\obj\Debug\LAB1_TI.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\obj\Debug\LAB1_TI.pdb

@@ -19,27 +19,27 @@ namespace ExampleUsingDLL
 	/// </summary>
 	public partial class MainForm : Form
 	{
-	  	[DllImport(@"C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\my_library.dll", 
+	  	[DllImport(@"my_library.dll", 
 		           CharSet = CharSet.Auto, EntryPoint = "Double")]
 		public static extern int Double(int N);
 		
-		[DllImport(@"C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\my_library.dll", 
+		[DllImport(@"my_library.dll", 
 		           CharSet = CharSet.Auto, EntryPoint = "Triple")]
 		public static extern int Triple(int N);
 		
-		[DllImport(@"C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\my_library.dll", 
+		[DllImport(@"my_library.dll", 
            CharSet = CharSet.Auto, EntryPoint = "DoublePChar")]
 		public static extern int DoublePChar(int N);
 		
-		[DllImport(@"C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\my_library.dll", 
+		[DllImport(@"my_library.dll", 
    			CharSet = CharSet.Auto, EntryPoint = "DoubleString")]
 		public static extern string DoubleString([MarshalAs(UnmanagedType.LPStr)]string s, [MarshalAs(UnmanagedType.LPStr)]string Separat);
 		
-		[DllImport(@"C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\my_library.dll", 
+		[DllImport(@"my_library.dll", 
    			CharSet = CharSet.Auto, EntryPoint = "readFileToMemo")]
 		public static extern string readFileToMemo([MarshalAs(UnmanagedType.LPStr)]string way);
 		
-		[DllImport(@"C:\Users\Глеб\Documents\SharpDevelop Projects\ExampleUsingDLL\ExampleUsingDLL\my_library.dll", 
+		[DllImport(@"my_library.dll", 
    			CharSet = CharSet.Auto, EntryPoint = "readFileToMemo")]
 		public static extern int writeTextInFile([MarshalAs(UnmanagedType.LPStr)]string fileDir, [MarshalAs(UnmanagedType.LPStr)]string text);
 		
