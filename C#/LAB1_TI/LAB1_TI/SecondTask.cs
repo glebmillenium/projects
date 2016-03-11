@@ -2,7 +2,7 @@
  * Создано в SharpDevelop.
  * Пользователь: Глеб
  * Дата: 12.03.2016
- * Время: 2:20
+ * Время: 2:24
  * 
  * 
  */
@@ -13,13 +13,11 @@ using System.Windows.Forms;
 namespace LAB1_TI
 {
 	/// <summary>
-	/// Description of MainForm.
+	/// Description of SecondTask.
 	/// </summary>
-	public partial class MainForm : Form
+	public partial class SecondTask : Form
 	{
-		FirstTask first = new FirstTask();
-		SecondTask second = new SecondTask();
-		public MainForm()
+		public SecondTask()
 		{
 			//
 			// The InitializeComponent() call is required for Windows Forms designer support.
@@ -29,11 +27,6 @@ namespace LAB1_TI
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-		}
-		void Button1Click(object sender, EventArgs e)
-		{
-			first.Show();
-			Hide();
 		}
 	}
 }
