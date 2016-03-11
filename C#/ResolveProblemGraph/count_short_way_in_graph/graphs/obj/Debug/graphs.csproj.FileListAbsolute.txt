@@ -8,3 +8,13 @@ C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\graph
 C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\graphs\obj\Debug\graphs.pdb
 C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\graphs\bin\Debug\Graph.dll
 C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\graphs\bin\Debug\Graph.pdb
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\bin\Debug\graphs.exe.config
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\bin\Debug\graphs.exe
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\bin\Debug\graphs.pdb
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\bin\Debug\Graph.dll
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\bin\Debug\Graph.pdb
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\obj\Debug\graphs.csprojResolveAssemblyReference.cache
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\obj\Debug\graphs.MainForm.resources
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\obj\Debug\graphs.csproj.GenerateResource.Cache
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\obj\Debug\graphs.exe
+C:\projects\C#\ResolveProblemGraph\count_short_way_in_graph\graphs\obj\Debug\graphs.pdb
