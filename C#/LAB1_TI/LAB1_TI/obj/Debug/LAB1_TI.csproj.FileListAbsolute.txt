@@ -8,3 +8,4 @@ C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\obj\Debug\LAB1
 C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\obj\Debug\LAB1_TI.pdb
 C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\bin\Debug\counting_entropy.dll
 C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\bin\Debug\counting_entropy.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\LAB1_TI\LAB1_TI\obj\Debug\LAB1_TI.SecondTask.resources

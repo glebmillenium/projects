@@ -1,0 +1,5 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\counting_entropy\counting_entropy\obj\Debug\counting_entropy.fsprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\counting_entropy\counting_entropy\bin\Debug\counting_entropy.dll
+C:\Users\Глеб\Documents\SharpDevelop Projects\counting_entropy\counting_entropy\bin\Debug\counting_entropy.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\counting_entropy\counting_entropy\obj\Debug\counting_entropy.dll
+C:\Users\Глеб\Documents\SharpDevelop Projects\counting_entropy\counting_entropy\obj\Debug\counting_entropy.pdb

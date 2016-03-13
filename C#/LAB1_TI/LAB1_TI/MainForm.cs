@@ -35,5 +35,10 @@ namespace LAB1_TI
 			first.Show();
 			Hide();
 		}
+		void Button2Click(object sender, EventArgs e)
+		{
+			second.Show();
+			Hide();
+		}
 	}
 }

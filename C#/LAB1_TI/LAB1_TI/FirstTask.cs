@@ -65,13 +65,12 @@ namespace LAB1_TI
 		void Button3Click(object sender, EventArgs e)
 		{
 			var arrayValues = textfields.ToArray();
-			Double summ = 0;
-			FSharpList<double> FSharpProbability = FSharpList<double>.Empty;;
+			FSharpList<double> FSharpProbability = FSharpList<double>.Empty;
 			for(int i = 0; i < arrayValues.Length; i++)
 			{
 				FSharpProbability = new FSharpList<double>(double.Parse(arrayValues[i].Text), FSharpProbability);
 			}
-			textBox1.Text = (counting_entropy.Entropy.count_entropy(FSharpProbability)).ToString();
+			textBox1.Text = (counting_entropy.Entropy.count_entropy1(FSharpProbability)).ToString();
 		}
 	}
 }

@@ -60,6 +60,7 @@ namespace LAB1_TI
 			this.button2.TabIndex = 1;
 			this.button2.Text = "Задание 2";
 			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.Button2Click);
 			// 
 			// MainForm
 			// 
