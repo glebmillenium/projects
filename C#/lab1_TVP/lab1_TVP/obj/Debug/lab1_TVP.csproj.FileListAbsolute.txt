@@ -1,0 +1,9 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\obj\Debug\lab1_TVP.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\obj\Debug\lab1_TVP.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\obj\Debug\lab1_TVP.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\bin\Debug\lab1_TVP.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\bin\Debug\lab1_TVP.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\bin\Debug\lab1_TVP.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\obj\Debug\lab1_TVP.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\obj\Debug\lab1_TVP.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab1_TVP\lab1_TVP\obj\Debug\lab1_TVP.WorkingProcess.resources
