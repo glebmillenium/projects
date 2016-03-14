@@ -1,0 +1,8 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab2_TVP\lab2_TVP\bin\Debug\lab2_TVP.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab2_TVP\lab2_TVP\bin\Debug\lab2_TVP.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab2_TVP\lab2_TVP\bin\Debug\lab2_TVP.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab2_TVP\lab2_TVP\obj\Debug\lab2_TVP.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab2_TVP\lab2_TVP\obj\Debug\lab2_TVP.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab2_TVP\lab2_TVP\obj\Debug\lab2_TVP.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab2_TVP\lab2_TVP\obj\Debug\lab2_TVP.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\lab2_TVP\lab2_TVP\obj\Debug\lab2_TVP.pdb
