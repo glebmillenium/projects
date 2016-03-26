@@ -8,3 +8,14 @@ C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\o
 C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.csproj.GenerateResource.Cache
 C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.exe
 C:\Users\Глеб\Documents\SharpDevelop Projects\RestaurantProject\Restaurant\obj\Debug\Restaurant.pdb
+C:\projects\C#\RestaurantProject\Restaurant\bin\Debug\Restaurant.exe.config
+C:\projects\C#\RestaurantProject\Restaurant\bin\Debug\Restaurant.exe
+C:\projects\C#\RestaurantProject\Restaurant\bin\Debug\Restaurant.pdb
+C:\projects\C#\RestaurantProject\Restaurant\bin\Debug\MySql.Data.dll
+C:\projects\C#\RestaurantProject\Restaurant\obj\Debug\Restaurant.csprojResolveAssemblyReference.cache
+C:\projects\C#\RestaurantProject\Restaurant\obj\Debug\Restaurant.Form1.resources
+C:\projects\C#\RestaurantProject\Restaurant\obj\Debug\Restaurant.Form2.resources
+C:\projects\C#\RestaurantProject\Restaurant\obj\Debug\Restaurant.MainForm.resources
+C:\projects\C#\RestaurantProject\Restaurant\obj\Debug\Restaurant.csproj.GenerateResource.Cache
+C:\projects\C#\RestaurantProject\Restaurant\obj\Debug\Restaurant.exe
+C:\projects\C#\RestaurantProject\Restaurant\obj\Debug\Restaurant.pdb

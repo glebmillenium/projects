@@ -1,0 +1,11 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\obj\Debug\LifeSafety.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\obj\Debug\LifeSafety.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\obj\Debug\LifeSafety.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\bin\Debug\LifeSafety.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\bin\Debug\LifeSafety.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\bin\Debug\LifeSafety.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\obj\Debug\LifeSafety.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\obj\Debug\LifeSafety.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\obj\Debug\LifeSafety.Annex1.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\obj\Debug\LifeSafety.Form1.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\LifeSafety\LifeSafety\obj\Debug\LifeSafety.Form2.resources

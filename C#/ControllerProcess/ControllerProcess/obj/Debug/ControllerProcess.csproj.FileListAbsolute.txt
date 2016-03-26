@@ -8,3 +8,13 @@ C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerPr
 C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.pdb
 C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.MUT.resources
 C:\Users\Глеб\Documents\SharpDevelop Projects\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.SEM.resources
+C:\projects\C#\ControllerProcess\ControllerProcess\bin\Debug\ControllerProcess.exe.config
+C:\projects\C#\ControllerProcess\ControllerProcess\bin\Debug\ControllerProcess.exe
+C:\projects\C#\ControllerProcess\ControllerProcess\bin\Debug\ControllerProcess.pdb
+C:\projects\C#\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.csprojResolveAssemblyReference.cache
+C:\projects\C#\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.MainForm.resources
+C:\projects\C#\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.MUT.resources
+C:\projects\C#\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.SEM.resources
+C:\projects\C#\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.csproj.GenerateResource.Cache
+C:\projects\C#\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.exe
+C:\projects\C#\ControllerProcess\ControllerProcess\obj\Debug\ControllerProcess.pdb

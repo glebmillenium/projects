@@ -20,7 +20,7 @@ namespace Restaurant
 	public partial class Form1 : Form
 	{
 		
-	private Panel buttonPanel = new Panel();
+
     private DataGridView bookingDataGridView = new DataGridView();
     private Button addNewRowButton = new Button();
     private Button deleteRowButton = new Button();

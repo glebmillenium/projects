@@ -106,10 +106,10 @@ namespace ControllerProcess
 			 * мьютекс был создан) и процесс не был завершен пользователем
 			 * преждевременно, то убиваем процесс и освобождаем мьютекс
 			 */
+			StarterMutex.Dispose();
 			if ( StarterMutex != null && !StarterProcess.HasExited )
 			{
 				StarterProcess.Kill();
-				StarterMutex.Dispose();
 				Invoke(new Action(() => label4.Text = ""));
 			}
 			
