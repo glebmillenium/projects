@@ -15,7 +15,7 @@ public class Daemon {
      */
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        // TODO code application logic here
+       
         try
         {
             daemonize();    
