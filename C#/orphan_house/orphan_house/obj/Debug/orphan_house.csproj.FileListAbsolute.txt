@@ -1,0 +1,16 @@
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.csprojResolveAssemblyReference.cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.MainForm.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.csproj.GenerateResource.Cache
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\bin\Debug\orphan_house.exe.config
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\bin\Debug\orphan_house.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\bin\Debug\orphan_house.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\bin\Debug\MySql.Data.dll
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.exe
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.pdb
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.Menu.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.Added.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.Adoption.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.Search.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.Statistics.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\obj\Debug\orphan_house.Users.resources
+C:\Users\Глеб\Documents\SharpDevelop Projects\orphan_house\orphan_house\bin\Debug\ZedGraph.dll
