@@ -1,0 +1,16 @@
+ This configuration-file is for settings
+# ways with files contain's IP-adress and ports
+-----------------------------------------------
+# Данный конфигурационный файл предназначен для
+# настройки путей к файлам, имеющие данные о
+# IP - адресах и портах.
+-----------------------------------------------
+-----------------------------------------------
+# way with file contains ip-adress
+way_ip        = data/ip_adress
+# way with file contains ports
+way_port      = data/ports
+# time update check connect
+time_interval = 3
+# way with log file
+log           = log
