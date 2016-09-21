@@ -80,6 +80,7 @@ class ScanningIp
           else
             puts currentTime.inspect + " " + key + ":" + port + " is not alive"
           end
+          sleep configContent[:time_interval]
         end
       end
     end
