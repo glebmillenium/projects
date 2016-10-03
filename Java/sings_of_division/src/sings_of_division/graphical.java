@@ -20,8 +20,11 @@ public class graphical extends javax.swing.JFrame {
      * Creates new form graphical
      */
     private Panel panel;
+    private double k;
+    private Color left;
+    private Color right;
     public graphical() {
-        this.panel = new Panel();
+        panel = new Panel();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
@@ -49,18 +52,8 @@ public class graphical extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jTextField1.setForeground(Color.WHITE);
-        jTextField2.setForeground(Color.WHITE);
-        jTextField3.setForeground(Color.WHITE);
-        jTextField4.setForeground(Color.WHITE);
-        jTextField5.setForeground(Color.WHITE);
-        jTextField6.setForeground(Color.WHITE);
-        jTextField7.setForeground(Color.WHITE);
-        jTextField8.setForeground(Color.WHITE);
-        jTextField9.setForeground(Color.WHITE);
-        jTextField10.setForeground(Color.WHITE);
-        jTextField11.setForeground(Color.WHITE);
-        jTextField12.setForeground(Color.WHITE);
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -86,6 +79,7 @@ public class graphical extends javax.swing.JFrame {
         });
 
         jTextField1.setBackground(java.awt.Color.red);
+        jTextField1.setCaretColor(java.awt.Color.white);
 
         jTextField2.setBackground(java.awt.Color.red);
 
@@ -103,17 +97,17 @@ public class graphical extends javax.swing.JFrame {
 
         jLabel7.setText("<html><body>D(A<sub>y</sub>)</body></html>");
 
-        jTextField7.setBackground(java.awt.Color.blue);
+        jTextField7.setBackground(new java.awt.Color(0, 153, 255));
 
-        jTextField8.setBackground(java.awt.Color.blue);
+        jTextField8.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel8.setText("<html>M(B<sub>y</sub><sup>[1]</sup>)</html>");
 
         jLabel9.setText("<html><body>D(B<sub>y</sub>)</body></html>");
 
-        jTextField9.setBackground(java.awt.Color.blue);
+        jTextField9.setBackground(new java.awt.Color(0, 153, 255));
 
-        jTextField10.setBackground(java.awt.Color.blue);
+        jTextField10.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel10.setText("<html>M(B<sub>x</sub><sup>[1]</sup>)</html>");
 
@@ -125,13 +119,20 @@ public class graphical extends javax.swing.JFrame {
 
         jTextField11.setBackground(java.awt.Color.red);
 
-        jTextField12.setBackground(java.awt.Color.blue);
+        jTextField12.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel12.setText("Случайная величина");
 
         jLabel13.setText("X:");
 
         jLabel14.setText("Y:");
+
+        jButton2.setText("Классифицировать объект");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,7 +201,9 @@ public class graphical extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -251,21 +254,21 @@ public class graphical extends javax.swing.JFrame {
                                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
-                        .addGap(19, 19, 19)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(jLabel13)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 96, Short.MAX_VALUE)))
+                        .addGap(0, 146, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
-        //initComponents();
     }
 
     /**
@@ -305,6 +308,7 @@ public class graphical extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -349,17 +353,17 @@ public class graphical extends javax.swing.JFrame {
 
         jLabel7.setText("<html><body>D(A<sub>y</sub>)</body></html>");
 
-        jTextField7.setBackground(java.awt.Color.blue);
+        jTextField7.setBackground(new java.awt.Color(0, 153, 255));
 
-        jTextField8.setBackground(java.awt.Color.blue);
+        jTextField8.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel8.setText("<html>M(B<sub>y</sub><sup>[1]</sup>)</html>");
 
         jLabel9.setText("<html><body>D(B<sub>y</sub>)</body></html>");
 
-        jTextField9.setBackground(java.awt.Color.blue);
+        jTextField9.setBackground(new java.awt.Color(0, 153, 255));
 
-        jTextField10.setBackground(java.awt.Color.blue);
+        jTextField10.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel10.setText("<html>M(B<sub>x</sub><sup>[1]</sup>)</html>");
 
@@ -371,13 +375,20 @@ public class graphical extends javax.swing.JFrame {
 
         jTextField11.setBackground(java.awt.Color.red);
 
-        jTextField12.setBackground(java.awt.Color.blue);
+        jTextField12.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel12.setText("Случайная величина");
 
         jLabel13.setText("X:");
 
         jLabel14.setText("Y:");
+
+        jButton2.setText("Классифицировать объект");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -446,7 +457,9 @@ public class graphical extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -497,16 +510,17 @@ public class graphical extends javax.swing.JFrame {
                                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
-                        .addGap(19, 19, 19)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(jLabel13)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 96, Short.MAX_VALUE)))
+                        .addGap(0, 146, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -527,6 +541,7 @@ public class graphical extends javax.swing.JFrame {
         int count_2 = Integer.parseInt(jTextField12.getText());
         Tuple[] first = new Tuple[count_1];
         Tuple[] second = new Tuple[count_2];
+        
         for(int i = 0; i < count_1; i++)
         {
             first[i] = new Tuple(rand.nextGaussian() * s_1_x + M_1_x, rand.nextGaussian() * s_1_y + M_1_y);
@@ -535,68 +550,45 @@ public class graphical extends javax.swing.JFrame {
         {
             second[i] = new Tuple(rand.nextGaussian() * s_2_x + M_2_x, rand.nextGaussian() * s_2_y + M_2_y);
         }
-        panel.settingSigns(first, second);
-        //double t = rand.nextGaussian() * s_1_x + M_1_x;
+        
+        Tuple oneTuple = searchExpectedValue(first);
+        Tuple twoTuple = searchExpectedValue(second);
+        this.left = (oneTuple.getSecond() > twoTuple.getSecond()) ? Color.RED : Color.BLUE;
+        this.right = (this.left == Color.RED) ? Color.BLUE : Color.RED;
+        Tuple mid = new Tuple(oneTuple.getFirst() + twoTuple.getFirst() / 2,
+        oneTuple.getSecond() + twoTuple.getSecond() / 2);
+        this.k = angleRatio(mid);
+        panel.settingSigns(first, second, mid);//
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        newSign(Integer.parseInt(jTextField3.getText()), 
+                Integer.parseInt(jTextField4.getText()));
+    }//GEN-LAST:event_jButton2ActionPerformed
     
-    
-    public class Panel extends JPanel{
-        private Tuple[] first; 
-        private Tuple[] second;
-        int sign = 0;
-        
-        Panel(){
-        
-        }
-        
-        public void paintComponent(Graphics g){
-            super.paintComponent(g);
-            if(sign != 0){
-                painter(g);
-            }
-        }
-        
-        private void painter(Graphics g)
-        {
-            g.setColor(Color.RED);
-            for(int i = 0; i< first.length; i++){
-                g.drawOval(first[i].getFirst(), 500-first[i].getSecond(), 8, 8);
-            }
-            g.setColor(Color.BLUE);
-            for(int i = 0; i< second.length; i++){
-                g.drawOval(second[i].getFirst(), 500-second[i].getSecond(), 8, 8);
-            }
-        }
-        
-        public void settingSigns(Tuple[] one, Tuple[] two){
-            this.sign = 1;
-            this.first = one;
-            this.second = two;
-            repaint();
-        }
+    private void newSign(int x, int y){
+        Color res;
+        if(y >= x*this.k) panel.newSigns(new Tuple(x,y, this.left));
+        else panel.newSigns(new Tuple(x,y, this.right));
     }
     
-    public class Tuple{
-        private int x;
-        private int y;
-        Tuple(){
-            this.x = 0;
-            this.y = 0;
+    public Tuple searchExpectedValue(Tuple[] values){
+        double sum1 = 0.0;
+        double sum2 = 0.0;
+        for(int i=0; i < values.length; i++){
+            sum1 += values[i].getFirst();
+            sum2 += values[i].getSecond();
         }
-        Tuple(int x, int y){
-            this.x = x;
-            this.y = y;
-        }
-        Tuple(double x, double y){
-            this.x = (int) Math.round(x);
-            this.y = (int) Math.round(y);
-        }
-        public int getFirst(){
-            return this.x;
-        }
-        public int getSecond(){
-            return this.y;
-        }
+        return (new Tuple(sum1/values.length, sum2/values.length));
+    }
+    
+    public Tuple searchMiddle(Tuple first, Tuple second){
+        return (new Tuple((first.getFirst()+second.getFirst())/2.0,
+         (first.getSecond()+second.getSecond())/2.0));
+    }
+    
+    public double angleRatio(Tuple middle){
+       return ((double) (middle.getSecond()))/((double) (middle.getFirst()));
     }
     
     /**
@@ -636,6 +628,7 @@ public class graphical extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
