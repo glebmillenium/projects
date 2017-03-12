@@ -6,3 +6,11 @@ C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX-SEND\MUTEX-SEND\bin\Debu
 C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX-SEND\MUTEX-SEND\bin\Debug\MUTEX-SEND.pdb
 C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX-SEND\MUTEX-SEND\obj\Debug\MUTEX-SEND.exe
 C:\Users\Глеб\Documents\SharpDevelop Projects\MUTEX-SEND\MUTEX-SEND\obj\Debug\MUTEX-SEND.pdb
+C:\projects\C#\MUTEX\MUTEX-SEND\MUTEX-SEND\bin\Debug\MUTEX-SEND.exe.config
+C:\projects\C#\MUTEX\MUTEX-SEND\MUTEX-SEND\bin\Debug\MUTEX-SEND.exe
+C:\projects\C#\MUTEX\MUTEX-SEND\MUTEX-SEND\bin\Debug\MUTEX-SEND.pdb
+C:\projects\C#\MUTEX\MUTEX-SEND\MUTEX-SEND\obj\Debug\MUTEX-SEND.csprojResolveAssemblyReference.cache
+C:\projects\C#\MUTEX\MUTEX-SEND\MUTEX-SEND\obj\Debug\MUTEX_SEND.MainForm.resources
+C:\projects\C#\MUTEX\MUTEX-SEND\MUTEX-SEND\obj\Debug\MUTEX-SEND.csproj.GenerateResource.Cache
+C:\projects\C#\MUTEX\MUTEX-SEND\MUTEX-SEND\obj\Debug\MUTEX-SEND.exe
+C:\projects\C#\MUTEX\MUTEX-SEND\MUTEX-SEND\obj\Debug\MUTEX-SEND.pdb

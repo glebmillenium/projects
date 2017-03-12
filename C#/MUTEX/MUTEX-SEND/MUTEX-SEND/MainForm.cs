@@ -57,9 +57,7 @@ namespace MUTEX_SEND
 		void Button1Click(object sender, EventArgs e)
 		{
 			MyProcess = Process.Start
-				("C:\\Users\\Глеб\\Documents\\SharpDevelop Projects" +
-				 "\\MUTEX_RECIPIENT\\MUTEX_RECIPIENT\\bin\\Debug" +
-				 "\\MUTEX_RECIPIENT.exe", textBox3.Text);			// Вызов программы, по заданному пути
+				("MUTEX_RECIPIENT.exe", textBox3.Text);			// Вызов программы, по заданному пути
 																	// и передача ей аргумента (пути к папке)
 			Directory.CreateDirectory(textBox3.Text);
 			Directory.CreateDirectory(textBox3.Text + "temp");

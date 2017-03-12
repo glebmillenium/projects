@@ -15,6 +15,7 @@ class Daemon
   class << self
     def start
       @rd, @wr = IO.pipe
+	  if(@pid != nil) return false
       @pid = fork do
         @rd.close
         running = true

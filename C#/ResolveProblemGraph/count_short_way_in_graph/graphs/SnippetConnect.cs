@@ -18,6 +18,10 @@ namespace graphs
 	{
 		public int A { get; set; }
 		public int B { get; set; }
-		public TextBox line { get; set; }
+        public int coor_A_x { get; set; }
+        public int coor_A_y { get; set; }
+        public int coor_B_x { get; set; }
+        public int coor_B_y { get; set; }
+        public TextBox line { get; set; }
 	}
 }

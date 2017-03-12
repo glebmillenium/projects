@@ -11,24 +11,25 @@ using System.Drawing;
 
 namespace graphs
 {
-	/// <summary>
-	/// Класс Node - предназначен для хранения и
-	/// реализации графического состояния узлов 
-	/// и соединяющих элементов в графе
-	/// </summary>
-	public class Node
-	{
-		public readonly int id;
-		private readonly Graphics __obj;
-		private readonly Snippet __X;
-		private readonly Snippet __Y;
-		public Snippet centr;
-		public string name;
+    /// <summary>
+    /// Класс Node - предназначен для хранения и
+    /// реализации графического состояния узлов 
+    /// и соединяющих элементов в графе
+    /// </summary>
+    public class Node
+    {
+        public readonly int id;
+        private readonly Graphics __obj;
+        public readonly Snippet x;
+        public readonly Snippet y;
+        public Snippet centr;
+        public string name;
+        public Color color;
     	
 		public Node(int id, Graphics obj, int x0, int y0, string name)
 		{
-			this.__X = new Snippet() { first = x0, second = x0};
-			this.__Y = new Snippet() { first = y0, second = y0};
+			this.x = new Snippet() { first = x0, second = x0};
+			this.y = new Snippet() { first = y0, second = y0};
 			this.centr = new Snippet() { first = x0, second = y0};
 			this.__obj = obj;
 			this.name = name;
@@ -39,12 +40,12 @@ namespace graphs
 		{
 			this.id = id;
 			
-			this.__X = new Snippet() {
+			this.x = new Snippet() {
 				first = x0,
 				second = x1
 			};
 			
-			this.__Y = new Snippet() {
+			this.y = new Snippet() {
 				first = y0,
 				second = y1
 			};
@@ -59,10 +60,10 @@ namespace graphs
 		}
 		public bool belongToNode(int x, int y)
 		{
-			return ((x >= this.__X.first) 
-			        && (x <= this.__X.second) 
-			        && (y >= this.__Y.first) 
-			        && (y <= this.__Y.second));
+			return ((x >= this.x.first) 
+			        && (x <= this.x.second) 
+			        && (y >= this.y.first) 
+			        && (y <= this.y.second));
 		}
 		public int getIdOnCoordinate(int x, int y)
 		{

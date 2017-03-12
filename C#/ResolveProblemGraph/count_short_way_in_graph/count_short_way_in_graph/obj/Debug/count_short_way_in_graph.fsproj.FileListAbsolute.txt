@@ -1,6 +1,0 @@
-C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\count_short_way_in_graph\obj\Debug\count_short_way_in_graph.fsprojResolveAssemblyReference.cache
-C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\count_short_way_in_graph\bin\Debug\count_short_way_in_graph.exe.config
-C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\count_short_way_in_graph\bin\Debug\count_short_way_in_graph.exe
-C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\count_short_way_in_graph\bin\Debug\count_short_way_in_graph.pdb
-C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\count_short_way_in_graph\obj\Debug\count_short_way_in_graph.exe
-C:\Users\Глеб\Documents\SharpDevelop Projects\count_short_way_in_graph\count_short_way_in_graph\obj\Debug\count_short_way_in_graph.pdb
