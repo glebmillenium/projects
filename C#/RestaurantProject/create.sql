@@ -1,0 +1,2 @@
+USE `restaurant`;
+CREATE TABLE restaurant (account_number INT NOT NULL PRIMARY KEY AUTO_INCREMENT, customer VARCHAR(20) CHARACTER SET utf8, count_man INT, amount_of_money FLOAT, date_of_the_banket VARCHAR(20) CHARACTER SET utf8, time_of_the_banket VARCHAR(20) CHARACTER SET utf8, state INT)  ENGINE=InnoDB  DEFAULT CHARSET=utf8;

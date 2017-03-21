@@ -22,17 +22,24 @@ namespace Restaurant
 		
 		public MainForm()
 		{
-			
 			InitializeComponent();
-			
+			comboBox1.SelectedItem = "Гость";
+			comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 		}
-		void Button1Click(object sender, EventArgs e)
+
+		void Button3Click(object sender, EventArgs e)
 		{
-			(new Form1()).Show();
-		}
-		void Button2Click(object sender, EventArgs e)
-		{
-			(new Form2()).Show();
+			this.SetVisibleCore(false);
+			if(comboBox1.SelectedItem.ToString() == "Гость"){
+				(new Form1(0)).ShowDialog();
+			}
+			if(comboBox1.SelectedItem.ToString() == "Шеф-повар"){
+				(new Form1(1)).ShowDialog();
+			}
+			if(comboBox1.SelectedItem.ToString() == "Управляющий"){
+				(new Form1(2)).ShowDialog();
+			}
+			this.SetVisibleCore(true);
 		}
 	}
 }
